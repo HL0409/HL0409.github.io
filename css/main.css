@@ -1,5 +1,164 @@
-div {
-  background: violet;
+/* Normalize */
+html {
+  -webkit-text-size-adjust: none;
+}
+
+html, body {
+  direction: ltr;
+  box-sizing: border-box;
+}
+
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, table, th, td, form, fieldset, legend, textarea, input, select, textarea, button, figure, figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+img, form, fieldset, svg {
+  border: 0;
+}
+
+input, button, select {
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  margin: -1px;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.blind, legend {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+body, textarea, input, select, textarea, button {
+  font-family: "SamsungOne", arial;
+  line-height: 1.32;
+}
+
+@media (max-width: 1024px) {
+  html {
+    height: 100%;
+  }
+}
+#wrap {
+  min-width: 320px;
+}
+
+/* style */
+.header__inner {
+  box-shadow: rgba(0, 0, 0, 0.12) 0 2px 2px;
+}
+.header__info {
+  margin: 0 auto;
+  max-width: 970px;
+  font-size: 0;
+}
+.header__info::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+.header__info .ico {
+  display: inline-block;
+  background: url(../img/social-sprite.png) no-repeat;
+  background-size: 40px 40px;
+}
+.header__info .ico.fb {
+  background-position: -20px 0;
+}
+.header__info .ico.tt {
+  background-position: 0 -20px;
+}
+.header__info .ico.yt {
+  background-position: -20px -20px;
+}
+.header__info .ico ~ .ico {
+  margin-left: 10px;
+}
+.header__info .ico-link {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+.header__info .info-ico {
+  float: left;
+}
+.header__info .info-side {
+  float: right;
+  height: 100%;
+}
+.header__info .info-side ul::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+.header__info .info-side li {
+  float: left;
+}
+.header__info .info-side li + li {
+  border-left: 1px solid #e5e5e5;
+}
+.header__info .info-side .menu-txt {
+  font-size: 12px;
+  color: #747474;
+}
+.header__main {
+  text-align: center;
+}
+.header__main-nav .nav-lists {
+  font-size: 0;
+}
+.header__main-nav .nav-list {
+  display: inline-block;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.header__main-nav .nav-list ~ li {
+  margin-left: 40px;
+}
+.header__main-nav .nav-list .nav-link {
+  display: inline-block;
+  height: 40px;
+  vertical-align: middle;
+}
+.header__main-nav .nav-list .nav-link::after {
+  display: inline-block;
+  content: "";
+  height: 100%;
+  vertical-align: middle;
 }
 
 /*# sourceMappingURL=main.css.map */

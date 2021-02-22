@@ -1,3 +1,180 @@
-div {
-    background: violet;
+/* Normalize */
+html {
+    -webkit-text-size-adjust: none;
+}
+
+html, body {
+    direction: ltr;
+    box-sizing: border-box;
+}
+
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, table, th, td, form, fieldset, legend, textarea, input, select, textarea, button, figure, figcaption {
+    margin: 0;
+    padding: 0;
+}
+
+img, form, fieldset, svg {
+    border: 0;
+}
+
+input, button, select {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    margin: -1px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.blind, legend {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+body, textarea, input, select, textarea, button {
+    font-family: "SamsungOne", arial;
+    line-height: 1.32;
+}
+
+@media (max-width: 1024px) {
+    html {
+        height: 100%;
+    }
+}
+
+#wrap {
+    min-width: 320px;
+}
+  
+/* style */
+.header {
+    &__inner {
+        box-shadow: rgb(0 0 0 / 12%) 0 2px 2px;
+    }
+    &__info {
+        margin: 0 auto;
+        max-width: 970px;
+        font-size: 0;
+        &::after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+        
+        .ico {
+            display: inline-block;
+            background: url(../img/social-sprite.png) no-repeat;
+            background-size: 40px 40px;
+            &.fb {
+                background-position: -20px 0;
+            }
+            &.tt {
+                background-position: 0 -20px;
+            }
+            &.yt {
+                background-position: -20px -20px;
+            }
+            
+            &~.ico {
+                margin-left: 10px;
+            }
+        }
+        
+        .ico-link {
+            display: block;
+            width: 20px;
+            height: 20px;
+        }
+
+        .info {
+            &-ico {
+                float: left;
+            }
+            &-side {
+                float: right;
+                height: 100%;
+                ul::after {
+                    display: block;
+                    content: '';
+                    clear: both;
+                }
+    
+                li {
+                    float: left;
+                    &+li {
+                        border-left: 1px solid #e5e5e5;
+                    }
+                }
+    
+                .menu-txt {
+                    font-size: 12px;
+                    color: #747474;
+                }
+            }
+        }
+    }
+
+    &__main {
+        text-align: center;
+        &-nav {
+            .nav {
+                &-lists {
+                    font-size: 0;
+                }
+                
+                &-list {
+                    display: inline-block;
+                    font-family: 'Roboto Condensed', sans-serif;
+                    font-size: 16px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    &~li {
+                        margin-left: 40px;
+                    }
+
+                    .nav-link {
+                        display: inline-block;
+                        height: 40px;
+                        vertical-align: middle;
+                        &::after {
+                            display: inline-block;
+                            content: '';
+                            height: 100%;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
