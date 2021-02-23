@@ -1,0 +1,236 @@
+/* Normalize */
+html {
+    -webkit-text-size-adjust: none;
+}
+
+html, body {
+    direction: ltr;
+    box-sizing: border-box;
+}
+
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, table, th, td, form, fieldset, legend, textarea, input, select, textarea, button, figure, figcaption {
+    margin: 0;
+    padding: 0;
+}
+
+img, form, fieldset, svg {
+    border: 0;
+}
+
+input, button, select {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    margin: -1px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.blind, legend {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+body, textarea, input, select, textarea, button {
+    font-family: "SamsungOne", arial;
+    line-height: 1.32;
+}
+
+@media (max-width: 1024px) {
+    html {
+        height: 100%;
+    }
+}
+
+#wrap {
+    min-width: 320px;
+}
+  
+/* style */
+#header {
+    box-shadow: rgb(0 0 0 / 12%) 0 2px 2px;
+}
+
+.ico {
+    display: inline-block;
+    background: url(../img/social-sprite.png) no-repeat;
+    background-size: 40px 40px;
+    &.fb {
+        background-position: -20px 0;
+    }
+    &.tt {
+        background-position: 0 -20px;
+    }
+    &.yt {
+        background-position: -20px -20px;
+    }
+    
+    &~.ico {
+        margin-left: 20px;
+    }
+}
+
+.ico-link {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.info-ico {
+    float: left;
+    flex-grow: 1;
+}
+
+.info-side {
+    float: right;
+    flex-grow: 1;
+    height: 100%;
+    &::after {
+        display: block;
+        content: '';
+        clear: both;
+    }
+
+    .side {
+        &-lists {
+            float: right;
+            &::after {
+                display: block;
+                content: '';
+                clear: both;
+            }
+        }
+    
+        &-list {
+            position: relative;
+            float: left;
+            padding: 15px 10px;
+            &+.side-list {
+                border-left: 1px solid #e5e5e5;
+            }
+            &.on:hover .sel-lists {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    
+        &-txt {
+            font-size: 12px;
+            color: #747474;
+        }
+    }
+
+    .sel {
+        &-lists {
+            visibility: hidden;
+            position: absolute;
+            width: 115px;
+            bottom: -103px;
+            left: 0;
+            border: 1px solid #e5e5e5;
+            z-index: 1;
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        &-link {
+            display: block;
+            padding: 10px 10px;
+            background: #fff;
+            transition: color .3s, background .3s;
+            &:hover {
+                background: #fafafa;
+                span {
+                    color: #333;
+                }
+            }
+        }
+    
+        &-txt {
+            font-size: 11px;
+            color: #747474;
+        }
+    }
+}
+
+.header__info {
+    display: flex;
+    margin: 0 auto;
+    max-width: 970px;
+    font-size: 0;
+    align-items: center;
+    &::after {
+        display: block;
+        content: '';
+        clear: both;
+    }
+}
+
+.header__main {
+    text-align: center;
+    &-nav {
+        padding: 10px 0;
+        .nav-lists {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-list {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            &~li {
+                margin-left: 40px;
+            }
+
+            &.search {
+                width: 15px;
+            }
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            transition: color .3s;
+            &:hover {
+                color: #ff0000;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
