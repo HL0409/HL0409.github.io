@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/7ce7da30d2/UntitledProject/style.css">
     <link rel="stylesheet" type="text/css" href="css/global.css">
 </head>
 <body>
@@ -105,20 +106,36 @@
                                 </a>
                             </li>
                             <li class="nav-list search">
-                                <a href="" class="nav-link" title="search">
-                                    <img src="img/search-small.png" alt="검색 아이콘">
+                                <a class="search-link" href="" class="nav-link" title="search">
+                                    <span class="icon-search"></span>
                                 </a>
+                                <form class="search-form" action="">
+                                    <button>
+                                        <span class="icon-search"></span>
+                                    </button>
+                                    <input type="text" name="search" placeholder="Search ...">
+                                </form>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </header>
-        <div id="content" role="main">
-        </div>
+        <main id="content">
+            <div class="vg-main">
+                <article></article>
+            </div>
+        </main>
         <footer id="footer">
 
         </footer>
     </div>
 </body>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    $('.search-link').click(function (e) {
+        e.preventDefault();
+        $('.search-form').toggleClass('on');
+    })
+</script>
 </html>

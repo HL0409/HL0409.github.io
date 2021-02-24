@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Normalize */
 html {
   -webkit-text-size-adjust: none;
@@ -75,7 +76,7 @@ body, textarea, input, select, textarea, button {
   min-width: 320px;
 }
 
-/* style */
+/* header */
 #header {
   box-shadow: rgba(0, 0, 0, 0.12) 0 2px 2px;
 }
@@ -83,16 +84,16 @@ body, textarea, input, select, textarea, button {
 .ico {
   display: inline-block;
   background: url(../img/social-sprite.png) no-repeat;
-  background-size: 40px 40px;
+  background-size: 32px 32px;
 }
 .ico.fb {
-  background-position: -20px 0;
+  background-position: -16px 0;
 }
 .ico.tt {
-  background-position: 0 -20px;
+  background-position: 0 -16px;
 }
 .ico.yt {
-  background-position: -20px -20px;
+  background-position: -16px -16px;
 }
 .ico ~ .ico {
   margin-left: 20px;
@@ -100,8 +101,8 @@ body, textarea, input, select, textarea, button {
 
 .ico-link {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 .info-ico {
@@ -111,6 +112,7 @@ body, textarea, input, select, textarea, button {
 
 .info-side {
   float: right;
+  font-family: "NanumBarunGothic", sans-serif;
   flex-grow: 1;
   height: 100%;
 }
@@ -131,6 +133,7 @@ body, textarea, input, select, textarea, button {
   position: relative;
   float: left;
   padding: 15px 10px;
+  font-weight: 100;
 }
 .info-side .side-list + .side-list {
   border-left: 1px solid #e5e5e5;
@@ -146,7 +149,7 @@ body, textarea, input, select, textarea, button {
 .info-side .sel-lists {
   visibility: hidden;
   position: absolute;
-  width: 115px;
+  width: 120px;
   bottom: -103px;
   left: 0;
   border: 1px solid #e5e5e5;
@@ -167,7 +170,7 @@ body, textarea, input, select, textarea, button {
   color: #333;
 }
 .info-side .sel-txt {
-  font-size: 11px;
+  font-size: 12px;
   color: #747474;
 }
 
@@ -205,6 +208,7 @@ body, textarea, input, select, textarea, button {
   margin-left: 40px;
 }
 .header__main-nav .nav-list.search {
+  position: relative;
   width: 15px;
 }
 .header__main-nav .nav-link {
@@ -217,6 +221,51 @@ body, textarea, input, select, textarea, button {
 }
 .header__main-nav .nav-link img {
   width: 100%;
+}
+.header__main-nav .icon-search {
+  transition: color 0.3s;
+}
+.header__main-nav .icon-search::before {
+  font-size: 16px;
+  content: "";
+}
+.header__main-nav .icon-search:hover {
+  color: #ff0000;
+}
+.header__main-nav .search-form {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: #000;
+  border: 3px solid #000;
+}
+.header__main-nav .search-form.on {
+  display: flex;
+}
+.header__main-nav .search-form button {
+  padding: 5px;
+  color: #fff;
+  border-right: 3px solid #000;
+  transition: all 0.3s;
+}
+.header__main-nav .search-form button:hover {
+  background: #ff0000;
+  border-right-color: #ff0000;
+}
+.header__main-nav .search-form input {
+  padding: 0 5px;
+  border: none;
+}
+.header__main-nav .search-form input::placeholder {
+  color: #747474;
+}
+
+/* main */
+.vg-main {
+  max-width: 1300px;
+  background: lavenderblush;
 }
 
 /*# sourceMappingURL=global.css.map */
