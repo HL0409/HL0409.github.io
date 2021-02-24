@@ -5,6 +5,7 @@ html {
 
 html, body {
     direction: ltr;
+    font-family: 'NanumBarunGothic', sans-serif;
     box-sizing: border-box;
 }
 
@@ -61,11 +62,6 @@ a:hover {
     clip: rect(1px, 1px, 1px, 1px);
 }
 
-body, textarea, input, select, textarea, button {
-    font-family: "SamsungOne", arial;
-    line-height: 1.32;
-}
-
 @media (max-width: 1024px) {
     html {
         height: 100%;
@@ -78,7 +74,9 @@ body, textarea, input, select, textarea, button {
   
 /* header */
 #header {
+    position: relative;
     box-shadow: rgb(0 0 0 / 12%) 0 2px 2px;
+    z-index: 1;
 }
 
 .ico {
@@ -113,7 +111,6 @@ body, textarea, input, select, textarea, button {
 
 .info-side {
     float: right;
-    font-family: 'NanumBarunGothic', sans-serif;
     flex-grow: 1;
     height: 100%;
     &::after {
@@ -255,14 +252,14 @@ body, textarea, input, select, textarea, button {
             left: 0;
             transform: translateY(-50%);
             background: #000;
-            border: 3px solid #000;
+            border: 1px solid #000;
             &.on {
                 display: flex;
             }
             button {
                 padding: 5px;
                 color: #fff;
-                border-right: 3px solid #000;
+                border-right: 1px solid #000;
                 transition: all .3s;
                 &:hover {
                     background: #ff0000;
@@ -276,6 +273,11 @@ body, textarea, input, select, textarea, button {
                     color: #747474;
                 }
             }
+            .icon-search {
+                &:hover {
+                    color: #fff;
+                }
+            }
         }
     }
 }
@@ -283,5 +285,61 @@ body, textarea, input, select, textarea, button {
 /* main */
 .vg-main {
     max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
     background: lavenderblush;
+    .bg {
+        position: absolute;
+        top: 75%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(rgba(0,0,0,0.00),rgba(0,0,0,0.50));
+    }
+    .border {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+        border: 1px solid rgba(255,0,4,0.00);
+        transition: all .2s ease-in-out 0s;
+        &:hover {
+            transition: all .2s ease-in-out 0s;
+            border: 20px solid #da0000;
+        }
+    }
+
+    .article-img {
+        width: 100%;
+        mix-blend-mode: multiply;
+    }
+
+    .article-title {
+        position: absolute;
+        right: 0;
+        bottom: 7%;
+        left: 0;
+        color: #fff;
+        font-family: 'NanumGothic';
+        font-weight: 400;
+        font-size: 33px;
+        z-index: 10;
+    }
+
+    &__article {
+        &-link {
+            display: block;
+            position: relative;
+            transition: all .2s ease-in-out 0s;
+            &:hover {
+                // background: rgba(204, 1, 1, 0.98);
+            }
+        }
+
+        &-wrapper {
+            display: flex;
+        }
+    }
 }
