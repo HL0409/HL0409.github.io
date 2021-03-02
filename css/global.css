@@ -314,5 +314,8 @@ a:hover {
 .vg-main__article-wrapper {
   display: flex;
 }
+.vg-main__article-wrapper .article-title {
+  padding: 0 50px;
+}
 
 /*# sourceMappingURL=global.css.map */

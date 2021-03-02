@@ -340,6 +340,9 @@ a:hover {
 
         &-wrapper {
             display: flex;
+            .article-title {
+                padding: 0 50px;
+            }
         }
     }
 }
