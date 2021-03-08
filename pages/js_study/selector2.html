@@ -1,10 +1,119 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <title>exam</title>
 <link rel="stylesheet" href="common.css" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- jQuery library -->
+<script>
+	//jquery code
+	$(document).ready(function(){
+		var examObj1 = $('.exam_wrap:eq(0)');
+		examObj1.find('button').on('click', function(){
+			examObj1.find('.exam_q >').first().css('background','yellow');
+		});
+		
+		var examObj2 = $('.exam_wrap:eq(1)');
+		examObj2.find('button').on('click', function(){
+			examObj2.find('.exam_q >:last').css('background','yellow');
+		});
+
+		var examObj3 = $('.exam_wrap:eq(2)');
+		examObj3.find('button').on('click', function(){
+			examObj3.find('.exam_q > * :first-child').css('background','yellow');
+		});
+
+		var examObj4 = $('.exam_wrap:eq(3)');
+		examObj4.find('button').on('click', function(){
+			examObj4.find('.exam_q > * :last-child').css('background','yellow');
+		});
+
+		var examObj5 = $('.exam_wrap:eq(4)');
+		examObj5.find('button').on('click', function(){
+			examObj5.find('.exam_q > * :nth-child(2)').css('background','yellow');
+		});
+
+		var examObj6 = $('.exam_wrap:eq(5)');
+		examObj6.find('button').on('click', function(){
+			examObj6.find('.exam_q >:eq(2)').css('background','yellow');
+		});
+
+		var examObj7 = $('.exam_wrap:eq(6)');
+		examObj7.find('button').on('click', function(){
+			examObj7.find('.exam_q >:gt(1)').css('background','yellow');
+		});
+
+		var examObj8 = $('.exam_wrap:eq(7)');
+		examObj8.find('button').on('click', function(){
+			examObj8.find('.exam_q >:lt(3)').css('background','yellow');
+		});
+	});
+
+
+	//javascript code
+	// window.onload = function(){
+	// 	var examObj1 = document.getElementsByClassName('exam_wrap')[0];
+	// 	examObj1.getElementsByTagName('button')[0].onclick = function(){
+	// 		var examChild = examObj1.getElementsByClassName('exam_q')[0].children[0];
+	// 		examChild.style.backgroundColor = 'yellow';
+	// 	};
+		
+	// 	var examObj2 = document.getElementsByClassName('exam_wrap')[1];
+	// 	examObj2.getElementsByTagName('button')[0].onclick = function(){
+	// 		var examChild = examObj2.getElementsByClassName('exam_q')[0].children;
+	// 		examChild[examChild.length - 1].style.backgroundColor = 'yellow';
+	// 	};
+
+	// 	var examObj3 = document.getElementsByClassName('exam_wrap')[2];
+	// 	examObj3.getElementsByTagName('button')[0].onclick = function(){
+	// 		var examChild = examObj3.getElementsByClassName('exam_q')[0].children;
+	// 		for (var i = 0; i < examChild.length; i++) {
+	// 			examChild[i].firstElementChild.style.backgroundColor = 'yellow';	
+	// 		}
+	// 	};
+
+	// 	var examObj4 = document.getElementsByClassName('exam_wrap')[3];
+	// 	examObj4.getElementsByTagName('button')[0].onclick = function(){
+	// 		var examChild = examObj4.getElementsByClassName('exam_q')[0].children;
+	// 		for (var i = 0; i < examChild.length; i++) {
+	// 			examChild[i].lastElementChild.style.backgroundColor = 'yellow';	
+	// 		}
+	// 	};
+
+	// 	var examObj5 = document.getElementsByClassName('exam_wrap')[4];
+	// 	examObj5.getElementsByTagName('button')[0].onclick = function(){
+	// 		var examChild = examObj5.getElementsByClassName('exam_q')[0].children;
+	// 		for (var i = 0; i < examChild.length; i++) {
+	// 			if (examChild[i].children.length > 1) {
+	// 				examChild[i].children[1].style.backgroundColor = 'yellow';
+	// 			}
+	// 		}
+	// 	};
+
+	// 	var examObj6 = document.getElementsByClassName('exam_wrap')[5];
+	// 	examObj6.getElementsByTagName('button')[0].onclick = function(){
+	// 		var examChild = examObj6.getElementsByClassName('exam_q')[0].children[2];
+	// 		examChild.style.backgroundColor = 'yellow';
+	// 	};
+
+	// 	var examObj7 = document.getElementsByClassName('exam_wrap')[6];
+	// 	examObj7.getElementsByTagName('button')[0].onclick = function(){
+	// 		var examChild = examObj7.getElementsByClassName('exam_q')[0].children;
+	// 		for (var i = 2; i < examChild.length; i++) {
+	// 			examChild[i].style.backgroundColor = 'yellow';
+	// 		}
+	// 	};
+
+	// 	var examObj8 = document.getElementsByClassName('exam_wrap')[7];
+	// 	examObj8.getElementsByTagName('button')[0].onclick = function(){
+	// 		var examChild = examObj8.getElementsByClassName('exam_q')[0].children;
+	// 		for (var i = 0; i < 3; i++) {
+	// 			examChild[i].style.backgroundColor = 'yellow';
+	// 		}
+	// 	};
+	// }
+</script>
 </head>
 <body>
 <!-- wrapper [s] -->
