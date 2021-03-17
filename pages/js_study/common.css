@@ -2,6 +2,7 @@
 *{margin:0;padding:0}
 body{font-size:14px;line-height:1.5;color:#555}
 h1,h2,h3,h4,h5,h6{text-align:left}
+ul,li{list-style:none}
 button,label{cursor:pointer}
 button::-moz-focus-inner{padding:0;border:0}
 hr{display:none}
@@ -13,3 +14,8 @@ hr{display:none}
 .exam_wrap div span,
 .exam_wrap div em{border:1px solid green}
 .exam_wrap .point{color:blue}
+.exam_q ul{zoom:1}
+.exam_q ul:after{display:block;clear:both;content:''}
+.exam_q ul li{float:left;width:100px;margin-left:-1px;padding:5px 0;border:1px solid #ccc;text-align:center}
+.exam_q ul li:first-child{margin-left:0}
+.exam_q ul li.active{background:yellow}

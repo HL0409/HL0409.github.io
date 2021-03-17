@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>exam</title>
+<link rel="shortcut icon" href="#">
+<link rel="stylesheet" href="common.css" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+<!-- wrapper [s] -->
+<div id="wrapper">
+	<!-- header [s] -->
+	<div id="header">
+	</div>
+	<!-- header [e] -->
+	<hr />
+	<!-- container [s] -->
+	<div id="container">
+		<div class="exam_wrap">
+			<h1>Q. 첫번째부터 순서대로 선택하세요 (style 제어)</h1>
+			<div class="exam_q"><!-- 부모 -->
+				<ul>
+					<li>one</li>
+					<li>two</li>
+					<li>three</li>
+					<li>four</li>
+					<li>five</li>
+					<li>six</li>
+					<li>seven</li>
+					<li>eight</li>
+				</ul>
+			</div>
+			<button type="button">다음</button>
+		</div>
+		<div class="exam_wrap">
+			<h1>Q. 마지막부터 역순대로 선택하세요 (style 제어)</h1>
+			<div class="exam_q"><!-- 부모 -->
+				<ul>
+					<li>one</li>
+					<li>two</li>
+					<li>three</li>
+					<li>four</li>
+					<li>five</li>
+					<li>six</li>
+					<li>seven</li>
+				</ul>
+			</div>
+			<button type="button">이전</button>
+		</div>
+		<div class="exam_wrap">
+			<h1>Q. 첫번째부터 순서대로 선택하고, 전에 선택했던 Element의 배경색을 지우세요 (style 제어)</h1>
+			<div class="exam_q"><!-- 부모 -->
+				<ul>
+					<li style="background-color:yellow">one</li>
+					<li>two</li>
+					<li>three</li>
+					<li>four</li>
+					<li>five</li>
+					<li>six</li>
+					<li>seven</li>
+					<li>eight</li>
+					<li>nine</li>
+				</ul>
+			</div>
+			<button class="btn_prev" type="button">이전</button>
+			<button class="btn_next" type="button">다음</button>
+		</div>
+        <div class="exam_wrap">
+            <h1>Q. 첫번째부터 순서대로 선택하고, 전에 선택했던 Element의 배경색을 지우시고, 무한loop 돌게 하세요 (클래스 제어)</h1>
+            <div class="exam_q"><!-- 부모 -->
+                <ul>
+                    <li class="active">one</li>
+                    <li>two</li>
+                    <li>three</li>
+                    <li>four</li>
+                    <li>five</li>
+                    <li>six</li>
+                    <li>seven</li>
+                    <li>eight</li>
+                    <li>nine</li>
+                </ul>
+            </div>
+            <button class="btn_prev" type="button">이전</button>
+            <button class="btn_next" type="button">다음</button>
+        </div>
+	</div>
+	<!-- container [e] -->
+	<hr />
+	<!-- footer [s] -->
+	<div id="footer">
+	</div>
+	<!-- footer [e] -->
+</div>
+<!-- wrapper [e] -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+(function () { //함수는 순서대로 정의!!
+	'use strict';
+	var exam = {
+		init : function () {
+			this.setElements();
+			this.initOpts();
+			this.initLayout();
+			this.bindEv();
+		},
+		setElements : function () {
+			this.obj = $('.exam_wrap').eq(0);
+			this.nextBtn = this.obj.find('button');
+			this.examQ = this.obj.find('.exam_q');
+			this.examParent = this.examQ.find('ul');
+			this.examChild = this.examParent.children();
+		},
+		setLayout : function () {
+			this.examChild.eq(this.currentIndex).css('background-color', 'yellow');
+		},
+		initOpts : function () {
+			this.currentIndex = 0;
+		},
+		initLayout : function () {
+			this.setLayout();
+		},
+		setBg : function () {
+			this.setLayout();
+			this.currentIndex++;
+		},
+		bindEv : function () {
+			this.nextBtn.on('click', this.setBg.bind(this));
+		}
+	};
+	var exam2 = {
+		init : function () {
+			this.setElements();
+			this.initOpts();
+			this.initLayout();
+			this.bindEv();
+		},
+		setElements : function () {
+			this.obj = $('.exam_wrap').eq(1);
+			this.nextBtn = this.obj.find('button');
+			this.examQ = this.obj.find('.exam_q');
+			this.examParent = this.examQ.find('ul');
+			this.examChild = this.examParent.children();
+		},
+		setLayout : function () {
+			this.examChild.eq(this.currentIndex).css('background-color', 'yellow');
+		},
+		initOpts : function () {
+			this.currentIndex = this.examChild.length;
+		},
+		initLayout : function () {
+			this.setLayout();
+		},
+		setBg : function () {
+			this.currentIndex--;
+			this.setLayout();
+		},
+		bindEv : function () {
+			this.nextBtn.on('click', this.setBg.bind(this));
+		}
+	};
+	var exam3 = {
+		init : function () {
+			this.setElements();
+			this.initOpts();
+			this.initLayout();
+			this.bindEv();
+		},
+		setElements : function () {
+			this.obj = $('.exam_wrap').eq(2);
+			this.prevBtn = this.obj.find('.btn_prev')
+			this.nextBtn = this.obj.find('.btn_next');
+			this.examQ = this.obj.find('.exam_q');
+			this.examParent = this.examQ.find('ul');
+			this.examChild = this.examParent.children();
+		},
+		initOpts : function () {
+			this.currentIndex = 0;
+		},
+		setLayout : function () {
+			this.examChild.eq(this.currentIndex).css('background-color', 'yellow');
+		},
+		removeLayout : function (index) {
+			this.examChild.eq(index).css('background-color', '');
+		},
+		initLayout : function () {
+			this.setLayout();
+		},
+		setBgPrev : function () {
+			if (this.currentIndex > 0) {
+				this.currentIndex--;
+				this.removeLayout(this.currentIndex + 1);
+				this.setLayout();
+			} else return;
+		},
+		setBgNext : function () {
+			if (this.currentIndex < this.examChild.length - 1) {
+				this.currentIndex++;
+				this.removeLayout(this.currentIndex - 1);
+				this.setLayout();
+			} else return;
+		},
+		bindEv : function () {
+			this.prevBtn.on('click', this.setBgPrev.bind(this));
+			this.nextBtn.on('click', this.setBgNext.bind(this));
+		}
+	};
+	var exam4 = {
+		init : function () {
+			this.setElements();
+			this.initOpts();
+			this.initLayout();
+			this.bindEv();
+		},
+		setElements : function () {
+			this.obj = $('.exam_wrap').eq(3);
+			this.prevBtn = this.obj.find('.btn_prev')
+			this.nextBtn = this.obj.find('.btn_next');
+			this.examQ = this.obj.find('.exam_q');
+			this.examParent = this.examQ.find('ul');
+			this.examChild = this.examParent.children();
+		},
+		initOpts : function () {
+			this.currentIndex = 0;
+		},
+		setLayout : function () {
+			this.examChild.eq(this.currentIndex).addClass('active');
+		},
+		removeLayout : function (index) {
+			this.examChild.eq(index).removeClass('active');
+		},
+		initLayout : function () {
+			this.setLayout();
+		},
+		setBgPrev : function () {
+			if (this.currentIndex > 0) {
+				this.currentIndex--;
+				this.removeLayout(this.currentIndex + 1);
+				this.setLayout();
+			} else if (this.currentIndex == 0) {
+				this.removeLayout(this.currentIndex);
+				this.currentIndex = this.examChild.length - 1;
+				this.setLayout();
+			}
+			else return;
+		},
+		setBgNext : function () {
+			if (this.currentIndex < this.examChild.length - 1) {
+				this.currentIndex++;
+				this.removeLayout(this.currentIndex - 1);
+				this.setLayout();
+			} else if (this.currentIndex == this.examChild.length - 1) {
+				this.removeLayout(this.currentIndex);
+				this.initOpts();
+				this.setLayout();
+			} else return;
+		},
+		bindEv : function () {
+			this.prevBtn.on('click', this.setBgPrev.bind(this));
+			this.nextBtn.on('click', this.setBgNext.bind(this));
+		}
+	};
+
+	exam.init();
+	exam2.init();
+	exam3.init();
+	exam4.init();
+}());
+</script>
+</body>
+</html>
