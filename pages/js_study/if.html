@@ -6,7 +6,6 @@
 <title>exam</title>
 <link rel="shortcut icon" href="#">
 <link rel="stylesheet" href="common.css" />
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 <!-- wrapper [s] -->
@@ -122,8 +121,8 @@
 			this.setLayout();
 		},
 		setBg : function () {
-			this.setLayout();
 			this.currentIndex++;
+			this.setLayout();
 		},
 		bindEv : function () {
 			this.nextBtn.on('click', this.setBg.bind(this));
