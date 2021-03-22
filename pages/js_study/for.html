@@ -111,10 +111,8 @@
 			this.printBtn = this.examQ.find('.exam_btn');
 		},
 		addElements : function () {
-			for (var i = 1; i < 9; i++) {
-				for (let j = 1; j < 10; j++) {
-					this.examQ.append('<span">' + i + ' * ' + j + ' = ' + (i*j) + ' / </span>');
-				}
+			for (var i = 1; i < 10; i++) {
+				this.examQ.append('<span">8 * ' + i + ' = ' + (i*8) + '</span>');
 				this.examQ.append('<br>');
 			}
 		},
