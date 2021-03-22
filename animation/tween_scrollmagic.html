@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+    <style>
+        body {
+            background: lavenderblush;
+        }
+        .container {
+            height: 3000px;
+            text-align: center;
+            padding-top: 300px;
+        }
+        .item {
+            display: inline-block;
+            width: 250px;
+            height: 250px;
+            background: cornflowerblue;
+            border-radius: 50%;
+        }
+        path {
+            width: 300px;
+            height: 300px;
+        }
+        .ani {
+            margin: 0 0 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ani">
+            <div id="trigger1"></div>
+            <div id="pin1" class="item"></div>
+        </div>
+        <div class="ani">
+            <div id="trigger2"></div>
+            <canvas id="draw" width="300" height="300"></canvas>
+        </div>
+        <div class="ani">
+            <div id="trigger3"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><path class="st1" d="M 100 30 C 40 20 40 100 100 80 C 120 70 153 -14 130 10 C 122 22 110 56 119 90 C 125 110 124 58 142 52 C 161 45 145 83 150 90 C 160 104 197 40 198 28 C 184 15 150 55 172 53 C 244 48 179 108 170 91" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-miterlimit="500"/></svg>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+    var canvas = document.querySelector('#draw');
+    var ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = '#000';
+    ctx.fillRect(10, 10, 60, 60);
+
+    (function () {
+        var st = document.querySelector(".st1");
+
+        function pathPrepare (el) {
+        var lineLength = el.getTotalLength();
+            el.style.strokeDasharray = lineLength + 1;
+            el.style.strokeDashoffset = lineLength + 2;
+        }
+    
+        pathPrepare(st);
+        
+        var controller = new ScrollMagic.Controller();
+        var controller2 = new ScrollMagic.Controller();
+        var controller3 = new ScrollMagic.Controller();
+        
+        var tween = TweenMax.to("#pin1", 0.5, {scale: 2});
+        var scene = new ScrollMagic.Scene({triggerElement: "#trigger1", duration: 1000})
+                    .setPin("#pin1")
+                    .setTween(tween)
+                    .addIndicators() // add indicators (requires plugin)
+                    .addTo(controller);
+
+        var tween2 = TweenMax.to("#draw", 0.5, {css: {'transform': 'translateX('+ 100 + '%)'}, ease: Linear.easeIn});
+        var scene2 = new ScrollMagic.Scene({triggerElement: "#trigger2", duration: 300})
+                    .setTween(tween2)
+                    .addIndicators()
+                    .addTo(controller2);
+
+        var tween3 = new TimelineMax()
+                    .add(TweenMax.to(st, 0.9, {strokeDashoffset: 0, ease:Linear.easeNone}))
+                    .add(TweenMax.to(st, 1, {stroke: '#fe4365', ease:Linear.easeNone}), 0.2); 
+        var scene3 = new ScrollMagic.Scene({triggerElement: "#trigger3", duration: 500, tweenChanges: true, triggerHook: 0.8})
+                    .setTween(tween3)
+                    .addIndicators()
+                    .addTo(controller3);
+    }());
+</script>
+</html>
