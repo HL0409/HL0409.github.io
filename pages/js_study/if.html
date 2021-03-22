@@ -128,7 +128,6 @@
 		init : function () {
 			this.setElements();
 			this.initOpts();
-			this.initLayout();
 			this.bindEv();
 		},
 		setElements : function () {
@@ -143,9 +142,6 @@
 		},
 		initOpts : function () {
 			this.currentIndex = this.examChild.length;
-		},
-		initLayout : function () {
-			this.setLayout();
 		},
 		setBg : function () {
 			this.currentIndex--;
