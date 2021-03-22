@@ -74,14 +74,14 @@
         var controller3 = new ScrollMagic.Controller();
         
         var tween = TweenMax.to("#pin1", 0.5, {scale: 2});
-        var scene = new ScrollMagic.Scene({triggerElement: "#trigger1", duration: 1000})
+        var scene = new ScrollMagic.Scene({triggerElement: "#trigger1", duration: 1000, triggerHook: 0.45})
                     .setPin("#pin1")
                     .setTween(tween)
                     .addIndicators() // add indicators (requires plugin)
                     .addTo(controller);
 
         var tween2 = TweenMax.to("#draw", 0.5, {css: {'transform': 'translateX('+ 100 + '%)'}, ease: Linear.easeIn});
-        var scene2 = new ScrollMagic.Scene({triggerElement: "#trigger2", duration: 300})
+        var scene2 = new ScrollMagic.Scene({triggerElement: "#trigger2", duration: 400})
                     .setTween(tween2)
                     .addIndicators()
                     .addTo(controller2);
@@ -89,7 +89,7 @@
         var tween3 = new TimelineMax()
                     .add(TweenMax.to(st, 0.9, {strokeDashoffset: 0, ease:Linear.easeNone}))
                     .add(TweenMax.to(st, 1, {stroke: '#fe4365', ease:Linear.easeNone}), 0.2); 
-        var scene3 = new ScrollMagic.Scene({triggerElement: "#trigger3", duration: 500, tweenChanges: true, triggerHook: 0.8})
+        var scene3 = new ScrollMagic.Scene({triggerElement: "#trigger3", duration: 450, tweenChanges: true, triggerHook: 0.55})
                     .setTween(tween3)
                     .addIndicators()
                     .addTo(controller3);
