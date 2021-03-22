@@ -101,7 +101,6 @@
 		init : function () {
 			this.setElements();
 			this.initOpts();
-			this.initLayout();
 			this.bindEv();
 		},
 		setElements : function () {
@@ -117,12 +116,9 @@
 		initOpts : function () {
 			this.currentIndex = 0;
 		},
-		initLayout : function () {
-			this.setLayout();
-		},
 		setBg : function () {
-			this.currentIndex++;
 			this.setLayout();
+			this.currentIndex++;
 		},
 		bindEv : function () {
 			this.nextBtn.on('click', this.setBg.bind(this));
