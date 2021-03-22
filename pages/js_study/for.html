@@ -6,19 +6,6 @@
 <title>exam</title>
 <link rel="shortcut icon" href="#">
 <link rel="stylesheet" href="common.css" />
-<script>
-// $(function(){
-
-// 	// exam1 [s]
-// 	// var exam1 = $('.exam_q').eq(0);
-// 	// exam1.append('<input type="checkbox">');
-// 	// exam1 [e]
-
-// 	// var exam3 = $('.exam_q').eq(2);
-// 	// exam3.append('8 X 1 = 8 <br>');
-
-// });
-</script>
 </head>
 <body>
 <!-- wrapper [s] -->
@@ -33,21 +20,25 @@
 		<div class="exam_wrap">
 			<h1>Q. while 문으로 5개의 input 을 출력하세요.</h1>
 			<div class="exam_q">
+				<button class="exam_btn" style="display:block;">출력</button>
 			</div>
 		</div>
 		<div class="exam_wrap">
 			<h1>Q. for 문으로 5개의 input 을 만들되, 짝수는 text / 홀수는 checkbox 를 출력하세요.</h1>
 			<div class="exam_q">
+				<button class="exam_btn" style="display:block;">출력</button>
 			</div>
 		</div>
 		<div class="exam_wrap">
 			<h1>Q. for 문으로 구구단 8단을 출력하세요.</h1>
 			<div class="exam_q">
+				<button class="exam_btn" style="display:block;">출력</button>
 			</div>
 		</div>
 		<div class="exam_wrap">
 			<h1>Q. for/while 문 2개로 구구단을 출력하세요.</h1>
 			<div class="exam_q">
+				<button class="exam_btn" style="display:block;">출력</button>
 			</div>
 		</div>
 	</div>
@@ -67,11 +58,12 @@
 	var exam = {
 		init : function () {
 			this.setElements();
-			this.addElements();
+			this.bindEv();
 		},
 		setElements : function () {
 			this.obj = $('.exam_wrap').eq(0);
 			this.examQ = this.obj.find('.exam_q');
+			this.printBtn = this.examQ.find('.exam_btn');
 		},
 		addElements : function () {
 			var i = 0;
@@ -79,16 +71,21 @@
 				i++;
 				this.examQ.append('<input type="text" style="display:block;">');
 			}
+		},
+		bindEv : function () {
+			this.printBtn.on('click', this.addElements.bind(this));
 		}
+		
 	};
 	var exam2 = {
 		init : function () {
 			this.setElements();
-			this.addElements();
+			this.bindEv();
 		},
 		setElements : function () {
 			this.obj = $('.exam_wrap').eq(1);
 			this.examQ = this.obj.find('.exam_q');
+			this.printBtn = this.examQ.find('.exam_btn');
 		},
 		addElements : function () {
 			for (var i = 0; i < 5; i++) {
@@ -98,16 +95,20 @@
 					this.examQ.append('<input type="checkbox" style="display:block;">');
 				}
 			}
+		},
+		bindEv : function () {
+			this.printBtn.on('click', this.addElements.bind(this));
 		}
 	};
 	var exam3 = {
 		init : function () {
 			this.setElements();
-			this.addElements();
+			this.bindEv();
 		},
 		setElements : function () {
 			this.obj = $('.exam_wrap').eq(2);
 			this.examQ = this.obj.find('.exam_q');
+			this.printBtn = this.examQ.find('.exam_btn');
 		},
 		addElements : function () {
 			for (var i = 1; i < 9; i++) {
@@ -116,16 +117,20 @@
 				}
 				this.examQ.append('<br>');
 			}
+		},
+		bindEv : function () {
+			this.printBtn.on('click', this.addElements.bind(this));
 		}
 	};
 	var exam4 = {
 		init : function () {
 			this.setElements();
-			this.addElements();
+			this.bindEv();
 		},
 		setElements : function () {
 			this.obj = $('.exam_wrap').eq(3);
 			this.examQ = this.obj.find('.exam_q');
+			this.printBtn = this.examQ.find('.exam_btn');
 		},
 		addElements : function () {
 			for (var i = 1; i < 10; i++) {
@@ -136,6 +141,9 @@
 				}
 				this.examQ.append('<br>');
 			}
+		},
+		bindEv : function () {
+			this.printBtn.on('click', this.addElements.bind(this));
 		}
 	};
 
