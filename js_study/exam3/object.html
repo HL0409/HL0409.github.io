@@ -174,6 +174,7 @@ console.log(obj.patt);		// /w3schools/
 				<code class="javascript">
 var elem = $('.exam_wrap').eq(5);
 var elemA = elem.find('.exam_a');
+var arry = [];
 var obj = {
 	e : 'e',
 	d : 'd',
@@ -183,11 +184,13 @@ var obj = {
 	f : 'f',
 	a : 'a'
 };
-var arry = [];
+
 for (var key in obj) {
 	arry.push(key);
 }
+
 arry.sort();
+
 for (var i = 0; i < arry.length; i++) {
 	elemA.append(arry[i]);
 }
@@ -198,6 +201,19 @@ for (var i = 0; i < arry.length; i++) {
 			<h1>Q. 'bcaebe' 문자열을 hasOwnProperty 를 사용해서, {a : 1, b : 2, c : 1, e : 2} 로 변경해보세요.</h1>
 			<pre>
 				<code class="javascript">
+var str = 'bcaebe';
+var obj = {};
+
+for (var i = 0; i < str.length; i++) {
+	var cnt = 1;
+	var char = str.charAt(i);
+	if (obj.hasOwnProperty(char)) {
+		cnt++;
+		obj[char] = cnt;
+	} else {
+		obj[char] = cnt;
+	}			
+}
 				</code>
 			</pre>
 		</div>
@@ -216,6 +232,7 @@ for (var i = 0; i < arry.length; i++) {
 	(function () {
 		var elem = $('.exam_wrap').eq(5);
 		var elemA = elem.find('.exam_a');
+		var arry = [];
 		var obj = {
 			e : 'e',
 			d : 'd',
@@ -225,24 +242,64 @@ for (var i = 0; i < arry.length; i++) {
 			f : 'f',
 			a : 'a'
 		};
-		var arry = [];
+		
 		for (var key in obj) {
 			arry.push(key);
 		}
+		
 		arry.sort();
+		
 		for (var i = 0; i < arry.length; i++) {
 			elemA.append(arry[i]);
 		}
 
+
+
 		var str = 'bcaebe';
-		str.indexOf()
 		var obj = {};
-		for (var key in obj) {
-			if (Object.hasOwnProperty.call(obj, key)) {
-				const element = obj[key];
-				
+
+		for (var i = 0; i < str.length; i++) {
+			var cnt = 1;
+			var char = str.charAt(i);
+			if (obj.hasOwnProperty(char)) {
+				cnt++;
+				obj[char] = cnt;
+			} else {
+				obj[char] = cnt;
 			}
 		}
+
+		console.log(obj);
+		for (var i = 0; i < obj.length; i++) {
+			console.log(obj);
+		}
+
+		// console.log(obj);
+		
+		
+
+
+			// case 1
+		// for (var i = 0; i < str.length; i++) {
+		// 	arry[i] = str[i];
+		// }
+
+		// arry.forEach((x) => {
+		// 	obj[x] = (obj[x] || 0) + 1;
+		// });
+
+			// case2
+		// for (var i = 0; i < str.length; i++) {
+		// 	var findChar = str.charAt(i);
+		// 	var cnt = 0;
+		// 	var pos = str.indexOf(findChar);
+			
+		// 	while (pos !== -1) {
+		// 		cnt++;
+		// 		pos = str.indexOf(findChar, pos + 1);
+		// 		obj[findChar] = cnt;
+		// 	}
+		// }
 	})();
 </script>
 </body>
