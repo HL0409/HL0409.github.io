@@ -6,6 +6,9 @@
 <title>exam</title>
 <link rel="stylesheet" href="../common.css" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<style>
+	p, span{border:none !important;font-weight:bold;color:blueviolet;}
+</style>
 </head>
 <body>
 <!-- wrapper [s] -->
@@ -82,13 +85,246 @@
 				this.printBtn = this.obj.find('button');
 			},
 			initOpts : function () {
-				
+				this.arry = [];
+				this.arry.push('최');
+				this.arry.push('한');
+				this.arry.push('슬');
+			},
+			addElements : function () {
+				this.examQ.append('<br>');
+				this.arry.forEach(el => {
+					this.examQ.append('<span>' + el + '</span>')
+				});
 			},
 			bindEve : function () {
-				
+				this.printBtn.on('click', this.addElements.bind(this));
 			}
 		};
+
+		var exam2 = {
+			init : function () {
+				this.setElements();
+				this.initOpts();
+				this.bindEve();
+			},
+			setElements : function () {
+				this.obj = $('.exam_wrap').eq(1);
+				this.examQ = this.obj.find('.exam_q');
+				this.printBtn = this.obj.find('button');
+			},
+			initOpts : function () {
+				this.str = 'question';
+				this.back_str = [];
+			},
+			addElements : function () {
+				this.examQ.append('<br>');
+				for (var i = 0; i < this.str.length; i++) {
+					this.back_str[this.str.length - (i + 1)] = this.str[i];
+				}
+				this.back_str.forEach(el => {
+					this.examQ.append('<span>' + el + '</span>');
+				});
+			},
+			bindEve : function () {
+				this.printBtn.on('click', this.addElements.bind(this));
+			}
+		};
+
+		var exam3 = {
+			init : function () {
+				this.setElements();
+				this.initOpts();
+				this.bindEve();
+			},
+			setElements : function () {
+				this.obj = $('.exam_wrap').eq(2);
+				this.examQ = this.obj.find('.exam_q');
+				this.printBtn = this.obj.find('button');
+			},
+			initOpts : function () {
+				this.arry = [40, 100, 1, 5, 25, 10];
+				this.brry = [];
+			},
+			addElements : function () {
+				var rnk = 0;
+				for (var i = 0; i < this.arry.length; i++) {
+					rnk = 0;
+					for (var j = 0; j < this.arry.length; j++) {
+						if (this.arry[i] < this.arry[j]) rnk++;
+						this.brry[i] = rnk;
+					}
+				}
+				this.examQ.append('<p>[' + this.brry + ']</p>');	
+			},
+			bindEve : function () {
+				this.printBtn.on('click', this.addElements.bind(this));
+			}
+		};
+
+		var exam4 = {
+			init : function () {
+				this.setElements();
+				this.initOpts();
+				this.bindEve();
+			},
+			setElements : function () {
+				this.obj = $('.exam_wrap').eq(3);
+				this.examQ = this.obj.find('.exam_q');
+				this.printBtn = this.obj.find('button');
+			},
+			initOpts : function () {
+				this.gugudan = [];
+			},
+			addElements : function () {
+				for (var i = 0; i < 8; i++) {
+					this.gugudan[i] = [];
+				}
+
+				for (var i = 2; i <= 9; i++) {
+					for (let j = 1; j <= 9; j++) {
+						 this.gugudan[i-2][j-1] = i * j;						
+					}					
+				}
+
+				this.examQ.append('<br><span>[</span>');
+				for (var i = 0; i < this.gugudan.length; i++) {
+					this.examQ.append('<span>[' + this.gugudan[i] + '],</span>');
+				}
+				this.examQ.append('<span>]</span>');
+			},
+			bindEve : function () {
+				this.printBtn.on('click', this.addElements.bind(this));
+			}
+		};
+
+		var exam5 = {
+			init : function () {
+				this.setElements();
+				this.initOpts();
+				this.bindEve();
+			},
+			setElements : function () {
+				this.obj = $('.exam_wrap').eq(4);
+				this.examQ = this.obj.find('.exam_q');
+				this.printBtn = this.obj.find('button');
+			},
+			initOpts : function () {
+				this.arry = [];
+			},
+			addElements : function () {
+				for (var i = 0; i <= 9; i++) {
+					this.arry[i] = i;
+				}
+				this.examQ.append('<p>['+this.arry+']</p>');
+			},
+			bindEve : function () {
+				this.printBtn.on('click', this.addElements.bind(this));
+			}
+		};
+
+		var exam6 = {
+			init : function () {
+				this.setElements();
+				this.bindEve();
+			},
+			setElements : function () {
+				this.obj = $('.exam_wrap').eq(5);
+				this.examQ = this.obj.find('.exam_q');
+				this.printBtn = this.obj.find('button');
+				this.arry = [];
+			},
+			addElements : function () {
+				for (var i = 0; i < 6; i++) {
+					var ranNum = Math.floor(Math.random() * 6);
+					this.arry[i] = ranNum;
+				}
+				this.examQ.append('<p>[' + this.arry + ']</p>');
+			},
+			bindEve : function () {
+				this.printBtn.on('click', this.addElements.bind(this));
+			}
+		};
+
+		var exam7 = {
+			init : function () {
+				this.setElements();
+				this.initOpts();
+				this.bindEve();
+			},
+			setElements : function () {
+				this.obj = $('.exam_wrap').eq(6);
+				this.examQ = this.obj.find('.exam_q');
+				this.printBtn = this.obj.find('button');
+				this.arry = [];
+			},
+			initOpts : function () {
+				for (var i = 0; i < 10; i++) {
+					this.arry[i] = i;
+				}	
+			},
+			addElements : function () {
+				var ranNum = Math.floor(Math.random() * 10);
+				if (this.arry.length === 1) {
+					alert('stop');
+					return;
+				}
+
+				if (this.arry.includes(ranNum) == false) {
+					this.addElements();
+				} else {
+					this.arry.splice(this.arry.indexOf(ranNum), 1);
+					this.examQ.append('<p>[' + this.arry + ']</p>');
+				}
+			},
+			bindEve : function () {
+				this.printBtn.on('click', this.addElements.bind(this));
+			}
+		};
+
+		var exam8 = {
+			init : function () {
+				this.setElements();
+				this.bindEve();
+				this.initOpts();
+			},
+			setElements : function () {
+				this.obj = $('.exam_wrap').eq(7);
+				this.examQ = this.obj.find('.exam_q');
+				this.printBtn = this.obj.find('button');
+			},
+			initOpts : function () {
+				this.ranNum = Math.floor(Math.random() * 6);
+			},
+			addElements : function () {
+				this.arry = [];
+				for (var i = 0; i < 6; i++) {
+					this.initOpts();
+					this.compareArry();
+				}
+				this.examQ.append('<p>[' + this.arry + ']</p>')
+			},
+			compareArry : function () {
+				if (this.arry.includes(this.ranNum)) {
+					this.initOpts();
+					this.compareArry();
+				} else {
+					this.arry.push(this.ranNum);
+				}
+			},
+			bindEve : function () {
+				this.printBtn.on('click', this.addElements.bind(this));
+			}
+		};
+
+
 		exam.init();
+		exam2.init();
+		exam3.init();
+		exam4.init();
+		exam5.init();
+		exam6.init();
+		exam7.init();
+		exam8.init();
 	})();
 </script>
 </body>

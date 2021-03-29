@@ -50,56 +50,65 @@
   </div>
 <script>
 (function () {
-    'use strict';
-    var beargame = {
-      init : function () {
-        this.setElements();
-        this.initOpts();
-        this.bindEvents();
-      },
-      setElements : function () {
-        this.appBtn = $('.btn_app');
-        this.boxList = $('.bxlst');
-        this.boxItem = this.boxList.children();
-        this.boxInput = this.boxItem.find('input');
-        this.gameArea = $('.game_area');
-        this.gameLane = this.gameArea.children();
-      },
-      initOpts : function () {
-        this.changeInput = false;
-        this.completeGame = false;
-      },
-      bindEvents : function () {
-        this.appBtn.on('click', this.onClickFunc.bind(this));
-        this.boxItem.on('change', 'input', this.onChangeFunc.bind(this)); //이벤트명, 타겟, 기능
-        //li가 인덱스 넘버 구하기 쉬워서 boxInput에서 boxItem으로 대상 바꿈!
-      },
-      onClickFunc : function (e) {
-        e.preventDefault();
-        if (!this.changeInput) {
-          alert('선택하세요');
-        } else if (this.completeGame == true) {
-          alert('이미 끝남');
-        } else {
-          this.animateFunc();
-        }
-      },
-      onChangeFunc : function (e) {
-        var target = $(e.delegateTarget);
-        this.targetIndex = target.index();
-        this.changeInput = true;
-      },
-      animateFunc : function () {
-        var targetLane = this.gameLane.eq(this.targetIndex),
-            moveTarget = targetLane.find('.gom');
-        targetLane.addClass('winlane');
-        moveTarget.stop().animate({
-          top : '115px'
-        }, 500);  //stop을 넣어주는 편이 좋음!!
-        this.completeGame = true;
-      }
-    };
-    beargame.init();
+	'use strict';
+	var beargame = {
+		init : function () {
+			this.setElements();
+			this.initOpts();
+			this.bindEvents();
+		},
+		setElements : function () {
+			this.appBtn = $('.btn_app');
+			this.boxList = $('.bxlst');
+			this.boxItem = this.boxList.children();
+			this.boxInput = this.boxItem.find('input');
+			this.gameArea = $('.game_area');
+			this.gameLane = this.gameArea.children();
+		},
+		initOpts : function () {
+			this.changeInput = false;
+			this.completeGame = false;
+		},
+		bindEvents : function () {
+			this.appBtn.on('click', this.onClickFunc.bind(this));
+			this.boxItem.on('change', 'input', this.onChangeFunc.bind(this)); //이벤트명, 타겟, 기능
+			//li가 인덱스 넘버 구하기 쉬워서 boxInput에서 boxItem으로 대상 바꿈!
+		},
+		setRanNum : function () {
+			this.ranNum = Math.floor(Math.random() * this.boxItem.length);
+		},
+		onClickFunc : function (e) {
+			e.preventDefault();
+			if (!this.changeInput) {
+				alert('선택하세요');
+			} else if (this.completeGame == true) {
+				alert('이미 끝남');
+			} else {
+				this.animateFunc();
+			}
+		},
+		onChangeFunc : function (e) {
+			var target = $(e.delegateTarget);
+			this.targetIndex = target.index();
+			this.changeInput = true;
+		},
+		animateFunc : function () {
+			this.setRanNum();
+			if (this.ranNum === this.targetIndex) {
+				this.setRanNum();
+				this.animateFunc();
+			} else {
+				var targetLane = this.gameLane.eq(this.ranNum),
+				moveTarget = targetLane.find('.gom');
+				targetLane.addClass('winlane');
+				moveTarget.stop().animate({
+					top : '115px'
+				}, 500);  //stop을 넣어주는 편이 좋음!!
+				this.completeGame = true;
+			}
+		}
+	};
+	beargame.init();
 })();
 </script>
 </body>
