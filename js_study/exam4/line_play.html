@@ -107,7 +107,6 @@
     exam.prototype = {
         init : function () {
             this.setElements();
-            this.pushArray();
             this.bindEvents(); 
         },
         setElements : function () {
@@ -118,29 +117,28 @@
             this.prevNum = 0;
         },
         pushArray : function () {
-            
+            for (var i = 0; i < this.avatarItem.length; i++) {
+                this.arry[i] = this.avatarItem[i];
+            }
         },
         clickEvents : function () {
-            var arrLength = this.arry.length,
-                ranNum = 0;
-
-            if (arrLength == 0) {
-                for (var i = 0; i < this.avatarItem.length; i++) {
-                    this.arry[i] = this.avatarItem[i];
-                }    
+            if (this.opts.arry.length <= 1) {
+                this.pushArray();
             }
-            
-            ranNum = Math.floor(Math.random() * arrLength);
-            if (this.prevNum === ranNum) {
-                this.clickEvents();
-            } else {
-                var index = this.arry[ranNum];
-                this.arry.splice(ranNum, 1);
-                this.avatarItem.hide();
-                $(index).show();
-                this.prevNum = ranNum;
-            }
+            this.avatarItem.hide();
+            this.randomChar();
             console.log(this.arry);
+        },
+        randomChar : function () {
+            var ranNum = Math.floor(Math.random() * this.opts.arry.length);
+            if (this.prevNum === ranNum) {
+                this.randomChar();
+            } else {
+                this.prevNum = ranNum;
+                var index = this.arry[ranNum];
+                $(index).show();
+                this.arry.splice(ranNum, 1);
+            }
         },
         bindEvents : function () {
             this.btn.on('click', this.clickEvents.bind(this));
