@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <title>Line Play</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
     <style>
         *{margin:0;padding:0}
         body{font-family:'나눔고딕';line-height:1.5;color:#555}
@@ -39,7 +42,7 @@
                 <img src="img/avatar_03.jpg" alt="avatar image" class="img_avatar">
             </span>
         </li>
-        <!-- <li class="swiper-slide">
+        <li class="swiper-slide">
             <span class="avatar_box">
                 <img src="img/avatar_04.jpg" alt="avatar image" class="img_avatar">
             </span>
@@ -83,10 +86,72 @@
             <span class="avatar_box">
                 <img src="img/avatar_12.jpg" alt="avatar image" class="img_avatar">
             </span>
-        </li> -->
+        </li>
         </ul>
     </div>
     <button type="button" class="btn_random"><span>다른 아바타 보기</span></button>
+</div>
+<div>
+<pre><code class="javascript">
+(function () {
+    'use strict';
+    function exam (container, args) {
+        var defParams = {
+            obj : container || '.js-play-wrap',
+            btn : 'button',
+            avatarList : '.swiper-wrapper',
+            arry : []
+        };
+        this.opts = $.extend(defParams, args || {});
+        if (!(this.obj = $(this.opts.obj)).length) return;
+        this.init();
+    };
+    exam.prototype = {
+        init : function () {
+            this.setElements();
+            this.bindEvents(); 
+        },
+        setElements : function () {
+            this.btn = this.obj.find(this.opts.btn);
+            this.avatarList = this.obj.find(this.opts.avatarList);
+            this.avatarItem = this.avatarList.children();
+            this.arry = this.opts.arry;
+            this.prevNum = 0;
+        },
+        pushArray : function () {
+            for (var i = 0; i < this.avatarItem.length; i++) {
+                this.arry[i] = this.avatarItem[i];
+            }
+        },
+        clickEvents : function () {
+            if (this.opts.arry.length <= 1) {
+                this.pushArray();
+            }
+            this.avatarItem.hide();
+            this.randomChar();
+            console.log(this.arry);
+        },
+        randomChar : function () {  // 마지막 아바타가 처음 아바타와 중복되는 issue가 있음..
+            var ranNum = Math.floor(Math.random() * this.opts.arry.length);
+            if (this.prevNum === ranNum) {
+                this.randomChar();
+            } else {
+                this.prevNum = ranNum;
+                var index = this.arry[ranNum];
+                $(index).show();
+                this.arry.splice(ranNum, 1);
+            }
+        },
+        bindEvents : function () {
+            this.btn.on('click', this.clickEvents.bind(this));
+        }
+    };
+
+    $(function () {
+        var randomPlay = new exam();
+    });
+})();
+</code></pre>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
@@ -110,7 +175,7 @@
             this.bindEvents(); 
         },
         setElements : function () {
-            this.btn = this.obj.find(this.opts.btn);  //btn을 어떻게 찾는지 헤맴
+            this.btn = this.obj.find(this.opts.btn);
             this.avatarList = this.obj.find(this.opts.avatarList);
             this.avatarItem = this.avatarList.children();
             this.arry = this.opts.arry;
@@ -129,7 +194,7 @@
             this.randomChar();
             console.log(this.arry);
         },
-        randomChar : function () {
+        randomChar : function () {  // 마지막 아바타가 처음 아바타와 중복되는 issue가 있음
             var ranNum = Math.floor(Math.random() * this.opts.arry.length);
             if (this.prevNum === ranNum) {
                 this.randomChar();
