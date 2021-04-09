@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>exam - thema</title>
+<style>
+/* temporary css */
+*{margin:0;padding:0}
+body{font-size:14px;font-family:"나눔고딕",NanumGothic,"굴림",Gulim,Sans-serif;line-height:1.5}
+h1,h2,h3,h4,h5,h6{font-size:14px}
+ul,li{list-style:none}
+button{font-size:14px;font-family:"나눔고딕",NanumGothic,"굴림",Gulim,Sans-serif;line-height:1.5;cursor:pointer}
+button::-moz-focus-inner{padding:0;border:0}
+#container>div{margin-bottom:50px;}
+h2{text-align:center;padding: 20px;font-size:20px;}
+.cast_box{width:880px;margin:0 auto;border:1px solid #ccc}
+.cast_tab ul{zoom:1}
+.cast_tab ul:after{display:block;clear:both;content:''}
+.cast_tab ul li{float:left;width:12.5%;text-align:center}
+.cast_tab ul li a{display:block;padding:10px;border-left:1px solid #ccc;background:#f3f3f3;color:#000;text-decoration:none}
+.cast_tab ul li:first-child a{border-left:0 none}
+.cast_tab ul li.active a{background:#ccc;color:#000}
+.cast_cont{border-top:1px solid #ccc}
+.cast_article{display:none;height:500px}
+.cast_article.active{display:block}
+.cast_setting{padding:10px;border-top:1px solid #ccc;zoom:1}
+.cast_setting:after{display:block;clear:both;content:''}
+.cast_setting .cast_btn{float:left}
+.cast_setting .cast_num{float:right;margin-right:5px}
+.cast_num .total{font-weight:bold}
+
+.slide_box{position:relative;width:880px;margin:0 auto}
+.slide_tab{position:absolute;left:0;bottom:0;right:0;z-index:30;padding:15px 0;font-size:0;line-height:0;text-align:center}
+.slide_tab ul{display:inline-block;vertical-align:top}
+.slide_tab ul li{float:left;margin:0 3px}
+.slide_tab ul li a{display:inline-block;width:12px;height:12px;border-radius:100%;background:rgb(224, 224, 224);vertical-align:top}
+.slide_tab ul li.active a{background:rgb(88, 88, 88)}
+.slide_cont{overflow:hidden;position:relative;height:440px}
+.slide_article{display:block;position:absolute;left:0;top:0;width:100%;height:440px}
+.slide_article:nth-child(1){background:red}
+.slide_article:nth-child(2){background:orange}
+.slide_article:nth-child(3){background:yellow}
+.slide_article:nth-child(4){background:green}
+.slide_article:nth-child(5){background:blue;color:#fff}
+.slide_article:nth-child(6){background:skyblue;color:#fff}
+.slide_article:nth-child(7){background:navy;color:#fff}
+.slide_article:nth-child(8){background:black;color:#fff}
+.slide_setting{font-size:0;line-height:0}
+.slide_setting .slide_btn button{position:absolute;top:50%;z-index:30;margin:0 20px}
+.slide_setting .slide_btn button:nth-child(1){left:0}
+.slide_setting .slide_btn button:nth-child(2){right:0}
+/* //temporary css */
+</style>
+</head>
+<body>
+<!-- wrapper [s] -->
+<div id="wrapper">
+    <!-- header [s] -->
+    <div id="header">@</div>
+    <!-- header [e] -->
+    <hr />
+    <!-- container [s] -->
+    <div id="container">
+        <h2>Tab</h2>
+        <div class="cast_box">
+            <div class="cast_tab">
+                <ul>
+                    <li><a href="#thema1">테마1</a></li>
+                    <li><a href="#thema2">테마2</a></li>
+                    <li><a href="#thema3">테마3</a></li>
+                    <li><a href="#thema4">테마4</a></li>
+                    <li><a href="#thema5">테마5</a></li>
+                    <li class="active"><a href="#thema6">테마6</a></li>
+                    <li><a href="#thema7">테마7</a></li>
+                    <li><a href="#thema8">테마8</a></li>
+                </ul>
+            </div>
+            <div class="cast_cont">
+                <div id="thema1" class="cast_article active">컨텐츠1</div>
+                <div id="thema2" class="cast_article">컨텐츠2</div>
+                <div id="thema3" class="cast_article">컨텐츠3</div>
+                <div id="thema4" class="cast_article">컨텐츠4</div>
+                <div id="thema5" class="cast_article">컨텐츠5</div>
+                <div id="thema6" class="cast_article">컨텐츠6</div>
+                <div id="thema7" class="cast_article">컨텐츠7</div>
+                <div id="thema8" class="cast_article">컨텐츠8</div>
+            </div>
+            <div class="cast_setting">
+                <div class="cast_btn">
+                    <button type="button" class="prev">이전</button><button type="button" class="next">다음</button>
+                </div>
+                <div class="cast_num"><span class="current">1</span> / <span class="total">8</span></div>
+            </div>
+        </div>
+
+        <h2>Carousel - Sliding Animate</h2>
+        <div class="slide_box slide">
+            <div class="slide_tab">
+                <ul>
+                    <li class="active"><a href="#slide1">테마1</a></li>
+                    <li><a href="#slide2">테마2</a></li>
+                    <li><a href="#slide3">테마3</a></li>
+                    <li><a href="#slide4">테마4</a></li>
+                    <li><a href="#slide5">테마5</a></li>
+                    <li><a href="#slide6">테마6</a></li>
+                    <li><a href="#slide7">테마7</a></li>
+                    <li><a href="#slide8">테마8</a></li>
+                </ul>
+            </div>
+            <div class="slide_cont">
+                <div id="slide1" class="slide_article active">컨텐츠1</div>
+                <div id="slide2" class="slide_article">컨텐츠2</div>
+                <div id="slide3" class="slide_article">컨텐츠3</div>
+                <div id="slide4" class="slide_article">컨텐츠4</div>
+                <div id="slide5" class="slide_article">컨텐츠5</div>
+                <div id="slide6" class="slide_article">컨텐츠6</div>
+                <div id="slide7" class="slide_article">컨텐츠7</div>
+                <div id="slide8" class="slide_article">컨텐츠8</div>
+            </div>
+            <div class="slide_setting">
+                <div class="slide_btn">
+                    <button type="button" class="prev">이전</button><button type="button" class="next">다음</button>
+                </div>
+            </div>
+        </div>
+        <h2>Carousel - fade In/Out Animate</h2>
+        <div class="slide_box fade">
+            <div class="slide_tab">
+                <ul>
+                    <li class="active"><a href="#slide1">테마1</a></li>
+                    <li><a href="#slide2">테마2</a></li>
+                    <li><a href="#slide3">테마3</a></li>
+                    <li><a href="#slide4">테마4</a></li>
+                    <li><a href="#slide5">테마5</a></li>
+                    <li><a href="#slide6">테마6</a></li>
+                    <li><a href="#slide7">테마7</a></li>
+                    <li><a href="#slide8">테마8</a></li>
+                </ul>
+            </div>
+            <div class="slide_cont">
+                <div id="slide1" class="slide_article active">컨텐츠1</div>
+                <div id="slide2" class="slide_article">컨텐츠2</div>
+                <div id="slide3" class="slide_article">컨텐츠3</div>
+                <div id="slide4" class="slide_article">컨텐츠4</div>
+                <div id="slide5" class="slide_article">컨텐츠5</div>
+                <div id="slide6" class="slide_article">컨텐츠6</div>
+                <div id="slide7" class="slide_article">컨텐츠7</div>
+                <div id="slide8" class="slide_article">컨텐츠8</div>
+            </div>
+            <div class="slide_setting">
+                <div class="slide_btn">
+                    <button type="button" class="prev">이전</button><button type="button" class="next">다음</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container [e] -->
+    <hr />
+    <!-- footer [s] -->
+    <div id="footer">@</div>
+    <!-- footer [e] -->
+<!-- [ Javascript Area ] -->
+<!-- Libs -->
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+	(function (win, $) {
+		'use strict';
+		function tabComponent (container, args) {
+			var defParams = {
+				obj : container,
+				castTab : '.cast_tab',
+				castTabList : 'ul',
+				activeClass : 'active',
+                castArticle : '.cast_article'
+			};
+			this.opts = $.extend(defParams, (args || {}));
+			if (!(this.obj = $(this.opts.obj)).length) return;	//유효성 검사
+			this.init();
+		};
+		tabComponent.prototype = {
+			init : function () {
+				this.setElements();
+				this.initOpts();
+				this.initLayout();
+				this.bindEvents();
+			},
+			setElements : function () {
+				this.castTab = this.obj.find(this.opts.castTab);
+				this.castTabList = this.castTab.find(this.opts.castTabList);
+				this.castTabItem = this.castTabList.children();
+                this.castArticle = this.obj.find(this.opts.castArticle);
+			},
+			initOpts : function () {
+				var _this = this;	//this가 윈도우를 바라보지 않게 저장하기
+				var filterElem = this.castTabItem.filter(function (index, item) {
+					if ($(item).hasClass(_this.opts.activeClass)) {
+						return true;
+					}
+				});
+				this.currIdx = (filterElem.length) ? filterElem.index() : 0;
+			},
+			initLayout : function () {
+				this.castArticle.removeClass('this.opts.activeClass');
+				this.tabViewFunc();
+			},
+			bindEvents : function () {
+				this.castTabItem.on('click', '>a', this.tabClickFunc.bind(this));
+			},
+			tabClickFunc : function (e) {
+				e.preventDefault();
+				var target = $(e.delegateTarget),
+					targetIdx = target.index();
+				this.currIdx = targetIdx;
+				this.tabViewFunc();
+			},
+			tabViewFunc : function () {
+				this.castArticle.eq(this.oldIdx).removeClass('this.opts.activeClass');
+				this.castTabItem.eq(this.oldIdx).removeClass('this.opts.activeClass');
+				this.castArticle.eq(this.currIdx).addClass('this.opts.activeClass');
+				this.castTabItem.eq(this.currIdx).addClass('this.opts.activeClass');
+				this.oldIdx = this.currIdx;
+			}
+		};
+
+		function slideComponent(container, args) {
+			var defParams = {
+				obj : container,
+                slideTab : '.slide_tab',
+				slideCont : '.slide_cont',
+				slideArticle : '.slide_article',
+				prevBtn : '.prev',
+				nextBtn : '.next',
+                direction : 'left',
+				type : 'slide',
+				initSlide : 0
+			};
+			this.opts = $.extend(defParams, (args || {}));  //복사
+			if (!(this.obj = $(this.opts.obj)).length) return;	//유효성 검사
+			this.init();
+		};
+		slideComponent.prototype = {
+			init : function () {
+				this.setElements();
+				this.initLayout();
+				this.bindEvents();
+			},
+			setElements : function () {
+                this.slideTab = this.obj.find(this.opts.slideTab);
+                this.slideTabList = this.slideTab.find('ul');
+                this.slideTabItem = this.slideTabList.children();
+				this.slideCont = this.obj.find(this.opts.slideCont);
+				this.slideArticle = this.slideCont.find(this.opts.slideArticle);
+				this.prevBtn = this.obj.find(this.opts.prevBtn);
+				this.nextBtn = this.obj.find(this.opts.nextBtn);
+			},
+			initLayout : function () {
+				this.currIdx = this.opts.initSlide;
+				this.slideArticle.hide();
+				this.slideArticle.eq(this.currIdx).show();
+				this.oldIdx = this.currIdx;
+			},
+			bindEvents : function () {
+				this.prevBtn.on('click', this.prevClickFunc.bind(this));
+				this.nextBtn.on('click', this.nextClickFunc.bind(this));
+			},
+            slideIndicator : function () {
+                this.slideTabItem.eq(this.oldIdx).removeClass('active');
+                this.slideTabItem.eq(this.currIdx).addClass('active');
+            },
+			prevClickFunc : function () {
+                this.currIdx--;
+                this.opts.direction = 'right';
+                if (this.currIdx < this.opts.initSlide) {           //처음에 다다르면 끝으로 가기
+                    this.currIdx = this.slideArticle.length - 1;
+                    console.log('처음');
+                }
+                if (this.opts.type === 'slide') {
+                    this.animateSlideFunc(this.opts.direction);
+                } else {
+                    this.animateFadeFunc(this.opts.direction);
+                }
+                this.slideIndicator();
+                this.oldIdx = this.currIdx;
+			},
+			nextClickFunc : function () {
+                this.currIdx++;
+                this.opts.direction = 'left';
+                if (this.currIdx > this.slideArticle.length - 1) {  //끝에 다다르면 처음으로 가기
+                    this.currIdx = this.opts.initSlide;
+                    console.log('끝');
+                }
+                if (this.opts.type === 'slide') {
+                    this.animateSlideFunc(this.opts.direction);
+                } else {
+                    this.animateFadeFunc(this.opts.direction);
+                }
+                this.slideIndicator();
+                this.oldIdx = this.currIdx;
+			},
+			animateSlideFunc : function (type) {
+				var _this = this;
+				if (type === 'left') {                          //다음 버튼 누를 때
+                    console.log('oldIdx', this.oldIdx, 'currIdx', this.currIdx);
+					this.slideArticle.eq(this.currIdx).css({
+                        'display' : 'block',
+						'left' : '100%'
+					});
+					this.slideArticle.eq(this.oldIdx).stop().animate({
+						'left' : '-100%'
+					}, {
+						complete : function () {	//움직이고 나서 초기화!
+							_this.slideArticle.eq(this.oldIdx).css({
+								'left' : ''
+							});
+						}
+					});
+					this.slideArticle.eq(this.currIdx).stop().animate({
+						'left' : '0'
+					});
+				} else {                                        //이전 버튼 누를때
+                    console.log('oldIdx', this.oldIdx, 'currIdx', this.currIdx);
+                    this.slideArticle.eq(this.currIdx).css({
+                        'display' : 'block',
+                        'left' : '-100%'
+                    });
+					this.slideArticle.eq(this.oldIdx).stop().animate({
+						'left' : '100%'
+					}, {
+						complete : function () {	//움직이고 나서 초기화!
+							_this.slideArticle.eq(this.oldIdx).css({
+								'left' : ''
+							});
+						}
+					});
+					this.slideArticle.eq(this.currIdx).stop().animate({
+						'left' : '0'
+					});
+				}
+			},
+            animateFadeFunc : function (type) {
+                console.log('oldIdx', this.oldIdx, 'currIdx', this.currIdx);
+                this.slideArticle.eq(this.currIdx).fadeIn(600);
+                this.slideArticle.eq(this.oldIdx).fadeOut(600);
+            }
+		};
+
+		$(function () {
+			var tabComponentCall = new tabComponent('.cast_box');
+			var slideComponentCall1 = new slideComponent('.slide_box.slide', {
+				type : 'slide',
+				autoplay : false
+			});
+			var slideComponentCall2 = new slideComponent('.slide_box.fade', {
+				type : 'fade',
+				autoplay : false
+			});
+		})
+	})(window, window.jQuery);
+
+	//1.fadeinout 2.slide 3.dots indicator
+	//자동재생일때 마우스가 올라가면 멈추고 나가면 재생되는기능은 시간나면 해보기!
+</script>
+</div>
+</body>
+</html>
