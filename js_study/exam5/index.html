@@ -38,7 +38,7 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 .slide_tab ul li.active a{background:rgb(88, 88, 88)}
 .slide_cont{overflow:hidden;position:relative;height:440px}
 .slide_article{display:block;position:absolute;left:0;top:0;width:100%;height:440px}
-.slide_article:nth-child(1){background:red}
+.slide_article:nth-child(1){background:rgb(228, 132, 132)}
 .slide_article:nth-child(2){background:orange}
 .slide_article:nth-child(3){background:yellow}
 .slide_article:nth-child(4){background:green}
@@ -128,25 +128,25 @@ h2{text-align:center;padding: 20px;font-size:20px;}
         <div class="slide_box fade">
             <div class="slide_tab">
                 <ul>
-                    <li class="active"><a href="#slide1">테마1</a></li>
-                    <li><a href="#slide2">테마2</a></li>
-                    <li><a href="#slide3">테마3</a></li>
-                    <li><a href="#slide4">테마4</a></li>
-                    <li><a href="#slide5">테마5</a></li>
-                    <li><a href="#slide6">테마6</a></li>
-                    <li><a href="#slide7">테마7</a></li>
-                    <li><a href="#slide8">테마8</a></li>
+                    <li class="active"><a href="#f_slide1">테마1</a></li>
+                    <li><a href="#f_slide2">테마2</a></li>
+                    <li><a href="#f_slide3">테마3</a></li>
+                    <li><a href="#f_slide4">테마4</a></li>
+                    <li><a href="#f_slide5">테마5</a></li>
+                    <li><a href="#f_slide6">테마6</a></li>
+                    <li><a href="#f_slide7">테마7</a></li>
+                    <li><a href="#f_slide8">테마8</a></li>
                 </ul>
             </div>
             <div class="slide_cont">
-                <div id="slide1" class="slide_article active">컨텐츠1</div>
-                <div id="slide2" class="slide_article">컨텐츠2</div>
-                <div id="slide3" class="slide_article">컨텐츠3</div>
-                <div id="slide4" class="slide_article">컨텐츠4</div>
-                <div id="slide5" class="slide_article">컨텐츠5</div>
-                <div id="slide6" class="slide_article">컨텐츠6</div>
-                <div id="slide7" class="slide_article">컨텐츠7</div>
-                <div id="slide8" class="slide_article">컨텐츠8</div>
+                <div id="f_slide1" class="slide_article active">컨텐츠1</div>
+                <div id="f_slide2" class="slide_article">컨텐츠2</div>
+                <div id="f_slide3" class="slide_article">컨텐츠3</div>
+                <div id="f_slide4" class="slide_article">컨텐츠4</div>
+                <div id="f_slide5" class="slide_article">컨텐츠5</div>
+                <div id="f_slide6" class="slide_article">컨텐츠6</div>
+                <div id="f_slide7" class="slide_article">컨텐츠7</div>
+                <div id="f_slide8" class="slide_article">컨텐츠8</div>
             </div>
             <div class="slide_setting">
                 <div class="slide_btn">
@@ -171,8 +171,13 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 				obj : container,
 				castTab : '.cast_tab',
 				castTabList : 'ul',
-				activeClass : 'active',
-                castArticle : '.cast_article'
+                castArticle : '.cast_article',
+                castSetting : '.cast_setting',
+                prevBtn : '.prev',
+                nextBtn : '.next',
+                castNum : '.cast_num',
+                current : '.current',
+				activeClass : 'active'
 			};
 			this.opts = $.extend(defParams, (args || {}));
 			if (!(this.obj = $(this.opts.obj)).length) return;	//유효성 검사
@@ -190,6 +195,10 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 				this.castTabList = this.castTab.find(this.opts.castTabList);
 				this.castTabItem = this.castTabList.children();
                 this.castArticle = this.obj.find(this.opts.castArticle);
+                this.castSetting = this.obj.find(this.opts.castSetting);
+                this.prevBtn = this.castSetting.find(this.opts.prevBtn);
+                this.nextBtn = this.castSetting.find(this.opts.nextBtn);
+                this.current = this.castSetting.find(this.opts.current);
 			},
 			initOpts : function () {
 				var _this = this;	//this가 윈도우를 바라보지 않게 저장하기
@@ -201,11 +210,13 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 				this.currIdx = (filterElem.length) ? filterElem.index() : 0;
 			},
 			initLayout : function () {
-				this.castArticle.removeClass('this.opts.activeClass');
+				this.castArticle.removeClass('active');
 				this.tabViewFunc();
 			},
 			bindEvents : function () {
 				this.castTabItem.on('click', '>a', this.tabClickFunc.bind(this));
+                this.prevBtn.on('click', this.prevClickFunc.bind(this));
+                this.nextBtn.on('click', this.nextClickFunc.bind(this));
 			},
 			tabClickFunc : function (e) {
 				e.preventDefault();
@@ -215,12 +226,32 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 				this.tabViewFunc();
 			},
 			tabViewFunc : function () {
-				this.castArticle.eq(this.oldIdx).removeClass('this.opts.activeClass');
-				this.castTabItem.eq(this.oldIdx).removeClass('this.opts.activeClass');
-				this.castArticle.eq(this.currIdx).addClass('this.opts.activeClass');
-				this.castTabItem.eq(this.currIdx).addClass('this.opts.activeClass');
+                this.castArticle.eq(this.oldIdx).removeClass('active');
+				this.castArticle.eq(this.currIdx).addClass('active');
+				this.castTabItem.eq(this.oldIdx).removeClass('active');
+				this.castTabItem.eq(this.currIdx).addClass('active');
+                this.current.text(this.currIdx+1);
 				this.oldIdx = this.currIdx;
-			}
+			},
+            prevClickFunc : function () {
+                this.currIdx--;
+                if (this.currIdx < 0) {           //처음에 다다르면 끝으로 가기
+                    this.currIdx = this.castArticle.length - 1;
+                    // console.log('처음');
+                }
+                
+                this.tabViewFunc();
+                this.oldIdx = this.currIdx;
+            },
+            nextClickFunc : function () {
+                this.currIdx++;
+                if (this.currIdx > this.castArticle.length - 1) {  //끝에 다다르면 처음으로 가기
+                    this.currIdx = 0;
+                    // console.log('끝');
+                }
+                this.tabViewFunc();
+                this.oldIdx = this.currIdx;
+            }
 		};
 
 		function slideComponent(container, args) {
@@ -233,7 +264,9 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 				nextBtn : '.next',
                 direction : 'left',
 				type : 'slide',
-				initSlide : 0
+                autoplay : 'true',
+				initSlide : 0,
+                isStop : false
 			};
 			this.opts = $.extend(defParams, (args || {}));  //복사
 			if (!(this.obj = $(this.opts.obj)).length) return;	//유효성 검사
@@ -249,6 +282,7 @@ h2{text-align:center;padding: 20px;font-size:20px;}
                 this.slideTab = this.obj.find(this.opts.slideTab);
                 this.slideTabList = this.slideTab.find('ul');
                 this.slideTabItem = this.slideTabList.children();
+                this.slideTabItemAlink = this.slideTabItem.find('a');
 				this.slideCont = this.obj.find(this.opts.slideCont);
 				this.slideArticle = this.slideCont.find(this.opts.slideArticle);
 				this.prevBtn = this.obj.find(this.opts.prevBtn);
@@ -259,27 +293,30 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 				this.slideArticle.hide();
 				this.slideArticle.eq(this.currIdx).show();
 				this.oldIdx = this.currIdx;
+                if (this.opts.autoplay) {
+                    this.startFunc();
+                }
 			},
 			bindEvents : function () {
 				this.prevBtn.on('click', this.prevClickFunc.bind(this));
 				this.nextBtn.on('click', this.nextClickFunc.bind(this));
+                this.slideTabList.on('click', 'li > a', this.dotClickFunc.bind(this));
+                this.slideArticle.on('mouseenter', this.stopFunc.bind(this));
+                this.slideArticle.on('mouseleave', this.startFunc.bind(this));
 			},
             slideIndicator : function () {
-                this.slideTabItem.eq(this.oldIdx).removeClass('active');
-                this.slideTabItem.eq(this.currIdx).addClass('active');
+                this.slideArticle.removeClass('active').eq(this.currIdx).addClass('active');
+                this.slideTabItem.removeClass('active').eq(this.currIdx).addClass('active');
             },
 			prevClickFunc : function () {
                 this.currIdx--;
                 this.opts.direction = 'right';
                 if (this.currIdx < this.opts.initSlide) {           //처음에 다다르면 끝으로 가기
                     this.currIdx = this.slideArticle.length - 1;
-                    console.log('처음');
+                    // console.log('처음');
                 }
-                if (this.opts.type === 'slide') {
-                    this.animateSlideFunc(this.opts.direction);
-                } else {
-                    this.animateFadeFunc(this.opts.direction);
-                }
+                
+                this.opts.type === 'slide' ? this.animateSlideFunc(this.opts.direction) : this.animateFadeFunc(this.opts.direction);    //type 구분
                 this.slideIndicator();
                 this.oldIdx = this.currIdx;
 			},
@@ -288,20 +325,30 @@ h2{text-align:center;padding: 20px;font-size:20px;}
                 this.opts.direction = 'left';
                 if (this.currIdx > this.slideArticle.length - 1) {  //끝에 다다르면 처음으로 가기
                     this.currIdx = this.opts.initSlide;
-                    console.log('끝');
+                    // console.log('끝');
                 }
-                if (this.opts.type === 'slide') {
-                    this.animateSlideFunc(this.opts.direction);
-                } else {
-                    this.animateFadeFunc(this.opts.direction);
-                }
+                this.opts.type === 'slide' ? this.animateSlideFunc(this.opts.direction) : this.animateFadeFunc(this.opts.direction);    //type 구분
                 this.slideIndicator();
                 this.oldIdx = this.currIdx;
 			},
+            dotClickFunc : function (e) {
+                e.preventDefault();
+                var dotId = e.target.getAttribute('href');
+                var slide = this.slideCont.find(dotId);
+                this.currIdx = $(e.currentTarget).parent().index();
+                this.slideIndicator();
+                if(this.oldIdx < this.currIdx){ // 이전 컨텐츠 번호와 현재 선택된 번호의 크고 작음을 비교하여 선형적인(linear) 방향으로 움직이도록 함
+                    this.opts.direction = 'left';
+                }else{
+                    this.opts.direction = 'right';
+                }
+                this.opts.type === 'slide' ? this.animateSlideFunc(this.opts.direction) : this.animateFadeFunc(this.opts.direction);    //type 구분
+                this.oldIdx = this.currIdx;
+            },
 			animateSlideFunc : function (type) {
 				var _this = this;
 				if (type === 'left') {                          //다음 버튼 누를 때
-                    console.log('oldIdx', this.oldIdx, 'currIdx', this.currIdx);
+                    // console.log('oldIdx', this.oldIdx, 'currIdx', this.currIdx);
 					this.slideArticle.eq(this.currIdx).css({
                         'display' : 'block',
 						'left' : '100%'
@@ -339,9 +386,20 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 				}
 			},
             animateFadeFunc : function (type) {
-                console.log('oldIdx', this.oldIdx, 'currIdx', this.currIdx);
+                // console.log('oldIdx', this.oldIdx, 'currIdx', this.currIdx);
                 this.slideArticle.eq(this.currIdx).fadeIn(600);
                 this.slideArticle.eq(this.oldIdx).fadeOut(600);
+            },
+            stopFunc : function () {
+                clearInterval(this.interval);
+            },
+            startFunc : function () {
+                if (this.opts.autoplay) {
+                    var _this = this;
+                    this.interval = setInterval(function () {
+                        _this.nextClickFunc();
+                    }, 2000);
+                } else return;                    
             }
 		};
 
@@ -349,11 +407,11 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 			var tabComponentCall = new tabComponent('.cast_box');
 			var slideComponentCall1 = new slideComponent('.slide_box.slide', {
 				type : 'slide',
-				autoplay : false
+				autoplay : true
 			});
 			var slideComponentCall2 = new slideComponent('.slide_box.fade', {
 				type : 'fade',
-				autoplay : false
+				autoplay : true
 			});
 		})
 	})(window, window.jQuery);
