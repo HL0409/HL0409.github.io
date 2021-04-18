@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+<title>gnb</title>
+<link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+<body>
+<!-- wrapper [s] -->
+<div id="wrap">
+    <div id="header">
+        <h1 class="logo"><a href="#">로고</a></h1>
+        <div class="gnb_open"><button type="button" id="btn_gnbopen">열기</button></div>
+        <div id="gnb">
+            <div class="gnb_wrap">
+                <ul class="menu">
+                <li>
+                    <a href="#" class="btn">‘모노라움’ 학원 소개</a>
+                    <div class="box">
+                        <ul>
+                        <li><a href="#">설립배경</a></li>
+                        <li><a href="#">가치제안</a></li>
+                        <li><a href="#">교육철학 및 경영방침</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="btn">수강안내</a>
+                    <div class="box">
+                        <ul>
+                        <li><a href="#">접수중인 교육과정</a></li>
+                        <li><a href="#">강사소개</a></li>
+                        <li><a href="#">강사 포트폴리오</a></li>
+                        <li><a href="#">연간 교육일정</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="btn">수강문의</a>
+                    <div class="box">
+                        <ul>
+                        <li><a href="#">수강문의</a></li>
+                        <li><a href="#">방문 상담 신청</a></li>
+                        <li><a href="#">모집 알림 신청</a></li>
+                        <li><a href="#">질문 게시판</a></li>
+                        <li><a href="#">이벤트 게시판</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="btn">수강신청</a>
+                    <div class="box">
+                        <ul>
+                        <li><a href="#">수강신청</a></li>
+                        </ul>
+                    </div>
+                </li>
+                </ul>
+                <div class="gnb_close"><button type="button" id="btn_gnbclose">닫기</button></div>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <div><a href="#">컨텐츠 들어오는 곳</a></div>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+        container<br>
+    </div>
+</div>
+<!-- wrapper [e] -->
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<!-- <script src="../js/libs/jquery.ba-outside-events.min.js"></script> -->
+<script src="../js/apps/util.js"></script>
+<script>
+(function (win, $) {
+    'use strict';
+
+    var Util = win.Common.util,
+        Mobile = win.Common.RESPONSIVE.MOBILE.WIDTH;
+
+    function gnbComponent (container, args) {
+        var defParams = {
+            obj : container,
+            menu : '.menu',
+            box : '.box',
+            gnb : '#gnb',
+            gnb_open : '#btn_gnbopen',
+            gnb_close : '#btn_gnbclose',
+            viewType : null
+        };
+        this.opts = Util.def(defParams, (args || {}));
+        // this.opts = $.extend(defParams, (args || {}));
+        if (!(this.obj = $(this.opts.obj)).length) return;	//유효성 검사
+        this.init();
+    };
+    gnbComponent.prototype = {
+        init : function () {
+            console.log(1);
+            this.setElements();
+            this.resizeFunc();
+            this.bindGlobalEvents(true);
+        },
+        setElements : function () {
+            this.menu = this.obj.find(this.opts.menu);
+            this.menuItem = this.menu.children();
+            this.box = this.menu.find(this.opts.box);
+            this.gnb = this.obj.find(this.opts.gnb);
+            this.gnb_open = this.obj.find(this.opts.gnb_open);
+            this.gnb_close = this.obj.find(this.opts.gnb_close);
+        },
+        bindGlobalEvents : function (type) {
+            if (type) {
+                $(win).on('resize', this.resizeFunc.bind(this));	//브라우저에서 일어나는 이벤트
+            } else {	
+                $(win).off('resize');
+            }
+        },
+        bindPcEvents : function (type) {	//pc mobile hover click 이벤트 구분 위해 또 만듬
+            if (type) {
+                this.menuItem.on('mouseenter mouseleave focusin focusout', this.onMouseHoverFunc.bind(this));
+            } else {
+                this.menuItem.off('mouseenter mouseleave focusin focusout');
+            }
+        },
+        bindMoEvents : function (type) {	//pc mobile hover click 이벤트 구분 위해 또 만듬
+            if (type) {
+            	this.gnb_open.on('click', this.onMouseClickFunc.bind(this));
+            	this.gnb_close.on('click', this.onMouseClickFunc.bind(this));
+            } else {
+            	this.gnb_open.off('click');
+            	this.gnb_close.off('click');
+            }
+        },
+        onMouseHoverFunc : function (e) {
+            e.preventDefault();
+            var targetIdx = $(e.delegateTarget).index();
+            if (e.type === 'mouseenter' || e.type === 'focusin') {
+                this.box.eq(targetIdx).show();
+            } else if (e.type === 'mouseleave' || e.type === 'focusout') {
+                this.box.eq(targetIdx).hide();
+            }
+        },
+        onMouseClickFunc : function (e) {
+            e.preventDefault();
+            var _this = this;
+            if (e.target.id === 'btn_gnbopen') {
+                this.gnb.stop().animate({
+                    'left' : '0'
+                });
+            } else if (e.target.id === 'btn_gnbclose') {
+                this.gnb.stop().animate({
+                    'left' : '-100%'
+                }, {
+                    complete : function () {
+                        _this.gnb.css({
+                            'left' : ''
+                        });
+                    }
+                });
+            }
+        },
+        resizeFunc : function () {
+            this.winWidth = Util.winSize().w;
+            console.log(this.winWidth);
+            win.clearTimeout(this.resizeEndFunc);	//클리어를 계속해서 밑에가 실행 안되게
+            this.resizeEndFunc = win.setTimeout(this.onResizeEndFunc.bind(this), 150);	//가만히있으면 clear실행안돼서 됨
+        },
+        onResizeEndFunc : function () {
+            console.log('resize end');
+            this.setLayout();	//resize 끝나면 setLayout
+        },
+        setLayout : function () {
+            if (this.winWidth > Mobile) {
+                if (this.opts.viewType != 'PC') {	// NULL도 포함! mo pc 기준점에서만 찍히게
+                    this.opts.viewType = 'PC'
+                    console.log('pc');
+                    this.bindMoEvents(false);
+                    this.bindPcEvents(true);
+                }
+            } else {
+                if (this.opts.viewType != 'MO') {
+                    this.opts.viewType = 'MO';
+                    console.log('mo');
+                    this.bindPcEvents(false);
+                    this.bindMoEvents(true);
+                }
+            }
+        }
+    };
+
+    $(function () {
+        var gnbComponentCall = new gnbComponent('#header');
+    })
+})(window, window.jQuery);
+</script>
+</body>
+</html>
