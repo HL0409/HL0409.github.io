@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>exam - outside</title>
+<style>
+/* temporary css */
+*{margin:0;padding:0}
+body{font-size:14px;font-family:"나눔고딕",NanumGothic,"굴림",Gulim,Sans-serif;line-height:1.5}
+h1,h2,h3,h4,h5,h6{font-size:14px}
+ul,li{list-style:none}
+button{font-size:14px;font-family:"나눔고딕",NanumGothic,"굴림",Gulim,Sans-serif;line-height:1.5;cursor:pointer}
+button::-moz-focus-inner{padding:0;border:0}
+.btn_pos{padding:10px}
+.btn_pos button{margin:0;padding:0;width:100px;height:100px;border:1px solid #ccc;}
+.layer_area{display:none;position:fixed;left:0;top:0;right:0;bottom:0;width:100%;height:100%}
+.layer_area .layer_dimmed{position:absolute;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background:#000;opacity:0.3;filter:alpha(opacity=30);}
+.layer_pos{position:absolute;left:50%;top:50%;width:400px;height:400px;margin:-220px 0 0 -220px;padding:20px;background:#fff}
+.layer_close{position:absolute;right:20px;top:20px}
+/* //temporary css */
+</style>
+</head>
+<body>
+<!-- wrapper [s] -->
+<div id="wrapper">
+    <!-- header [s] -->
+    <div id="header">@</div>
+    <!-- header [e] -->
+    <hr />
+    <!-- container [s] -->
+    <div id="container">
+        <div class="js-layer-wrap">
+            <div class="btn_pos js-btn_pos b1"><button>레이어 띄우기1</button></div>
+            <div class="layer_area js-layer_area" style="display:block">
+                <span class="layer_dimmed">&nbsp;</span>
+                <div class="layer_pos">
+                    <ul>
+                        <li>내용1<a href="#">링크</a></li>
+                        <li>내용2</li>
+                        <li>내용3</li>
+                        <li>내용4</li>
+                        <li>내용5</li>
+                    </ul>
+                    <p class="layer_close"><button>닫기</button></p>
+                </div>
+            </div>
+            <div class="btn_pos js-btn_pos b2"><button>레이어 띄우기2</button></div>
+            <div class="btn_pos js-btn_pos b3"><button>레이어 띄우기3</button></div>
+        </div>
+    </div>
+    <!-- container [e] -->
+    <hr />
+    <!-- footer [s] -->
+    <div id="footer">@</div>
+    <!-- footer [e] -->
+</div>
+<!-- [ Javascript Area ] -->
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="../js/libs/jquery.ba-outside-events.min.js"></script>
+<script src="../js/apps/util.js"></script><script src="../js/apps/util.js"></script>
+<script>
+(function (global, factory) {
+		// console.log(global);	//window를 던져줬으니 global=window
+		global = global;
+		global.layerComponent = factory();	//함수실행구문
+}(window, function () {	'use strict';
+	var win = window,
+		Util = win.Common.util;
+	var layerComponent = (function (isUndefined) {	//layerpopup은 보통 태그 마지막에 있어서 떠있을때 포커스를 잃는다! 강제로 포커스를 줘야함, 루프돌아야됨
+		function layerComponent (container, args) {
+			var defParams = {
+				obj : container,
+				layerArea : '.js-layer_area',
+				layerClose : '.layer_close',
+				layerPos : '.layer_pos',
+				btnPos : '.js-btn_pos'
+			};
+			this.opts = Util.def(defParams, (args || {}));
+			if (!(this.obj = $(this.opts.obj)).length) return;
+			this.init();				
+		};
+		layerComponent.prototype = {
+			init : function () {
+				this.setElements();
+				this.initLayout();
+				this.bindEvents(true);
+			},
+			setElements : function () {
+				this.layerArea = this.obj.find(this.opts.layerArea);
+				this.layerClose = this.obj.find(this.opts.layerClose);
+				this.layerPos = this.obj.find(this.opts.layerPos);
+				this.btnPos = this.obj.find(this.opts.btnPos);
+			},
+			initLayout : function () {
+				var focusHTML = '<span style="width:1px;height:1px;" tabindex="0"/>';
+				this.layerPos.before(focusHTML);
+				this.layerPos.after(focusHTML);
+				this.layerPos.attr('tabindex', '0');
+				this.layerArea.hide();
+				this.layerPrevFocus = this.layerPos.prev();
+				this.layerNextFocus = this.layerPos.next();
+			},
+			bindEvents : function () {
+				this.btnPos.on('click', '>button', this.onClickFunc.bind(this));
+				this.layerClose.on('click', '>button', this.onCloseFunc.bind(this));
+				this.layerPrevFocus.on('focusin', this.onPrevFocusFunc.bind(this));
+				this.layerNextFocus.on('focusin', this.onNextFocusFunc.bind(this));
+			},
+			clickOutsideFunc : function (type) {
+				if (type) {
+					this.layerPos.on('clickoutside', this.layerOutside.bind(this));
+				} else {
+					this.layerPos.off('clickoutside');
+				}
+			},
+			layerOutside : function () {
+				this.layerClose.find('button').trigger('click');	//button 클릭한거랑 똑같은 효과를 준다!
+			},
+			onClickFunc : function (e) {
+				e.preventDefault();
+				var _this = this;
+				this.targetElem = $(e.delegateTarget).find('>button');
+				
+				this.layerArea.show();
+				this.layerPos.focus();
+				win.setTimeout(function () {	//show, focus 가 위에 쌓여있으면 잘못 인식되는 경우가 있음, 그래서 시차를 주는거
+					_this.clickOutsideFunc(true);
+				}, 150);
+			},
+			onCloseFunc : function () {
+				this.layerArea.hide();
+				this.targetElem.focus();
+				this.clickOutsideFunc(false);	//닫았으면 false
+			},
+			onPrevFocusFunc : function () {
+				this.layerClose.find('button').focus();
+			},
+			onNextFocusFunc : function () {
+				this.layerPos.focus();
+			}
+		};
+		return layerComponent;	//closure 컴포넌트는 new 안해도됨
+	})();
+	return layerComponent;	//closure return 방식으로 객체를 보관해놓는 방법
+}));
+(function (global, factory) {
+	global = global;
+	$(function () {
+		factory();
+	})
+}(window, function () {	'use strict';
+	var layerComponent = (function () {
+		var win = window,
+			Util = win.Common.util;
+
+			function layerComponent (args) {
+				var defParams = {
+					obj : '.js-layer-wrap'
+				};
+				this.opts = Util.def(defParams, (args || {}));
+				if (!(this.obj = $(this.opts.obj)).length) return;
+				this.init();	
+			};
+			layerComponent.prototype = {
+				init : function () {
+					this.callComponent();
+				},
+				callComponent : function () {
+					var _this = this;
+					for (var i = 0, max = this.obj.length; i < max; i++) {
+						(function (index) {	//즉시실행함수로 하는 이유는? i의 결과값이 달라짐! 검색해보기
+							var instance = new win.layerComponent(_this.obj.eq(index));
+						})(i);
+					}
+				}
+			};
+			return new layerComponent();	//컴포넌트 가지고 왔을때 호출할때는 new 써야함
+	})();
+	return layerComponent;
+}));
+</script>
+</body>
+</html>
