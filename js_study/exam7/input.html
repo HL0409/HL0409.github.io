@@ -43,6 +43,8 @@ p{margin-bottom:30px;padding-bottom:10px;border-bottom:2px solid #da0707;font-si
 .chk_active .rdo_box{background-position:-20px 0}
 .ipt_rdo:checked + .rdo_box{background-position:-20px 0}
 .check_wrap{margin-top:20px;}
+.js-check-wrap+.js-check-wrap{margin-top:20px;}
+.js-radio-wrap+.js-radio-wrap{margin-top:20px;}
 /* //temporary css */
 </style>
 </head>
@@ -85,10 +87,22 @@ p{margin-bottom:30px;padding-bottom:10px;border-bottom:2px solid #da0707;font-si
                     <span class="rdo_box"></span>
                     <label for="radio2">라디오2</label>
                 </span>
+            </div>
+            <div class="js-radio-wrap">
                 <span class="radio_box">
-                    <input type="radio" id="radio3" name="radio1" class="ipt_rdo">
+                    <input type="radio" id="radio3" name="radio2" class="ipt_rdo">
                     <span class="rdo_box"></span>
-                    <label for="radio3">라디오3</label>
+                    <label for="radio3">라디오1</label>
+                </span>
+                <span class="radio_box">
+                    <input type="radio" id="radio4" name="radio2" class="ipt_rdo">
+                    <span class="rdo_box"></span>
+                    <label for="radio4">라디오2</label>
+                </span>
+                <span class="radio_box">
+                    <input type="radio" id="radio5" name="radio2" class="ipt_rdo">
+                    <span class="rdo_box"></span>
+                    <label for="radio5">라디오3</label>
                 </span>
             </div>
         </div>
@@ -304,7 +318,8 @@ p{margin-bottom:30px;padding-bottom:10px;border-bottom:2px solid #da0707;font-si
         function selectBoxComponent (container, args) {
             var defParams = {
                 obj : container,
-                select_box : '.select_box'
+                select_box : '.select_box',
+                select_menu : '.select_menu'
             };
             this.opts = Util.def(defParams, (args || {}));
             if (!(this.obj = $(this.opts.obj)).length) return;
@@ -317,17 +332,35 @@ p{margin-bottom:30px;padding-bottom:10px;border-bottom:2px solid #da0707;font-si
             },
             setElements : function () {
                 this.select_box = this.obj.find(this.opts.select_box);
+                this.select_item = this.select_box.find('ul > li');
             },
             bindEvents : function () {
                 this.select_box.on('click', '>a', this.onClickSelectFunc.bind(this));
-                
+                this.select_item.on('click', this.selectItemFunc.bind(this));
             },
             onClickSelectFunc : function (e) {
                 var currTarget = $(e.delegateTarget);
                 currTarget.toggleClass('opened');
+                this.clickOutsideFunc(true);
             },
-            clickOutsideFunc : function (e) {
-                
+            selectItemFunc : function (e) {
+                e.preventDefault();
+                var currText = $(e.target).text();
+                $(e.delegateTarget).parent().siblings().html(currText);
+                this.closeFunc();
+            },
+            clickOutsideFunc : function (type) {
+				if (type) {
+					this.select_box.on('clickoutside', this.selectOutside.bind(this));
+				} else {
+					this.select_box.off('clickoutside');
+				}
+			},
+            selectOutside : function () {
+                this.closeFunc();
+            },
+            closeFunc : function () {
+                this.select_box.removeClass('opened');
             }
         };
         return selectBoxComponent;
