@@ -320,10 +320,14 @@ p{margin-bottom:30px;padding-bottom:10px;border-bottom:2px solid #da0707;font-si
             },
             bindEvents : function () {
                 this.select_box.on('click', '>a', this.onClickSelectFunc.bind(this));
+                
             },
             onClickSelectFunc : function (e) {
                 var currTarget = $(e.delegateTarget);
                 currTarget.toggleClass('opened');
+            },
+            clickOutsideFunc : function (e) {
+                
             }
         };
         return selectBoxComponent;
