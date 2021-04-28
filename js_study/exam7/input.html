@@ -319,7 +319,8 @@ p{margin-bottom:30px;padding-bottom:10px;border-bottom:2px solid #da0707;font-si
             var defParams = {
                 obj : container,
                 select_box : '.select_box',
-                select_menu : '.select_menu'
+                select_menu : '.select_menu',
+                openClass : 'opened'
             };
             this.opts = Util.def(defParams, (args || {}));
             if (!(this.obj = $(this.opts.obj)).length) return;
@@ -340,8 +341,9 @@ p{margin-bottom:30px;padding-bottom:10px;border-bottom:2px solid #da0707;font-si
             },
             onClickSelectFunc : function (e) {
                 var currTarget = $(e.delegateTarget);
-                currTarget.toggleClass('opened');
-                this.clickOutsideFunc(true);
+                if (!this.select_box.hasClass(this.opts.openClass)) {
+                    currTarget.toggleClass(this.opts.openClass);
+                }
             },
             selectItemFunc : function (e) {
                 e.preventDefault();
@@ -349,18 +351,11 @@ p{margin-bottom:30px;padding-bottom:10px;border-bottom:2px solid #da0707;font-si
                 $(e.delegateTarget).parent().siblings().html(currText);
                 this.closeFunc();
             },
-            clickOutsideFunc : function (type) {
-				if (type) {
-					this.select_box.on('clickoutside', this.selectOutside.bind(this));
-				} else {
-					this.select_box.off('clickoutside');
-				}
-			},
             selectOutside : function () {
                 this.closeFunc();
             },
             closeFunc : function () {
-                this.select_box.removeClass('opened');
+                this.select_box.removeClass(this.opts.openClass);
             }
         };
         return selectBoxComponent;
