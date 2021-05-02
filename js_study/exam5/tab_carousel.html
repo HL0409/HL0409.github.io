@@ -212,6 +212,7 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 			initLayout : function () {
 				this.castArticle.removeClass('active');
 				this.tabViewFunc();
+                this.getHashFunc();
 			},
 			bindEvents : function () {
 				this.castTabItem.on('click', '>a', this.tabClickFunc.bind(this));
@@ -224,7 +225,22 @@ h2{text-align:center;padding: 20px;font-size:20px;}
 					targetIdx = target.index();
 				this.currIdx = targetIdx;
 				this.tabViewFunc();
+                this.setHashFunc();
 			},
+            getHashFunc : function () {
+                var hash = win.location.hash.replace('_', ''),
+                    hashTarget = this.castArticle.filter(hash);
+
+                    if (hashTarget.length) {
+                        this.currIdx = hashTarget.index();
+                    } else {
+                        this.currIdx = 0;
+                    }
+            },
+            setHashFunc : function () {
+                var hashMark = this.castArticle.eq(this.currIdx).attr('id');
+                win.location.hash = '#' + hashMark + '_';  
+            },
 			tabViewFunc : function () {
                 this.castArticle.eq(this.oldIdx).removeClass('active');
 				this.castArticle.eq(this.currIdx).addClass('active');
@@ -236,6 +252,7 @@ h2{text-align:center;padding: 20px;font-size:20px;}
             prevClickFunc : function () {
                 this.currIdx--;
                 if (this.currIdx < 0) {           //처음에 다다르면 끝으로 가기
+                    this.getHashFunc();
                     this.currIdx = this.castArticle.length - 1;
                     // console.log('처음');
                 }
@@ -246,6 +263,7 @@ h2{text-align:center;padding: 20px;font-size:20px;}
             nextClickFunc : function () {
                 this.currIdx++;
                 if (this.currIdx > this.castArticle.length - 1) {  //끝에 다다르면 처음으로 가기
+                    this.getHashFunc();
                     this.currIdx = 0;
                     // console.log('끝');
                 }
