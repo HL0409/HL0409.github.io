@@ -40,7 +40,7 @@ ins{text-decoration:none}
 .section.type4{height:1813px;background-image:url(img/bg_section03.jpg)}
 .section.type5{height:355px;background-image:url(img/bg_section04.jpg)}
 
-.quick_menu{position:fixed;top:400px;right:5px;z-index:10;padding:62px 2px 2px;background:#000}
+.quick_menu{position:absolute;top:400px;right:5px;z-index:10;padding:62px 2px 2px;background:#000}
 .quick_list{padding:13px 0 9px;background:url(img/bg_quick_menu.jpg) no-repeat; background-size:cover}
 .quick_list a{display:block;padding:12px 11px 11px 16px}
 .quick_menu .sp{height:17px}
@@ -67,6 +67,7 @@ ins{text-decoration:none}
 .quick_menu .apply.active:active .sp{background-position:-224px -19px}
 .quick_menu .apply:hover .sp,
 .quick_menu .apply:active .sp{background-position:-224px -38px}
+.quick_menu.sticky{position:fixed;top:0;}
 /* //temporary css */
 </style>
 </head>
@@ -115,8 +116,11 @@ ins{text-decoration:none}
 			function stickyComponent (container, args) {
 				var defParams = {
 					obj : container,
-                    quick_menu : 'quick_menu',
-					quick_list : 'quick_list'
+					quick_menu : '.quick_menu',
+					quick_list : 'li > a',
+					section : '.section',
+					fixedClass : 'sticky',
+					activeClass : 'active'
 				};
 				this.opts = Util.def(defParams, (args || {}));
 				if (!(this.obj = $(this.opts.obj)).length) return;
@@ -130,10 +134,17 @@ ins{text-decoration:none}
                     this.bindEvents();
 				},
                 setElements : function () {
+					this.section = this.obj.find(this.opts.section);
+					this.quick_menu = this.obj.find(this.opts.quick_menu);
+					console.log(this.section);
                     // 각각 섹션을 찾는다
                     // 각각의 사이드메뉴 li를 찾는다
                 },
 				initLayout : function () {
+					this.quickMenuTop = this.quick_menu.offset().top;
+					for (var i = 0; i < this.section.length; i++) {
+						console.log(this.section);
+					}
 					// 각 섹션의 offset top값을 변수에 정해놓는다.
 				},
 				bindEvents : function () {
@@ -141,7 +152,16 @@ ins{text-decoration:none}
 				},
 				scrollFunc : function () {
 					var winTop = $(win).scrollTop();	//스크롤시마다 스크롤 탑 체크
-
+					
+					if (winTop >= this.quickMenuTop) {
+						if (!this.quick_menu.hasClass(this.opts.fixedClass)) {
+							this.quick_menu.addClass(this.opts.fixedClass);
+						}
+					} else {
+						if (this.quick_menu.hasClass(this.opts.fixedClass)) {
+							this.quick_menu.removeClass(this.opts.fixedClass);
+						}
+					}
                     // winTop이 섹션n top 값보다 크면 li n에 .active 추가한 후 active가 있는 li 클래스 지우기
 				}
 			};
@@ -161,7 +181,7 @@ ins{text-decoration:none}
 
 				function stickyComponent (args) {
 					var defParams = {
-						obj : '.bg_page'
+						obj : '#container'
 					};
 					this.opts = Util.def(defParams, (args || {}));
 					if (!(this.obj = $(this.opts.obj)).length) return;
@@ -174,7 +194,7 @@ ins{text-decoration:none}
 					callComponent : function () {
 						var _this = this;
 						for (var i = 0, max = this.obj.length; i < max; i++) {
-							(function (index) {	//즉시실행함수로 하는 이유는? i의 결과값이 달라짐! 검색해보기
+							(function (index) {
 								var instance = new win.stickyComponent(_this.obj.eq(index));
 							})(i);
 						}
