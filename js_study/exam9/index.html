@@ -193,6 +193,7 @@ body, #wrapper{min-width:unset;}
 							console.log('pc');
 							this.initLayout();
 							this.achorActiveFunc();
+							this.removeItemFunc();
 						}
 					} else {
 						if (this.opts.viewType != 'MO') {
@@ -200,6 +201,7 @@ body, #wrapper{min-width:unset;}
 							console.log('mo');
 							this.initLayout();
 							this.achorActiveFunc();
+							this.removeItemFunc();
 						}
 					}
 				},
@@ -223,17 +225,22 @@ body, #wrapper{min-width:unset;}
 				},
 				achorActiveFunc : function () {
 					if (this.winTop >= this.section1Top && this.winTop < this.section2Top) {
+						this.removeItemFunc();
 						this.activeItemFunc(0);
 					} else if (this.winTop >= this.section2Top && this.winTop < this.section3Top) {
+						this.removeItemFunc();
 						this.activeItemFunc(1);
 					} else {
+						this.removeItemFunc();
 						this.activeItemFunc(2);
 					}
 				},
-				activeItemFunc : function (num) {
+				removeItemFunc : function () {
 					for (var i = 0; i < this.quick_item.length; i++) {
 						this.quick_item[i].classList.remove('active');
 					}
+				},
+				activeItemFunc : function (num) {
 					this.quick_item.eq(num).addClass(this.opts.activeClass);
 				},
 				// goToFunc : function (e) {
