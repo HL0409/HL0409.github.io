@@ -68,6 +68,16 @@ ins{text-decoration:none}
 .quick_menu .apply:hover .sp,
 .quick_menu .apply:active .sp{background-position:-224px -38px}
 .quick_menu.sticky{position:fixed;top:0;}
+
+@media all and (max-width:768px){
+body, #wrapper{min-width:unset;}
+.quick_menu{top:250px;}
+.section{height:100px;background-size:cover;}
+.section.type2{height:1000px;background:cornflowerblue;}
+.section.type3{height:1000px;background: salmon;}
+.section.type4{height:1000px;background:lavenderblush;}
+.section.type5{height:600px;background:lightsteelblue;}
+}
 /* //temporary css */
 </style>
 </head>
@@ -84,10 +94,10 @@ ins{text-decoration:none}
             <div class="quick_menu">
                 <strong class="blind">quick menu</strong>
                 <ul class="quick_list">
-                <li><a href="#one" class="requirements active"><span class="sp">01 REQUIREMENTS</span></a></li>
+                <li><a href="#one" class="requirements"><span class="sp">01 REQUIREMENTS</span></a></li>
                 <li><a href="#two" class="benefits"><span class="sp">02 BENEFITS</span></a></li>
                 <li><a href="#three" class="apply"><span class="sp">03 APPLY</span></a></li>
-                <li><a href="#four" class="btn_top"><span class="sp">Go to top</span></a></li>
+                <li><a href="https://www.daum.net" class="btn_top"><span class="sp">Go to top</span></a></li>
                 </ul>
             </div>
             <div class="section"></div>
@@ -110,17 +120,22 @@ ins{text-decoration:none}
 		global = global;
 		global.stickyComponent = factory();	//함수실행구문
 	}(window, function () {	'use strict';
-		var win = window,
-			Util = win.Common.util;
 		var stickyComponent = (function (isUndefined) {
+			var win = window,
+				Util = win.Common.util,
+				Mobile = win.Common.RESPONSIVE.MOBILE.WIDTH;
+			
 			function stickyComponent (container, args) {
 				var defParams = {
 					obj : container,
 					quick_menu : '.quick_menu',
-					quick_list : 'li > a',
+					quick_list : '.quick_list',
+					quick_item : 'li > a',
 					section : '.section',
 					fixedClass : 'sticky',
-					activeClass : 'active'
+					activeClass : 'active',
+					btn_top : '.btn_top',
+					viewType : null
 				};
 				this.opts = Util.def(defParams, (args || {}));
 				if (!(this.obj = $(this.opts.obj)).length) return;
@@ -129,41 +144,105 @@ ins{text-decoration:none}
 			stickyComponent.prototype = {
 				init : function () {
                     this.setElements();
+					this.resizeFunc();
                     this.initLayout();
                     this.scrollFunc();
+					this.bindGlobalEvents(true);
                     this.bindEvents();
 				},
                 setElements : function () {
 					this.section = this.obj.find(this.opts.section);
 					this.quick_menu = this.obj.find(this.opts.quick_menu);
-					console.log(this.section);
+					this.quick_list = this.quick_menu.find(this.opts.quick_list);
+					this.quick_item = this.quick_list.find(this.opts.quick_item);
                     // 각각 섹션을 찾는다
                     // 각각의 사이드메뉴 li를 찾는다
                 },
+				bindGlobalEvents : function (type) {
+					if (type) {
+						$(win).on('resize', this.resizeFunc.bind(this));	//브라우저에서 일어나는 이벤트
+					} else {	
+						$(win).off('resize');
+					}
+				},
 				initLayout : function () {
 					this.quickMenuTop = this.quick_menu.offset().top;
-					for (var i = 0; i < this.section.length; i++) {
-						console.log(this.section);
-					}
+					this.section1Top = this.section.eq(1).offset().top;
+					this.section2Top = this.section.eq(2).offset().top;
+					this.section3Top = this.section.eq(3).offset().top;
 					// 각 섹션의 offset top값을 변수에 정해놓는다.
 				},
 				bindEvents : function () {
 					$(win).on('scroll', this.scrollFunc.bind(this));
+					// this.quick_item.on('click', this.goToFunc.bind(this));
 				},
-				scrollFunc : function () {
-					var winTop = $(win).scrollTop();	//스크롤시마다 스크롤 탑 체크
-					
-					if (winTop >= this.quickMenuTop) {
-						if (!this.quick_menu.hasClass(this.opts.fixedClass)) {
-							this.quick_menu.addClass(this.opts.fixedClass);
+				resizeFunc : function () {
+					this.winWidth = Util.winSize().w;
+					console.log(this.winWidth);
+					win.clearTimeout(this.resizeEndFunc);	//클리어를 계속해서 밑에가 실행 안되게
+					this.resizeEndFunc = win.setTimeout(this.onResizeEndFunc.bind(this), 150);	//가만히있으면 clear실행안돼서 됨
+				},
+				onResizeEndFunc : function () {
+					console.log('resize end');
+					this.setLayout();	//resize 끝나면 setLayout
+				},
+				setLayout : function () {
+					if (this.winWidth > Mobile) {
+						if (this.opts.viewType != 'PC') {	// NULL도 포함! mo pc 기준점에서만 찍히게
+							this.opts.viewType = 'PC'
+							console.log('pc');
+							this.initLayout();
+							this.achorActiveFunc();
 						}
 					} else {
+						if (this.opts.viewType != 'MO') {
+							this.opts.viewType = 'MO';
+							console.log('mo');
+							this.initLayout();
+							this.achorActiveFunc();
+						}
+					}
+				},
+				scrollFunc : function () {
+					this.winTop = $(win).scrollTop();	//스크롤시마다 스크롤 탑 체크
+
+					if (this.winTop < this.section1Top) {
 						if (this.quick_menu.hasClass(this.opts.fixedClass)) {
 							this.quick_menu.removeClass(this.opts.fixedClass);
 						}
+						for (var i = 0; i < this.quick_item.length; i++) {
+							this.quick_item[i].classList.remove('active');
+						}
+					} else {
+						if (!this.quick_menu.hasClass(this.opts.fixedClass)) {
+							this.quick_menu.addClass(this.opts.fixedClass);
+						}
+						this.achorActiveFunc();
 					}
-                    // winTop이 섹션n top 값보다 크면 li n에 .active 추가한 후 active가 있는 li 클래스 지우기
-				}
+                    // this.winTop이 섹션n top 값보다 크면 li n에 .active 추가한 후 active가 있는 li 클래스 지우기
+				},
+				achorActiveFunc : function () {
+					if (this.winTop >= this.section1Top && this.winTop < this.section2Top) {
+						this.activeItemFunc(0);
+					} else if (this.winTop >= this.section2Top && this.winTop < this.section3Top) {
+						this.activeItemFunc(1);
+					} else {
+						this.activeItemFunc(2);
+					}
+				},
+				activeItemFunc : function (num) {
+					for (var i = 0; i < this.quick_item.length; i++) {
+						this.quick_item[i].classList.remove('active');
+					}
+					this.quick_item.eq(num).addClass(this.opts.activeClass);
+				},
+				// goToFunc : function (e) {
+				// 	e.preventDefault();
+				// 	var target = $(e.currentTarget),
+				// 		targetIdx = target.parent().index(),
+				// 		targetId = $(target[0]).attr('id');
+				// 		console.log(targetId);
+				// }
 			};
 			return stickyComponent;	
 		})();
