@@ -1,0 +1,38 @@
+.detail > li {width: 600px;}
+
+#content_2 > .logo {font-size: 20rem; margin-left: -30px;}
+.discript {top: 500px; right: 100px; font-size: 4rem; line-height: 1;}
+.discript > p {font-size: 1.7rem;}
+#content_3 > div {width: 100%; float: none;}
+.left {border: none;}
+.left > div {margin-left: 50%; transform: translate(-50%); z-index: 1;}
+.left > div > span.photo {width: 200px; height: 200px; top: 50px; left: 100px;}
+.left > div > span.circle {background-size: cover; width: 40px; height: 40px;}
+.left > div > span.rect {width: 150px; height: 190px; left: 190px;}
+.left > div > span.vector {width: 150px; height: 30px; background-size: contain; top: 250px; left: 250px; z-index: 1;}
+.left > div > span.vector2 {width: 90px; height: 90px; top: 320px; left: 280px; z-index: 1;}
+.left > ul {margin-left: 50%; transform: translate(-150%); width: 140px; margin-top: -90px;}
+.left > ul > li {font-size: 0.8rem;}
+.right {position: absolute; top: 0;}
+.right > span {right: unset; left: 50%; transform: translateX(-50%); height: 1150px;}
+.right > ul > li:nth-child(2n-1) {border-left: none; border-right: 1px solid #000; padding-right: 10px; left: unset; width: 200px; margin-left: 220px;}
+.right > ul > li:nth-child(2n-1)::after {right: unset; left: -35px;}
+.right > ul > li:nth-child(2n) {padding-right: 10px; left: unset; width: 200px;}
+.right > ul > li:nth-child(2n)::after {right: -35px;}
+.right > ul {position: absolute; margin: 0; top: 570px; width: 420px; margin-left: 50%; transform: translate(-50%);}
+.right > ul > li {font-size: 0.8rem;}
+.right > ul > li > p {font-size: 0.8rem;}
+#content_3 {height: 1300px;}
+#content_3 > .middle {top: 50px; font-size: 7rem; transform: unset;}
+#content_4 {height: 880px;}
+#content_4 > .middle {top: 150px; font-size: 7rem;}
+#content_4 > .photo {width: 100px; height: 100px; top: 100px; left: 190px;}
+#content_4 > .illust {width: 100px; height: 100px; top: 180px; left: 470px;}
+#content_4 > .ppt {width: 100px; height: 100px; top: 280px; left: 100px;}
+#content_4 > .html {width: 100px; height: 100px; top: 350px; left: 300px;}
+#content_4 > .css {width: 100px; height: 100px; top: 430px; left: 500px;}
+#content_4 > .js {width: 100px; height: 100px; top: 540px; left: 50px;}
+#content_4 > .android {width: 100px; height: 100px; top: 580px; left: 270px;}
+#content_4 > .vue {width: 100px; height: 100px; top: 630px; left: 1200px;}
+#content_4 > .sql {width: 100px; height: 100px; top: 710px; left: 150px;}
+#content_4 > .java {width: 100px; height: 100px; top: 650px; left: 450px;}

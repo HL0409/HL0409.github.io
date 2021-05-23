@@ -1,0 +1,698 @@
+/* 기본 */
+* {font-family: 'Damion', cursive; font-family: 'Permanent Marker', cursive;}
+body {position: relative; overflow: hidden; overflow-x: hidden; overflow-y: scroll;}
+
+/* 레이아웃 */
+header {position: absolute; width: 100%; z-index: 1; text-align: center; line-height: 90px; overflow: hidden;}
+canvas {position: relative; top: 0; left: 0; z-index: -1; width: 100%; height: 100%;}
+aside {position: fixed; top: 0; bottom: 0; right: 0; width: 50px; padding-top: 20px; z-index: 999;}
+main {height: 100vh;}
+.content {position: relative; overflow: hidden;}
+#content_1 {height:100%; display: flex; justify-content: center; align-items: center;}
+#content_2 {height: 1000px;}
+#content_3 {height: 1000px;}
+#content_4 {height: 1000px;}
+
+/* 로딩화면 */
+.loading {display: flex; position: fixed; justify-content: center; align-items: center; width: 100%; height: 100vh; background-color: #fff; z-index: 99999;}
+.loader {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+.loader,
+.loader:before,
+.loader:after {animation: 1s infinite ease-in-out;}
+.loader:before,
+.loader:after {
+    width: 100%; 
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.loader-7 {animation: loader7-1 .7s infinite linear;}
+.loader-7:before,
+.loader-7:after {
+    content: '';
+    width: 80%;
+    height: 80%;
+    top: 5%;
+}
+.loader-7:before {
+    left: -2%;
+    animation: loader7-2 .7s infinite alternate ease-in-out;
+    transform-origin: 10% 50%;
+    background-color: rgba(4, 0, 255, 0.9);
+}
+.loader-7:after {
+    left: auto;
+    right: -2%;
+    animation: loader7-2 .5s .7s infinite alternate ease-in-out;
+    transform: scale(0);
+    transform-origin: 90% 50%;
+    background-color: rgba(3, 3, 3, 0.9);
+}
+@keyframes loader7-1 {
+    0%   {transform: rotate(20deg);}
+    100% {transform: rotate(380deg);}
+}
+@keyframes loader7-2 {
+    0%   {transform: scale(0);}
+    100% {transform: scale(1);}
+}
+
+/* 헤더 */
+
+/* 어사이드 */
+aside > ul > li {width: 27px; height: 27px; background: url(../img/email.svg) no-repeat;}
+aside > ul > li > a {display: block; width: 100%; height: 100%;}
+aside > ul > li:nth-child(2) {background-image: url(../img/facebook.svg);}
+aside > ul > li:nth-child(3) {background-image: url(../img/linkedin.svg);}
+aside > ul > li:nth-child(4) {background-image: url(../img/github.svg);}
+aside > ul > li + li {margin-top: 20px;}
+aside > span.btn {
+    position: absolute;
+    top: 16px; left: -200px;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    font-family: 'Permanent Marker', cursive;
+    opacity: 0;
+}
+aside > span.on {opacity: 1;}
+
+/* 1번페이지 */
+.works {position: absolute; z-index: 1;}
+.detail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  background-color: rgba(87, 87, 87, 0.562);
+  overflow-y: scroll;
+  padding-top: 100px;
+  z-index: 999;
+  display: none;
+}
+.detail > li {margin: 0 auto 80px; width: 1080px; height: 650px;}
+.detail > li > a {display: block; width: 100%; height: 100%; transition: all .5s ease;}
+.detail > li > a:hover {background-color: rgba(255, 255, 255, 0.753);}
+
+.kakaobank > li:first-child > a:hover::before {
+  display: block;
+  content: 'mainpage';
+  font-size: 7em;
+  text-align: center;
+  line-height: 650px;
+  color: #1a1a1a;
+}
+
+.kakaobank > li:nth-child(2) > a:hover::before {
+  display: block;
+  content: '[sub1] company map';
+  font-size: 5em;
+  text-align: center;
+  line-height: 650px;
+  color: #1a1a1a;
+}
+
+.kakaobank > li:nth-child(3) > a:hover::before {
+  display: block;
+  content: '[sub2] product detail';
+  font-size: 5em;
+  text-align: center;
+  line-height: 650px;
+  color: #1a1a1a;
+}
+
+.kakaobank {background-color: rgba(87, 87, 87, 0.562);}
+.kakaobank > li:first-child {
+  background: url(../img/kakao-detail-index.png) no-repeat;
+  background-size: cover;
+}
+
+.kakaobank > li:nth-child(2) {
+  background: url(../img/kakao-detail-map.png) no-repeat;
+  background-size: cover;
+}
+
+.kakaobank > li:nth-child(3) {
+  background: url(../img/kakao-detail-safebox.png) no-repeat;
+  background-size: cover;
+}
+
+.naver > li:first-child {
+  background: url(../img/naver-main.png) no-repeat; background-size: cover;
+}
+.naver > li:first-child > a:hover::before {
+  display: block;
+  content: 'mainpage';
+  font-size: 7em;
+  text-align: center;
+  line-height: 650px;
+  color: #1a1a1a;
+}
+
+.hyperconnect > li:first-child {
+  background: url(../img/hyperconnect-main.png) no-repeat;
+  background-size: cover;
+}
+
+.hyperconnect > li:nth-child(2) {
+  background: url(../img/hyperconnect-news.png) no-repeat;
+  background-size: cover;
+}
+
+.hyperconnect > li:first-child > a:hover::before {
+  display: block;
+  content: 'mainpage';
+  font-size: 7em;
+  text-align: center;
+  line-height: 650px;
+  color: #1a1a1a;
+}
+
+.hyperconnect > li:nth-child(2) > a:hover::before {
+  display: block;
+  content: '[sub] company news';
+  font-size: 6em;
+  text-align: center;
+  line-height: 650px;
+  color: #1a1a1a;
+}
+
+main .box {white-space: nowrap; overflow-x: scroll; overflow-y: hidden;}
+main .box2 {white-space: normal;}
+main .box > li {width: 200px; height: 200px; background-color: #ff00c1; display: inline-block;}
+
+
+/* 2번째 페이지 */
+#content_2 > .logo {line-height: 0.8; margin-top: 90px; font-size: 25rem; margin-left: -50px;}
+.discript {font-family: 'Song Myung', serif; font-size: 3rem; position: absolute; top: 50%; right: 30%; transform: translateY(-50%);}
+.discript > span {font-family: 'Song Myung'; font-size: 1.7rem; border: 1px solid #000; border-radius: 5px;}
+.discript > strong {font-family: 'Song Myung'; font-size: 2.3rem;border: none; font-weight: lighter;}
+.discript > p {font-family: 'Song Myung', serif; font-size: 1.5rem; line-height: 1.4;}
+
+
+
+/* 3번째 페이지 */
+#content_3 {background-color: #eef1fd;}
+#content_3 > video {position: absolute; top: 40px; left: 40px; width: 50px; height: 50px;}
+#content_3 > div {float: left; width: 50%; height: 100%;}
+
+.left {border-right: 3px dashed rgba(137, 43, 226, 0.301);}
+.left > div {width: 400px; height: 400px; margin: 100px 0 0 330px; position: relative;}
+.left > div > span.photo {
+  display: inline-block;
+  position: absolute;
+  width: 278px;
+  height: 278px;
+  border-radius: 100%;
+  background: url(../img/me.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.25);
+  top: 20px;
+  z-index: 1;
+}
+.left > div > span.circle {
+  display: inline-block;
+  position: absolute;
+  background: url(../img/circle.png) no-repeat;
+  width: 66px;
+  height: 66px;
+  left: 290px;
+  top: 15px;
+  z-index: 1;
+}
+.left > div > span.rect {
+  display: inline-block;
+  position: absolute;
+  background-color: #9e80d4;
+  width: 233px;
+  height: 261px;
+  transform: rotate(20deg);
+  left: 150px;
+  top: 50px;
+  z-index: 0;
+}
+.left > div > span.vector {
+  display: inline-block;
+  position: absolute;
+  width: 170px;
+  height: 20px;
+  top: 300px;
+  left: 190px;
+  background: url(../img/vector.png) repeat-x;
+  background-size: cover;
+  -webkit-animation: flow 3s linear infinite;
+}
+
+.left > ul {
+  width: 200px;
+  margin-left: 300px;
+}
+.left > ul > li {
+  border-bottom: 1px solid #000;
+  font-family: 'Nanumsquare';
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 400;
+  padding-bottom: 5px;
+  text-align: right;
+  color: rgb(0, 0, 0);
+}
+.left > ul > li + li {
+  margin-top: 10px;
+}
+
+.left > div > span.vector2 {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  left: 200px;
+  top: 550px;
+  background: url(../img/vector2.png) no-repeat;
+  background-size: cover;
+}
+
+.left > div > span.circle {
+  -webkit-animation: bounce 3s ease-in-out infinite;
+}
+.left > div > span.vector2 {
+  -webkit-animation: roll 5s linear infinite;
+}
+
+@-webkit-keyframes roll {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes flow {
+  0% {
+    background-position: -100px 0;
+  }
+  100% {
+    background-position: 100px 0;
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(50px) translateX(30px);
+  }
+  50% {
+    transform: translateY(30px) translateX(50px);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+.right {position: relative; overflow: hidden;}
+.right > span {
+  position: absolute;
+  display: inline-block;
+  top: 80px; left: 645px;
+  width: 10px; height: 700px;
+  border-radius: 30px;
+  background: -webkit-linear-gradient(top, #aa4b6b, #8456aa, #543b99, #8456aa, #aa4b6b);
+  background: linear-gradient(top, #aa4b6b, #8456aa, #543b99, #8456aa, #aa4b6b);
+  background-size: 50px 1000px;
+  color: transparent;
+  -webkit-animation: animate-logo 5s linear infinite forwards;
+}
+
+.right > ul {
+  margin: 200px 0 0 150px;
+  width: 440px;
+}
+.right > ul > li {
+  position: relative;
+  padding-top: 10px;
+  padding-left: 20px;
+  font-family: 'Nanumsquare';
+  font-size: 1.1rem;
+  line-height: 1.6;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+}
+.right > ul > li > strong {
+  font-family: 'Nanumsquare';
+  font-weight: 900;
+}
+.right > ul > li > p {font-family: 'Nanumsquare'; font-size: 1rem;}
+.right > ul > li + li {
+  margin-top: 60px;
+}
+.right > ul > li::after {
+  content: '';
+  display: block;
+  width: 50px; height: 50px;
+  position: absolute;
+  top: -30px; right: -85px;
+  background-image: url(../img/001-coins.svg);
+}
+.right > ul > li:nth-child(2)::after {
+  background-image: url(../img/002-grocery.svg);
+}
+.right > ul > li:nth-child(3)::after {
+  background-image: url(../img/003-presentation.svg);
+}
+.right > ul > li:nth-child(4)::after {
+  background-image: url(../img/004-check.svg);
+}
+
+#content_3 > .middle {display: inline-block; position: absolute; top: 50%; left: 0; writing-mode: vertical-lr; margin: 0; line-height: 0.75; transform: translateY(-50%);}
+
+
+/* 4번째페이지 */
+#content_4 > .middle {display: inline-block; position: absolute; top: 50%; right: 0; writing-mode: vertical-lr; margin: 0; line-height: 0.78; transform: translateY(-50%) rotate(180deg);}
+#content_4 {background: url(../img/2.gif) no-repeat; background-size: cover;}
+#content_4 > .icon {width: 130px; height: 130px; position: absolute; -webkit-animation: float 4s ease-in-out infinite;}
+#content_4 > .icon > img {width: 100%;}
+#content_4 > .icon > img {transition: all .5s ease;}
+#content_4 > .photo {top: 100px; left: 200px;}
+#content_4 > .illust {top: 200px; left: 500px; -webkit-animation-duration: 3s;}
+#content_4 > .ppt {top: 400px; left: 300px; -webkit-animation-duration: 3.5s;}
+#content_4 > .html {top: 170px; left: 850px; -webkit-animation-duration: 5.4s;}
+#content_4 > .css {top: 450px; left: 750px;}
+#content_4 > .js {top: 300px; left: 1150px; -webkit-animation-duration: 3s;}
+#content_4 > .android {top: 700px; left: 900px; -webkit-animation-duration: 3.7s;}
+#content_4 > .vue {top: 650px; left: 1200px; -webkit-animation-duration: 2.8s;}
+#content_4 > .sql {top: 650px; left: 150px; -webkit-animation-duration: 4.1s;}
+#content_4 > .java {top: 700px; left: 500px; -webkit-animation-duration: 4.7s;}
+/* #content_4 > .icon:hover {transform: scale( 1.5 );} */
+#content_4 > .icon:hover img {transform: scale(1.2);}
+
+@-webkit-keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+/* 외부소스 */
+.logo {
+  position: absolute;
+  font-size: 20rem;
+  text-align: center;
+  background: -webkit-linear-gradient(left, #12c2e9, #c471ed, #f64f59, #c471ed, #12c2e9);
+  background: linear-gradient(left, #12c2e9, #c471ed, #f64f59, #c471ed, #12c2e9);
+  background-size: 3200px 200px;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-animation: animate-logo;
+  -webkit-animation-delay: 0;
+  -webkit-animation-duration: 7s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-fill-mode: forwards;
+  transition: font-size 500ms ease-in-out;
+}
+@-webkit-keyframes animate-logo {
+  0% {
+    background-position: 0 3200px;
+  }
+  100% {
+    background-position: 3200px 0;
+  }
+}
+
+.glitch {
+  position: relative;
+  color: #000;
+  font-size: 5em;
+  letter-spacing: .5em;
+  /* Animation provies a slight random skew. Check bottom of doc
+  for more information on how to random skew. */
+  /* animation: glitch-skew 1s infinite linear alternate-reverse; */
+}
+.glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: 2px;
+  text-shadow: -2px 0 #ff00c1;
+  /* Creates an initial clip for our glitch. This works in
+  a typical top,right,bottom,left fashion and creates a mask
+  to only show a certain part of the glitch at a time. */
+  clip: rect(44px, 450px, 56px, 0);
+  /* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
+  with an alternating animation to keep things fresh. */
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: -2px;
+  text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+  animation: glitch-anim2 1s infinite linear alternate-reverse;
+}
+
+/* Creates an animation with 20 steaps. For each step, it calculates 
+a percentage for the specific step. It then generates a random clip
+box to be used for the random glitch effect. Also adds a very subtle
+skew to change the 'thickness' of the glitch.*/
+@-webkit-keyframes glitch-anim {
+  0% {
+    clip: rect(14px, 9999px, 23px, 0);
+    transform: skew(0.13deg);
+  }
+  5% {
+    clip: rect(100px, 9999px, 63px, 0);
+    transform: skew(0.55deg);
+  }
+  10% {
+    clip: rect(58px, 9999px, 46px, 0);
+    transform: skew(0.33deg);
+  }
+  15% {
+    clip: rect(94px, 9999px, 31px, 0);
+    transform: skew(0.66deg);
+  }
+  20% {
+    clip: rect(77px, 9999px, 97px, 0);
+    transform: skew(0.32deg);
+  }
+  25% {
+    clip: rect(95px, 9999px, 57px, 0);
+    transform: skew(0.35deg);
+  }
+  30% {
+    clip: rect(74px, 9999px, 11px, 0);
+    transform: skew(0.57deg);
+  }
+  35% {
+    clip: rect(97px, 9999px, 42px, 0);
+    transform: skew(0.22deg);
+  }
+  40% {
+    clip: rect(24px, 9999px, 6px, 0);
+    transform: skew(1deg);
+  }
+  45% {
+    clip: rect(99px, 9999px, 74px, 0);
+    transform: skew(0.42deg);
+  }
+  50% {
+    clip: rect(32px, 9999px, 67px, 0);
+    transform: skew(0.24deg);
+  }
+  55% {
+    clip: rect(81px, 9999px, 59px, 0);
+    transform: skew(0.65deg);
+  }
+  60% {
+    clip: rect(52px, 9999px, 1px, 0);
+    transform: skew(0.51deg);
+  }
+  65% {
+    clip: rect(48px, 9999px, 1px, 0);
+    transform: skew(0.08deg);
+  }
+  70% {
+    clip: rect(42px, 9999px, 10px, 0);
+    transform: skew(0.1deg);
+  }
+  75% {
+    clip: rect(34px, 9999px, 17px, 0);
+    transform: skew(0.15deg);
+  }
+  80% {
+    clip: rect(94px, 9999px, 32px, 0);
+    transform: skew(0.89deg);
+  }
+  85% {
+    clip: rect(29px, 9999px, 92px, 0);
+    transform: skew(0.74deg);
+  }
+  90% {
+    clip: rect(85px, 9999px, 51px, 0);
+    transform: skew(1deg);
+  }
+  95% {
+    clip: rect(83px, 9999px, 34px, 0);
+    transform: skew(0.48deg);
+  }
+  100% {
+    clip: rect(22px, 9999px, 81px, 0);
+    transform: skew(0.95deg);
+  }
+}
+@-webkit-keyframes glitch-anim2 {
+  0% {
+    clip: rect(81px, 9999px, 78px, 0);
+    transform: skew(0.04deg);
+  }
+  5% {
+    clip: rect(22px, 9999px, 82px, 0);
+    transform: skew(0.08deg);
+  }
+  10% {
+    clip: rect(13px, 9999px, 47px, 0);
+    transform: skew(0.06deg);
+  }
+  15% {
+    clip: rect(4px, 9999px, 67px, 0);
+    transform: skew(0.84deg);
+  }
+  20% {
+    clip: rect(43px, 9999px, 44px, 0);
+    transform: skew(0.44deg);
+  }
+  25% {
+    clip: rect(60px, 9999px, 76px, 0);
+    transform: skew(0.91deg);
+  }
+  30% {
+    clip: rect(89px, 9999px, 58px, 0);
+    transform: skew(0.43deg);
+  }
+  35% {
+    clip: rect(33px, 9999px, 30px, 0);
+    transform: skew(0.55deg);
+  }
+  40% {
+    clip: rect(42px, 9999px, 26px, 0);
+    transform: skew(0.64deg);
+  }
+  45% {
+    clip: rect(4px, 9999px, 55px, 0);
+    transform: skew(0.27deg);
+  }
+  50% {
+    clip: rect(65px, 9999px, 11px, 0);
+    transform: skew(0.03deg);
+  }
+  55% {
+    clip: rect(99px, 9999px, 51px, 0);
+    transform: skew(0.38deg);
+  }
+  60% {
+    clip: rect(98px, 9999px, 8px, 0);
+    transform: skew(0.16deg);
+  }
+  65% {
+    clip: rect(73px, 9999px, 62px, 0);
+    transform: skew(0.91deg);
+  }
+  70% {
+    clip: rect(81px, 9999px, 6px, 0);
+    transform: skew(0.59deg);
+  }
+  75% {
+    clip: rect(100px, 9999px, 69px, 0);
+    transform: skew(0.7deg);
+  }
+  80% {
+    clip: rect(51px, 9999px, 89px, 0);
+    transform: skew(0.11deg);
+  }
+  85% {
+    clip: rect(70px, 9999px, 1px, 0);
+    transform: skew(0.3deg);
+  }
+  90% {
+    clip: rect(77px, 9999px, 2px, 0);
+    transform: skew(0.82deg);
+  }
+  95% {
+    clip: rect(54px, 9999px, 4px, 0);
+    transform: skew(0.1deg);
+  }
+  100% {
+    clip: rect(75px, 9999px, 57px, 0);
+    transform: skew(0.26deg);
+  }
+}
+@-webkit-keyframes glitch-skew {
+  0% {
+    transform: skew(-2deg);
+  }
+  10% {
+    transform: skew(5deg);
+  }
+  20% {
+    transform: skew(-1deg);
+  }
+  30% {
+    transform: skew(3deg);
+  }
+  40% {
+    transform: skew(-4deg);
+  }
+  50% {
+    transform: skew(3deg);
+  }
+  60% {
+    transform: skew(3deg);
+  }
+  70% {
+    transform: skew(-2deg);
+  }
+  80% {
+    transform: skew(-4deg);
+  }
+  90% {
+    transform: skew(4deg);
+  }
+  100% {
+    transform: skew(-2deg);
+  }
+}
+
+
+/* 반응형 */
+@media screen and (max-width : 700px) {
+  .glitch {font-size: 2em;}
+  header {height: 200px; line-height: 200px;}
+  h1 {margin: 0;}
+  aside {width: auto; right: 20px; bottom: auto; padding-top: 15px;}
+  aside > ul {overflow: hidden;}
+  aside > ul > li {float: left;}
+  aside > ul > li + li {margin-top: 0; margin-left: 15px;}
+  aside > span.btn {top: 60px; left:-20px;}
+}
+
+@media screen and (max-width : 520px) {
+  h1 {line-height: normal; margin-top: 85px;}
+}

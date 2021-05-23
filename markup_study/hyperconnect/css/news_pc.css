@@ -1,0 +1,48 @@
+header {position: relative; height: 120px; overflow: hidden;}
+.header_wrap {position: fixed; width: 100%; transition: background .3s ease;}
+
+main {position: relative; width: 76%; margin: 0 auto; padding-top: 70px; overflow: hidden;}
+main > section {
+    float: left; 
+    width: 80%; 
+    position: relative; 
+    height: 0; 
+    opacity: 0; 
+    overflow: hidden;
+}
+/* main > section > * {transition: all .5s ease;} */
+main > section > h1 {display: inline-block; padding-top: 100px; font-size: 60px; transition: all .4s ease; min-width: 486px;}
+main > section > article {width: 530px; height: 600px;}
+main > section > .news_1 {top: 110px; scale: 1.2; transition: all .8s ease;}
+main > section > .news_2 {left:600px; scale: 1.2; transition: all .5s ease;}
+main > section > article > a {display: block;}
+main > section > article img {width: 500px; float: left;}
+main > section > article .date {float: left; writing-mode: vertical-lr;}
+main > section > article h4 {clear: both; padding-top: 30px; font-size: 39px;}
+main > section > article p {margin-top: 10px;font-size: 20px;}
+main > nav {float: right; width: 20%; text-align: right;}
+main > nav > ul > li {font-size: 29px;}
+main > nav > ul > li + li {margin-top: 30px;}
+main > nav > ul > li > a {color: gray; font-weight: 700;}
+main > nav > ul > li.on > a {color: #000;}
+.culture article {display: inline-block; position: absolute;}
+.culture .news_1 {top: 250px; left: 0;}
+.culture .news_2 {top: 100px; right: 0;}
+.press article {display: inline-block; position: absolute;}
+.press .news_4 {top: 350px; right: 0;}
+.press .news_5 {top: 250px; left: 0;}
+.press .news_6 {top: 100px; right: 0; height: 350px;}
+
+
+main > section.on {opacity: 1; margin-bottom: 100px; transition: all 1s ease;}
+main > .culture.on {height: 890px; display: block;}
+main > .press.on {height: 1000px; display: block;}
+main > section.on > article {scale: 1; transition: all .4s ease;}
+@media (max-width: 1838px) {
+    main > section > h1 {transform: translateX(-50%); margin-left: 50%;}
+    .culture .news_1 {transform: translateX(-50%); margin-left: 50%;}
+    .culture .news_2 {transform: translateX(-50%); margin-left: 50%; top: 250px; left: 0;}
+    .press .news_4 {top: 70px; margin-left: 50%; right: auto; left: 0;}
+    main > section > .news_5 {transform: translateX(-50%); margin-left: 50%;}
+    main > section > .news_6 {transform: translateX(-50%); margin-left: 50%; top: 0; left: 0;}
+}

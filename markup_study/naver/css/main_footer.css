@@ -1,0 +1,135 @@
+footer {
+    width: 100%;
+    background-color: #f8f9fa;
+}
+
+.footer_wrap {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 74px 0 70px;
+    text-align: center;
+    position: relative;
+}
+
+.footer_logo {
+    position: absolute;
+    top: 76px;
+    left: 30px;
+    width: 63px;
+    height: 13px;
+    background: url(../img/footer_logo.png) no-repeat;
+}
+
+.footer_menu {
+    position: absolute;
+    top: 74px;
+    left: 105px;
+    font-size: 0;
+}
+
+.footer_menu > li {
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    margin: 0 10px;
+}
+
+.footer_menu > li::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: -10px;
+    width: 1px;
+    height: 13px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+.footer_menu > li:first-child::before {
+    display: none;
+}
+
+.footer_menu a {
+    color: #878890;
+}
+
+.affiliate_box {
+    position: absolute;
+    top: 74px;
+    right: 30px;
+}
+
+.btn_affiliate {
+    padding-right: 26px;
+    position: relative;
+    background-color: #f8f9fa;
+    border: none;
+}
+
+.affiliate_box .btn_affiliate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    background: url(../img/sprite.png) no-repeat;
+    background-position: -222px -26px;
+    background-size: 474px 1250px;
+    -webkit-background-size: 474px 1250px;
+}
+
+.affiliate_box:hover ul.affiliate_list {
+    display: block;
+}
+
+.affiliate_item > a:hover span::before, .affiliate_item > a:focus span::before {
+    display: block;
+}           
+
+ul.affiliate_list {
+    display: none;
+    position: absolute;
+    left: -68px;
+    bottom: 0px;
+    width: 200px;
+    padding: 27px 0 25px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+li.affiliate_item {
+    margin-top: 13px;
+}
+
+li.affiliate_item:first-child {
+    margin-top: 0;
+}
+
+.affiliate_item > a {
+    display: block;
+    padding: 0 24px;
+    font-size: 14px;
+    color: #878890;
+}
+
+.affiliate_item a:hover, .affiliate_item a:focus {
+    color: #00b843;
+}
+
+.affiliate_item > a span {
+    position: relative;
+}
+
+.affiliate_item > a:hover span::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -25px;
+    background: url(../img/sprite.png) no-repeat;
+    background-position: -104px -68px;
+    width: 18px;
+    height: 18px;
+    background-size: 474px 1250px;
+    -webkit-background-size: 474px 1250px;
+}

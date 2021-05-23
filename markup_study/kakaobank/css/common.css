@@ -1,0 +1,79 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'NanumBarunGothic';
+  src: local(NanumBarunGothic);
+  src: url("../font/NanumBarunGothic.eot");
+  src: url("../font/NanumBarunGothic.woff") format("woff"), url("https://www.navercorp.com/font/NanumBarunGothic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'NanumSquare-L';
+  src: local(NanumSquareOTFLight);
+  src: url("../font/NanumSquareOTFLight.eot");
+  src: url("../font/NanumSquareOTFLight.woff") format("woff"), url("../../font/NanumSquareOTFLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'NanumSquare';
+  src: local(NanumSquareOTFRegular);
+  src: url("../font/NanumSquareOTFRegular.eot");
+  src: url("../font/NanumSquareOTFRegular.woff") format("woff"), url("../../font/NanumSquareOTFRegular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'NanumSquare-B';
+  src: local(NanumSquareOTFBold);
+  src: url("../font/NanumSquareOTFBold.eot");
+  src: url("../font/NanumSquareOTFBold.woff") format("woff"), url("../../font/NanumSquareOTFBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'NanumSquare-EB';
+  src: local(NanumSquareOTFExtraBold);
+  src: url("../font/NanumSquareOTFExtraBold.eot");
+  src: url("../font/NanumSquareOTFExtraBold.woff") format("woff"), url("../../font/NanumSquareOTFExtraBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'KoPubWorld Dotum Bold';
+  src: local(KoPubWorld Dotum Bold);
+  src: url(../font/KoPubWorld\ Dotum\ Bold.ttf);
+}
+@font-face {
+  font-family: 'KoPubWorld Dotum Light';
+  src: local(KoPubWorld Dotum Light);
+  src: url(../font/KoPubWorld\ Dotum\ Light.ttf);
+}
+@font-face {
+  font-family: 'KoPubWorld Dotum Medium';
+  src: local(KoPubWorld Dotum Medium);
+  src: url(../font/KoPubWorld\ Dotum\ Medium.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  
+}
+
+body,
+html {
+  height: 100%;
+  font-style: normal;
+  line-height: 1.4;
+  -webkit-text-size-adjust: none;
+}
+
+#wrap {
+  position: relative;
+  height: auto;
+}
+
+.container {
+ 	  width: 100%;
+    display: block;
+    font-family: 'KoPubWorld Dotum Medium';
+}
+
+::selection {
+  background: #FFE400;
+}

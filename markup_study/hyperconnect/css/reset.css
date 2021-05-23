@@ -1,0 +1,43 @@
+body,h1,h2,h3,h4,h5,h6,p,a,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,
+button, select{
+  margin: 0;
+  padding: 0;
+}
+
+li,
+ol,
+ul {
+  list-style: none;
+}
+
+fieldset
+{
+  border: 0;
+}
+
+img {
+  vertical-align: top;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+.blind {
+    visibility: hidden;
+    text-indent: -10000px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}

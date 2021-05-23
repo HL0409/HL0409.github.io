@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹퍼블리셔 최한슬 포트폴리오</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/button.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" media="screen and (max-width : 800px)" href="css/index_pad.css" />
+    <link rel="stylesheet" media="screen and (max-width : 500px)" href="css/index_mobile.css" />
+    <script src="js/mySketch.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@0.9.0/lib/p5.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Damion&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1"
+        xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" class="svg-sprite">
+        <defs>
+            <filter id="filter">
+                <feTurbulence type="fractalNoise" baseFrequency="0.000001 0.000001" numOctaves="1" result="warp" seed="1">
+                </feTurbulence>
+                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp">
+                </feDisplacementMap>
+            </filter>
+        </defs>
+    </svg>
+    
+</head>
+<body>
+    <div class="loading">
+        <div class="loader loader-7"></div>
+    </div>
+    <header>
+        <h1 class="glitch" data-text="Seul's Portfolio">Seul's Portfolio</h1>
+    </header>
+    <aside>
+        <ul>
+            <li class="mail"><a href="#"></a></li>
+            <li><a href="https://www.facebook.com/myhatd" target="_blank"></a></li>
+            <li><a href="https://www.linkedin.com/in/hanseul-choi/" target="_blank"></a></li>
+            <li><a href="https://github.com/Shuriflame/Shuriflame.github.io" target="_blank"></a></li>
+        </ul>
+        <span class="btn btn-small btn-light btn-glitch">cyccok@naver.com</span>
+    </aside>
+    <main>
+        <div id="content_1" class="content">
+            <ul class="works">
+                <li id="kakaobank" class="btn btn-small btn-dark btn-glitch"><a href="">kakaobank</a></li>
+                <li id="naver" class="btn btn-small btn-dark btn-glitch"><a href="">naver</a></li>
+                <li id="hyperconnect" class="btn btn-small btn-dark btn-glitch"><a href="">hyperconnect</a></li>
+            </ul>
+            <ul class="detail kakaobank">
+                <li><a href="kakaobank/index.html" target="_blank"></a></li>
+                <li><a href="kakaobank/pages/company_map.html" target="_blank"></a></li>
+                <li><a href="kakaobank/pages/safebox.html" target="_blank"></a></li>
+            </ul>
+            <ul class="detail naver">
+                <li><a href="naver/index.html" target="_blank"></a></li>
+            </ul>
+            <ul class="detail hyperconnect">
+                <li><a href="hyperconnect/index.html" target="_blank"></a></li>
+                <li><a href="hyperconnect/news.html" target="_blank"></a></li>
+            </ul>
+        </div>
+        <div id="content_2" class="content">
+            <div class="logo">
+                han<br>seul
+            </div>
+            <div class="discript">
+                [한:슬]<br>
+                <span>명</span>
+                <strong>크고 슬기롭게 자라라!</strong>
+                <br><br>
+                <p>
+                    '트렌디하지만 남들과는 다르게!'<br><br>
+                    컴퓨터과학 전공으로 개발을 공부하다<br>
+                    기획자의 길을 걷고, 디자인을 독학하다<br>
+                    개발의 참맛을 알게되어 현재는 웹/앱개발,<br>각종 프레임워크를 열렬히 공부중입니다 :)<br><br>
+                    <!-- CSS와 JavaScript를 활용한 동적 모션을 좋아하고,<br>컴포넌트 단위의 유지보수에 최적화된 마크업에<br>관심이 많습니다. -->
+                </p>
+            </div>
+        </div>
+        <div id="content_3" class="content">
+            <!-- <video src="img/logo_f5.mp4" autoplay loop muted></video> -->
+            <div class="left">
+                <div>
+                    <span class="photo"></span>
+                    <span class="circle"></span>
+                    <span class="rect"></span>
+                    <span class="vector"></span>
+                    <span class="vector2"></span>
+                </div>
+                <ul>
+                    <li>최한슬</li>
+                    <li>1994. 06. 04</li>
+                    <li>cyccok@naver.com</li>
+                    <li>010-0000-0000</li>
+                </ul>
+            </div>
+            <div class="right">
+                <span></span>
+                <ul>
+                    <li><strong>2016 ~ 2017</strong><br>
+                        스타트업 핫드. 콘텐츠기획
+                        <p>
+                            페이스북 페이지 콘텐츠 크리에이터<br>
+                            홈페이지 내 리뷰 콘텐츠 기획, 제작
+                        </p>
+                    </li>
+                    <li><strong>2017 ~ 2018</strong><br>
+                        창업동아리 Trendata
+                        <p>
+                            경기대학교 글로컬 창업경진대회 우수상 수상<br>
+                            평창 ICT 동계 올림픽 아이디어 공모전 장려상 수상
+                        </p>
+                    </li>
+                    <li><strong>2018 ~ 2019</strong><br>
+                        현대드림투어 영업기획팀
+                        <p>
+                            상품 이벤트 기획 운영 진행 및 클라이언트 관리
+                        </p>
+                    </li>
+                    <li><strong>2020.05 ~ 2020.08</strong><br>
+                        UX/UI 웹퍼블리셔 교육</li>
+                </ul>
+            </div>
+            <span class="middle logo">life</span>
+        </div>
+        <div id="content_4" class="content">
+            <span class="middle logo">skill</span>
+            <div class="icon photo"><img src="img/ico01-photo.png" alt="포토샵 아이콘" /></div>
+            <div class="icon illust"><img src="img/ico02-illust.png" alt="일러스트 아이콘" /></div>
+            <div class="icon ppt"><img src="img/ico03-ppt.png" alt="파워포인트 아이콘" /></div>
+            <div class="icon html"><img src="img/ico04-html.png" alt="html 아이콘" /></div>
+            <div class="icon css"><img src="img/ico05-css.png" alt="css 아이콘" /></div>
+            <div class="icon js"><img src="img/ico06-js.png" alt="자바스크립트 아이콘" /></div>
+            <div class="icon android"><img src="img/ico07-android.png" alt="안드로이드 스튜디오 아이콘" /></div>
+            <div class="icon vue"><img src="img/ico08-vue.png" alt="뷰 아이콘" /></div>
+            <div class="icon sql"><img src="img/ico09-sql.png" alt="mysql 아이콘" /></div>
+            <div class="icon java"><img src="img/ico10-java.png" alt="자바 아이콘" /></div>
+        </div>
+    </main>
+</body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
+<script type="text/javascript" src="js/button.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</html>
