@@ -8,7 +8,6 @@ body {
   width: 100vw;
   height: 100vh;
 }
-
 .contentWrap .album {
   position: absolute;
   top: 47%;
@@ -16,9 +15,8 @@ body {
   transform: translate(-50%, -50%);
   width: 600px;
   height: 400px;
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
-
 @media only screen and (max-width: 720px) {
   .contentWrap .album {
     top: 40%;
@@ -26,26 +24,22 @@ body {
     height: 200px;
   }
 }
-
 .contentWrap .album .coverImg {
   position: absolute;
   width: 400px;
   height: 400px;
   box-shadow: 2px 14px 40px rgba(0, 0, 0, 0.3);
 }
-
 .contentWrap .album .coverImg img {
   width: inherit;
   height: inherit;
 }
-
 @media only screen and (max-width: 720px) {
   .contentWrap .album .coverImg {
     width: 250px;
     height: 250px;
   }
 }
-
 .contentWrap .album .disk {
   position: absolute;
   top: 4px;
@@ -58,14 +52,12 @@ body {
   transition: left 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation: rotateAni 10s ease infinite;
 }
-
 @media only screen and (max-width: 720px) {
   .contentWrap .album .disk {
     width: 244px;
     height: 244px;
   }
 }
-
 .contentWrap .album .disk .disk_inner {
   position: absolute;
   top: 50%;
@@ -77,14 +69,12 @@ body {
   border-radius: 50%;
   border: 3px dashed rgba(255, 255, 255, 0.4);
 }
-
 @media only screen and (max-width: 720px) {
   .contentWrap .album .disk .disk_inner {
     width: 100px;
     height: 100px;
   }
 }
-
 .contentWrap .album .disk .disk_inner::after {
   position: absolute;
   content: "";
@@ -96,7 +86,6 @@ body {
   background-color: black;
   border-radius: 50%;
 }
-
 .contentWrap .album:hover .disk {
   left: 40%;
   transition-delay: 0s;
@@ -108,26 +97,22 @@ body {
   text-align: center;
   width: 100%;
 }
-
 .buttonWrap button {
   padding: 6px 20px;
   margin: 0 3px;
   background-color: #000;
   color: #fff;
-  transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
 }
-
 .buttonWrap button:hover {
   background-color: #fff;
   color: #000;
 }
-
 .buttonWrap .pointWrap {
   position: relative;
   display: inline-block;
   padding: 0 10px;
 }
-
 .buttonWrap .pointWrap li {
   position: relative;
   display: inline-block;
@@ -138,9 +123,8 @@ body {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 50%;
-  transition: background .3s ease-out;
+  transition: background 0.3s ease-out;
 }
-
 .buttonWrap .pointWrap li.active {
   background-color: black;
 }
@@ -153,3 +137,5 @@ body {
     transform: rotate(360deg);
   }
 }
+
+/*# sourceMappingURL=sample.css.map */

@@ -2,7 +2,7 @@ $mobile: "only screen and (max-width: 720px)";
 $t_size : 16px;
 
 body {
-    overflow: hidden;
+    // overflow: hidden;
     font-size: $t_size;
     
 }
@@ -125,8 +125,8 @@ body {
 }
 
 .buttonWrap {
-    position : fixed;
-    bottom : 5vh;
+    position : absolute;
+    bottom : 0;
     text-align: center;
     width: 100%;
 
@@ -165,6 +165,10 @@ body {
             }
         }
     }
+}
+
+.desc {
+    
 }
 
 @keyframes rotateAni {
