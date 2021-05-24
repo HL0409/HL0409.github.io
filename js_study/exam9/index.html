@@ -160,8 +160,10 @@ body, #wrapper{min-width:unset;}
                 },
 				bindGlobalEvents : function (type) {
 					if (type) {
+						$(win).on('scroll', this.scrollFunc.bind(this));
 						$(win).on('resize', this.resizeFunc.bind(this));	//브라우저에서 일어나는 이벤트
 					} else {	
+						$(win).off('scroll');
 						$(win).off('resize');
 					}
 				},
@@ -173,8 +175,8 @@ body, #wrapper{min-width:unset;}
 					// 각 섹션의 offset top값을 변수에 정해놓는다.
 				},
 				bindEvents : function () {
-					$(win).on('scroll', this.scrollFunc.bind(this));
 					this.quick_item.on('click', this.achorMotionFunc.bind(this));
+					$(win).on('scroll', this.scrollFunc.bind(this));
 				},
 				resizeFunc : function () {
 					this.winWidth = Util.winSize().w;
@@ -219,7 +221,8 @@ body, #wrapper{min-width:unset;}
 						if (!this.quick_menu.hasClass(this.opts.fixedClass)) {
 							this.quick_menu.addClass(this.opts.fixedClass);
 						}
-						this.achorActiveFunc();
+						win.clearTimeout(this.scrollEndFunc);	//클리어를 계속해서 밑에가 실행 안되게
+						this.scrollEndFunc = win.setTimeout(this.achorActiveFunc.bind(this), 150);
 					}
                     // this.winTop이 섹션n top 값보다 크면 li n에 .active 추가한 후 active가 있는 li 클래스 지우기
 				},
