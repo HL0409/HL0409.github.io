@@ -94,9 +94,9 @@ body, #wrapper{min-width:unset;}
             <div class="quick_menu">
                 <strong class="blind">quick menu</strong>
                 <ul class="quick_list">
-                <li><a href="#one" class="requirements"><span class="sp">01 REQUIREMENTS</span></a></li>
-                <li><a href="#two" class="benefits"><span class="sp">02 BENEFITS</span></a></li>
-                <li><a href="#three" class="apply"><span class="sp">03 APPLY</span></a></li>
+                <li><a href="#one" id="one" class="requirements"><span class="sp">01 REQUIREMENTS</span></a></li>
+                <li><a href="#two" id="two" class="benefits"><span class="sp">02 BENEFITS</span></a></li>
+                <li><a href="#three" id="three" class="apply"><span class="sp">03 APPLY</span></a></li>
                 <li><a href="https://www.daum.net" class="btn_top"><span class="sp">Go to top</span></a></li>
                 </ul>
             </div>
@@ -174,7 +174,7 @@ body, #wrapper{min-width:unset;}
 				},
 				bindEvents : function () {
 					$(win).on('scroll', this.scrollFunc.bind(this));
-					// this.quick_item.on('click', this.goToFunc.bind(this));
+					this.quick_item.on('click', this.achorMotionFunc.bind(this));
 				},
 				resizeFunc : function () {
 					this.winWidth = Util.winSize().w;
@@ -243,13 +243,16 @@ body, #wrapper{min-width:unset;}
 				activeItemFunc : function (num) {
 					this.quick_item.eq(num).addClass(this.opts.activeClass);
 				},
-				// goToFunc : function (e) {
-				// 	e.preventDefault();
-				// 	var target = $(e.currentTarget),
-				// 		targetIdx = target.parent().index(),
-				// 		targetId = $(target[0]).attr('id');
-				// 		console.log(targetId);
-				// }
+				achorMotionFunc : function (e) {
+					e.preventDefault();
+					var target = $(e.currentTarget),
+						targetIdx = target.parent().index(),
+						targetId = $(target).attr('id');
+					// console.log($(this.section[targetIdx]).position().top, targetIdx);
+					$('html,body').stop().animate({
+						scrollTop: $(this.section[targetIdx+1]).position().top
+					}, 600);
+				}
 			};
 			return stickyComponent;	
 		})();
