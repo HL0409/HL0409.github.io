@@ -222,7 +222,7 @@ body, #wrapper{min-width:unset;}
 							this.quick_menu.addClass(this.opts.fixedClass);
 						}
 						win.clearTimeout(this.scrollEndFunc);	//클리어를 계속해서 밑에가 실행 안되게
-						this.scrollEndFunc = win.setTimeout(this.achorActiveFunc.bind(this), 150);
+						this.scrollEndFunc = win.setTimeout(this.achorActiveFunc.bind(this), 100);
 					}
                     // this.winTop이 섹션n top 값보다 크면 li n에 .active 추가한 후 active가 있는 li 클래스 지우기
 				},
@@ -233,9 +233,11 @@ body, #wrapper{min-width:unset;}
 					} else if (this.winTop >= this.section2Top && this.winTop < this.section3Top) {
 						this.removeItemFunc();
 						this.activeItemFunc(1);
-					} else {
+					} else if (this.winTop >= this.section3Top) {
 						this.removeItemFunc();
 						this.activeItemFunc(2);
+					} else {
+						this.removeItemFunc();
 					}
 				},
 				removeItemFunc : function () {
