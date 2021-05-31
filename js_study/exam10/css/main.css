@@ -1612,7 +1612,7 @@ button.swiper-pagination-bullet {
   display: inline-block;
   width: 24px;
   height: 44px;
-  background: url("../imgs/ico-swiper-arrow.png") no-repeat;
+  background: url("../imgs/ico-swiper-arrow-black.png") no-repeat;
   background-size: 100% auto;
   vertical-align: middle;
   content: '';
@@ -10289,6 +10289,10 @@ button.swiper-pagination-bullet {
   color: #ad7b61;
 }
 
+.build-result-recommended .swiper-button-prev button:after, .build-result-recommended .swiper-button-next button:after {
+  content: none;
+}
+
 @media screen and (max-width: 1359px) {
   .build-result-hero__inner {
     padding: 89px 40px 97px;
@@ -10557,7 +10561,8 @@ button.swiper-pagination-bullet {
 }
 
 .build-result-recommended .swiper-pagination {
-  display: none;
+  /* display: none; */
+  position: relative;
 }
 
 @media screen and (max-width: 1359px) {
@@ -10585,6 +10590,7 @@ button.swiper-pagination-bullet {
     right: -3.1rem;
   }
   .build-result-recommended .swiper-button-prev button:after, .build-result-recommended .swiper-button-next button:after {
+    content: '';
     width: 22px;
     width: 2.2rem;
     height: 40px;
@@ -10698,6 +10704,7 @@ button.swiper-pagination-bullet {
     background-color: #cdcdcd;
   }
   .build-result-recommended .swiper-button-prev button:after, .build-result-recommended .swiper-button-next button:after {
+    content: '';
     width: 17px;
     width: 1.7rem;
     height: 31px;
@@ -12694,4 +12701,17 @@ button.swiper-pagination-bullet {
     -js-display: flex;
     display: flex;
   }
+}
+
+.swiper-pagination {
+  padding-top: 20px;
+}
+.swiper-pagination-bullet {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  background: #999;
+}
+.swiper-pagination-bullet-active {
+  background: #000;
 }
