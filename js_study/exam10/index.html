@@ -582,18 +582,19 @@
                             slidesPerView: 1,
                             spaceBetween: 20,
                             loop: true,
-                            loopAdditionalSlides: 1,
-                            pagination: false
+                            loopAdditionalSlides: 1 //마지막 슬라이드 다음 복제할 슬라이드 번호
                         },
                         1024: {
                             slidesPerView: 2,
                             spaceBetween: 30,
-                            pagination: false
+                            slideToClickedSlide : true, //클릭한 슬라이드로 이동
                         },
                         1280: {
                             slidesPerView: 3,
                             spaceBetween: 40,
-                            pagination: false
+                            autoplay: {
+                                disableOnInteraction: false
+                            }
                         }
                     },
                     navigation: {
@@ -603,7 +604,14 @@
                     pagination: {
                         el: '.swiper-pagination',
                         clickable: true
-                    }
+                    },
+                    autoplay: {
+                        disableOnInteraction: true  //인터랙션 후에 autoplay 멈추기
+                    },
+                    a11y: { //접근성
+                        prevSlideMessage: 'Previous slide',
+                        nextSlideMessage: 'Next slide',
+                    },
                 }
             };
             this.opts = Util.def(defParams, (args || {}));
@@ -613,9 +621,27 @@
         swiperComponent.prototype = {
             init : function () {
                 this.buildSwiper();
+                this.resizeFunc();
+                this.bindEvents(true)
             },
             buildSwiper : function () {
                 var swiper = new Swiper(this.obj, this.opts.swiperOpts);
+            },
+            resizeFunc : function () {
+                this.winWidth = Util.winSize().w;
+
+                win.clearTimeout(this.resizeEnd);
+                this.resizeEnd = win.setTimeout(this.resizeEndFunc.bind(this), 100);
+            },
+            resizeEndFunc : function () {
+                this.buildSwiper();
+            },
+            bindEvents : function (type) {
+                if (type) {
+                    $(win).on('resize', this.resizeFunc.bind(this));
+                } else {
+                    $(win).off('resize');
+                }
             }
         };
         return swiperComponent;
