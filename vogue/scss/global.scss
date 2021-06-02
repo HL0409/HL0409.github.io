@@ -197,6 +197,22 @@ a:hover {
 
 .header__main {
     text-align: center;
+    &.sticky {
+        .header__main {
+            &-logo {
+                position: absolute;
+                left: 10px;
+                img {
+                    width: 100px;
+                }
+            }
+            &-nav {
+                ul li {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
     &-nav {
         padding: 10px 0;
         .nav-lists {
@@ -216,7 +232,15 @@ a:hover {
 
             &.search {
                 position: relative;
+                display: inline-block;
                 width: 15px;
+                height: 15px;
+                background: url(../img/search-small.png) no-repeat;
+                background-size: contain;
+                transition: .6s;
+                &:hover {
+                    background-image: url(../img/search-small-red.png);
+                }
             }
         }
 
@@ -230,18 +254,6 @@ a:hover {
 
             img {
                 width: 100%;
-            }
-        }
-
-        .icon-search {
-            transition: color .3s;
-            &::before {
-                font-size: 16px;
-                content: '\e986';
-            }
-
-            &:hover {
-                color: #ff0000;
             }
         }
 
@@ -271,11 +283,6 @@ a:hover {
                 border: none;
                 &::placeholder {
                     color: #747474;
-                }
-            }
-            .icon-search {
-                &:hover {
-                    color: #fff;
                 }
             }
         }

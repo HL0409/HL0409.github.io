@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* Normalize */
 html {
   -webkit-text-size-adjust: none;
@@ -187,6 +186,16 @@ a:hover {
 .header__main {
   text-align: center;
 }
+.header__main.sticky .header__main-logo {
+  position: absolute;
+  left: 10px;
+}
+.header__main.sticky .header__main-logo img {
+  width: 100px;
+}
+.header__main.sticky .header__main-nav ul li {
+  font-size: 14px;
+}
 .header__main-nav {
   padding: 10px 0;
 }
@@ -206,7 +215,15 @@ a:hover {
 }
 .header__main-nav .nav-list.search {
   position: relative;
+  display: inline-block;
   width: 15px;
+  height: 15px;
+  background: url(../img/search-small.png) no-repeat;
+  background-size: contain;
+  transition: 0.6s;
+}
+.header__main-nav .nav-list.search:hover {
+  background-image: url(../img/search-small-red.png);
 }
 .header__main-nav .nav-link {
   display: flex;
@@ -218,16 +235,6 @@ a:hover {
 }
 .header__main-nav .nav-link img {
   width: 100%;
-}
-.header__main-nav .icon-search {
-  transition: color 0.3s;
-}
-.header__main-nav .icon-search::before {
-  font-size: 16px;
-  content: "";
-}
-.header__main-nav .icon-search:hover {
-  color: #ff0000;
 }
 .header__main-nav .search-form {
   display: none;
@@ -257,9 +264,6 @@ a:hover {
 }
 .header__main-nav .search-form input::placeholder {
   color: #747474;
-}
-.header__main-nav .search-form .icon-search:hover {
-  color: #fff;
 }
 
 /* main */
