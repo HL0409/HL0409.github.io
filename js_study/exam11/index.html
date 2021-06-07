@@ -145,6 +145,7 @@
                 this.buildScene();
             },
             setElements : function () {
+                this.parallaxWrapper = this.obj;
                 this.parallaxSection = this.obj.find(this.opts.parallaxSection);
                 this.parallaxWrap = this.parallaxSection.find(this.opts.parallaxWrap);
                 this.parallaxSpace = this.parallaxWrap.find(this.opts.parallaxSpace);
@@ -174,6 +175,7 @@
                     parallaxImgLeft = this.parallaxImgLeft,
                     parallaxImgRight = this.parallaxImgRight,
                     smagicOpts = this.opts.smagicOpts;
+                    console.log(this.obj.parent());
 
                 var sectionBox = new TimelineMax();
                 sectionBox.to(parallaxTxt.get(0), 0, {
@@ -184,25 +186,46 @@
                 })).addTo(this.controller).setPin(this.parallaxSection.get(0)).setTween(sectionBox);
 
                 var leftBox = new TimelineMax();
-                leftBox.fromTo(parallaxImgLeft.get(0), 1, {
-                    y : "0%"
-                }, {
-                    ease : Linear.easeNone,
-                    opacity : 0,
-                    y : "-300%"
-                });
+                var rightBox = new TimelineMax();
+                
+                if (this.obj.parent().hasClass('type-light')) {
+                    leftBox.fromTo(parallaxImgLeft.get(0), 1, {
+                        y : "0%"
+                    }, {
+                        ease : Linear.easeNone,
+                        opacity : 0,
+                        y : "-100%"
+                    });
+
+                    rightBox.fromTo(parallaxImgRight.get(0), 1, {
+                    x : "-80%"
+                    }, {
+                        ease : Linear.easeNone,
+                        opacity : 0,
+                        x : "200%"
+                    });
+                } else {
+                    leftBox.fromTo(parallaxImgLeft.get(0), 1, {
+                        y : "-100%"
+                    }, {
+                        ease : Linear.easeNone,
+                        opacity : 0,
+                        y : "200%"
+                    });
+
+                    rightBox.fromTo(parallaxImgRight.get(0), 1, {
+                    x : "0%"
+                    }, {
+                        ease : Linear.easeNone,
+                        opacity : 0,
+                        x : "-200%"
+                    });
+                }
+
                 new ScrollMagic.Scene(Util.def(smagicOpts, {
                     duration: '150%'
                 })).addTo(this.controller).setTween(leftBox);
 
-                var rightBox = new TimelineMax();
-                rightBox.fromTo(parallaxImgRight.get(0), 1, {
-                    y : "0%"
-                }, {
-                    ease : Linear.easeNone,
-                    opacity : 0,
-                    y : "-200%"
-                });
                 new ScrollMagic.Scene(Util.def(smagicOpts, {
                     duration: '125%'
                 })).addTo(this.controller).setTween(rightBox);
