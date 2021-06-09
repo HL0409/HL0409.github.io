@@ -74,8 +74,7 @@ a:hover {
 /* header */
 #header {
   position: relative;
-  box-shadow: rgba(0, 0, 0, 0.12) 0 2px 2px;
-  z-index: 1;
+  z-index: 20;
 }
 
 .ico {
@@ -93,7 +92,7 @@ a:hover {
   background-position: -16px -16px;
 }
 .ico ~ .ico {
-  margin-left: 20px;
+  margin-left: 22px;
 }
 
 .ico-link {
@@ -128,15 +127,21 @@ a:hover {
 .info-side .side-list {
   position: relative;
   float: left;
-  padding: 15px 10px;
   font-weight: 100;
 }
 .info-side .side-list + .side-list {
   border-left: 1px solid #e5e5e5;
 }
+.info-side .side-list.on {
+  padding: 15px 13px;
+}
 .info-side .side-list.on:hover .sel-lists {
   visibility: visible;
   opacity: 1;
+}
+.info-side .side-link {
+  display: block;
+  padding: 15px 13px;
 }
 .info-side .side-txt {
   font-size: 12px;
@@ -170,6 +175,26 @@ a:hover {
   color: #747474;
 }
 
+.fixed .header__info {
+  display: none;
+}
+.fixed .header__main {
+  position: fixed;
+}
+.fixed .header__main-logo {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+.fixed .header__main-logo img {
+  width: 100px;
+}
+.fixed .header__main-nav .nav-list {
+  margin-left: 35px;
+  font-size: 14px;
+}
+
 .header__info {
   display: flex;
   margin: 0 auto;
@@ -184,49 +209,50 @@ a:hover {
 }
 
 .header__main {
+  width: 100%;
+  background: white;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 2px 2px;
 }
-.header__main.sticky .header__main-logo {
-  position: absolute;
-  left: 10px;
-}
-.header__main.sticky .header__main-logo img {
-  width: 100px;
-}
-.header__main.sticky .header__main-nav ul li {
-  font-size: 14px;
+.header__main .logo-link {
+  display: inline-block;
 }
 .header__main-nav {
-  padding: 10px 0;
+  padding: 6px 40px;
 }
 .header__main-nav .nav-lists {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .header__main-nav .nav-list {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
+  margin-left: 45px;
 }
-.header__main-nav .nav-list ~ li {
-  margin-left: 40px;
+.header__main-nav .nav-list:first-child {
+  margin-left: 0;
 }
 .header__main-nav .nav-list.search {
   position: relative;
   display: inline-block;
   width: 15px;
-  height: 15px;
   background: url(../img/search-small.png) no-repeat;
+  background-position-y: center;
   background-size: contain;
-  transition: 0.6s;
+  transition: background 0.6s;
+  cursor: pointer;
 }
 .header__main-nav .nav-list.search:hover {
   background-image: url(../img/search-small-red.png);
 }
 .header__main-nav .nav-link {
   display: flex;
+  height: 40px;
+  line-height: 40px;
   align-items: center;
   transition: color 0.3s;
 }

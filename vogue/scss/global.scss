@@ -75,8 +75,7 @@ a:hover {
 /* header */
 #header {
     position: relative;
-    box-shadow: rgb(0 0 0 / 12%) 0 2px 2px;
-    z-index: 1;
+    z-index: 20;
 }
 
 .ico {
@@ -94,7 +93,7 @@ a:hover {
     }
     
     &~.ico {
-        margin-left: 20px;
+        margin-left: 22px;
     }
 }
 
@@ -132,15 +131,22 @@ a:hover {
         &-list {
             position: relative;
             float: left;
-            padding: 15px 10px;
             font-weight: 100;
             &+.side-list {
                 border-left: 1px solid #e5e5e5;
             }
-            &.on:hover .sel-lists {
-                visibility: visible;
-                opacity: 1;
+            &.on {
+                padding: 15px 13px;
+                &:hover .sel-lists {
+                    visibility: visible;
+                    opacity: 1;
+                }   
             }
+        }
+        
+        &-link {
+            display: block;
+            padding: 15px 13px;
         }
     
         &-txt {
@@ -182,6 +188,30 @@ a:hover {
     }
 }
 
+.fixed {
+    .header__info {
+        display: none;
+    }
+    .header__main {
+        position: fixed;
+        &-logo {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            img {
+                width: 100px;
+            }
+        }
+        &-nav {
+            .nav-list {
+                margin-left: 35px;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
 .header__info {
     display: flex;
     margin: 0 auto;
@@ -196,29 +226,22 @@ a:hover {
 }
 
 .header__main {
+    width: 100%;
+    background: white;
     text-align: center;
-    &.sticky {
-        .header__main {
-            &-logo {
-                position: absolute;
-                left: 10px;
-                img {
-                    width: 100px;
-                }
-            }
-            &-nav {
-                ul li {
-                    font-size: 14px;
-                }
-            }
-        }
+    box-shadow: rgb(0 0 0 / 12%) 0 2px 2px;
+    
+    .logo-link {
+        display: inline-block;
     }
+    
     &-nav {
-        padding: 10px 0;
+        padding: 6px 40px;
         .nav-lists {
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .nav-list {
@@ -226,18 +249,20 @@ a:hover {
             font-size: 16px;
             font-weight: bold;
             text-transform: uppercase;
-            &~li {
-                margin-left: 40px;
+            margin-left: 45px;
+            &:first-child {
+                margin-left: 0;
             }
 
             &.search {
                 position: relative;
                 display: inline-block;
                 width: 15px;
-                height: 15px;
                 background: url(../img/search-small.png) no-repeat;
+                background-position-y: center;
                 background-size: contain;
-                transition: .6s;
+                transition: background .6s;
+                cursor: pointer;
                 &:hover {
                     background-image: url(../img/search-small-red.png);
                 }
@@ -246,6 +271,8 @@ a:hover {
 
         .nav-link {
             display: flex;
+            height: 40px;
+            line-height: 40px;
             align-items: center;
             transition: color .3s;
             &:hover {
