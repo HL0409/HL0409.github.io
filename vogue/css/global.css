@@ -236,19 +236,6 @@ a:hover {
 .header__main-nav .nav-list:first-child {
   margin-left: 0;
 }
-.header__main-nav .nav-list.search {
-  position: relative;
-  display: inline-block;
-  width: 15px;
-  background: url(../img/search-small.png) no-repeat;
-  background-position-y: center;
-  background-size: contain;
-  transition: background 0.6s;
-  cursor: pointer;
-}
-.header__main-nav .nav-list.search:hover {
-  background-image: url(../img/search-small-red.png);
-}
 .header__main-nav .nav-link {
   display: flex;
   height: 40px;
@@ -262,7 +249,20 @@ a:hover {
 .header__main-nav .nav-link img {
   width: 100%;
 }
-.header__main-nav .search-form {
+.header__main .search {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  background: url(../img/search-small.png) no-repeat;
+  background-position-y: center;
+  background-size: contain;
+  transition: background 0.6s;
+  cursor: pointer;
+}
+.header__main .search:hover {
+  background-image: url(../img/search-small-red.png);
+}
+.header__main .search-form {
   display: none;
   position: absolute;
   top: 50%;
@@ -271,24 +271,24 @@ a:hover {
   background: #000;
   border: 1px solid #000;
 }
-.header__main-nav .search-form.on {
+.header__main .search-form.on {
   display: flex;
 }
-.header__main-nav .search-form button {
+.header__main .search-form button {
   padding: 5px;
   color: #fff;
   border-right: 1px solid #000;
   transition: all 0.3s;
 }
-.header__main-nav .search-form button:hover {
+.header__main .search-form button:hover {
   background: #ff0000;
   border-right-color: #ff0000;
 }
-.header__main-nav .search-form input {
+.header__main .search-form input {
   padding: 0 5px;
   border: none;
 }
-.header__main-nav .search-form input::placeholder {
+.header__main .search-form input::placeholder {
   color: #747474;
 }
 
@@ -297,7 +297,6 @@ a:hover {
   max-width: 1300px;
   margin: 0 auto;
   text-align: center;
-  background: lavenderblush;
 }
 .vg-main .bg {
   position: absolute;
@@ -322,7 +321,8 @@ a:hover {
   border: 20px solid #da0000;
 }
 .vg-main .article-img {
-  width: 100%;
+  display: block;
+  height: 100%;
   mix-blend-mode: multiply;
 }
 .vg-main .article-title {
@@ -336,13 +336,26 @@ a:hover {
   font-size: 33px;
   z-index: 10;
 }
+.vg-main__article {
+  display: block;
+  width: 33.333%;
+  overflow: hidden;
+}
+.vg-main__article.large {
+  width: 100%;
+}
+.vg-main__article.large img {
+  width: 100%;
+}
 .vg-main__article-link {
   display: block;
   position: relative;
+  height: 100%;
   transition: all 0.2s ease-in-out 0s;
 }
 .vg-main__article-wrapper {
   display: flex;
+  flex-grow: 1;
 }
 
 /*# sourceMappingURL=global.css.map */

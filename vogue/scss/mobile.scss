@@ -1,0 +1,86 @@
+@media only screen and (max-width: 786px) {
+    .info-side, .info-ico {
+        display: none;
+    }
+
+    .header__main {
+        padding: 10px 0;
+        &-logo {
+            display: none;
+        }
+        &-nav {
+            display: none;
+            .nav-lists {
+                display: block;
+            }
+            .nav-list {
+                height: 50px;
+                font-family: 'Roboto';
+                font-weight: 300;
+                font-size: 25px;
+                margin-left: 0;
+                &.search {
+                    display: none;
+                }
+            }
+        }
+
+        &-mobile-menu {
+            position: relative;
+            .hamburger {
+                display: inline-block;
+                position: absolute;
+                width: 21px;
+                height: 21px;
+                background: url(../img/hamburger.png) no-repeat;
+                background-size: contain;
+                top: 50%;
+                left: 10px;
+                transform: translateY(-50%);
+            }
+            
+            .logo img {
+                width: 130px;
+            }
+    
+            .search {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+            }
+        }
+
+        .sns-ico {
+            margin-top: 20px;
+            text-align: left;
+            .ico {
+                border: 1px solid #d2d2d2;
+                border-radius: 50%;
+                padding: 13px;
+                background: url(../img/instagram.png) no-repeat;
+                background-size: contain;
+                background-size: 20px 20px;
+                background-position: 50% 50%;
+                &.fb {
+                    background-image: url(../img/facebook2.png);
+                }
+                &.tt {
+                    background-image: url(../img/twitter.png);
+                }
+                &.yt {
+                    background-image: url(../img/youtube.png);
+                }
+            }
+        }
+    }
+
+    .vg-main {
+        &__article {
+            width: 50%;
+        }
+    }
+
+}

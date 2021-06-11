@@ -71,7 +71,7 @@ a:hover {
 #wrap {
     min-width: 320px;
 }
-  
+
 /* header */
 #header {
     position: relative;
@@ -253,20 +253,6 @@ a:hover {
             &:first-child {
                 margin-left: 0;
             }
-
-            &.search {
-                position: relative;
-                display: inline-block;
-                width: 15px;
-                background: url(../img/search-small.png) no-repeat;
-                background-position-y: center;
-                background-size: contain;
-                transition: background .6s;
-                cursor: pointer;
-                &:hover {
-                    background-image: url(../img/search-small-red.png);
-                }
-            }
         }
 
         .nav-link {
@@ -283,34 +269,47 @@ a:hover {
                 width: 100%;
             }
         }
-
-        .search-form {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            background: #000;
-            border: 1px solid #000;
-            &.on {
-                display: flex;
+    }
+    .search {
+        position: relative;
+        display: inline-block;
+        width: 15px;
+        background: url(../img/search-small.png) no-repeat;
+        background-position-y: center;
+        background-size: contain;
+        transition: background .6s;
+        cursor: pointer;
+        &:hover {
+            background-image: url(../img/search-small-red.png);
+        }
+    }
+    
+    .search-form {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        background: #000;
+        border: 1px solid #000;
+        &.on {
+            display: flex;
+        }
+        button {
+            padding: 5px;
+            color: #fff;
+            border-right: 1px solid #000;
+            transition: all .3s;
+            &:hover {
+                background: #ff0000;
+                border-right-color: #ff0000;
             }
-            button {
-                padding: 5px;
-                color: #fff;
-                border-right: 1px solid #000;
-                transition: all .3s;
-                &:hover {
-                    background: #ff0000;
-                    border-right-color: #ff0000;
-                }
-            }
-            input {
-                padding: 0 5px;
-                border: none;
-                &::placeholder {
-                    color: #747474;
-                }
+        }
+        input {
+            padding: 0 5px;
+            border: none;
+            &::placeholder {
+                color: #747474;
             }
         }
     }
@@ -321,7 +320,6 @@ a:hover {
     max-width: 1300px;
     margin: 0 auto;
     text-align: center;
-    background: lavenderblush;
     .bg {
         position: absolute;
         top: 75%;
@@ -346,7 +344,8 @@ a:hover {
     }
 
     .article-img {
-        width: 100%;
+        display: block;
+        height: 100%;
         mix-blend-mode: multiply;
     }
 
@@ -363,9 +362,20 @@ a:hover {
     }
 
     &__article {
+        display: block;
+        width: 33.333%;
+        overflow: hidden;
+        &.large {
+            img {
+                width: 100%;
+            }
+            width: 100%;
+        }
+
         &-link {
             display: block;
             position: relative;
+            height: 100%;
             transition: all .2s ease-in-out 0s;
             &:hover {
                 // background: rgba(204, 1, 1, 0.98);
@@ -374,6 +384,7 @@ a:hover {
 
         &-wrapper {
             display: flex;
+            flex-grow: 1;
         }
     }
 }
