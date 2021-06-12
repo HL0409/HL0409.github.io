@@ -5,9 +5,17 @@
 
     .header__main {
         padding: 10px 0;
+        &.on {
+            position: relative;
+            .header__main-nav {
+                display: block;
+            }
+        }
+
         &-logo {
             display: none;
         }
+        
         &-nav {
             display: none;
             .nav-lists {
@@ -26,6 +34,7 @@
         }
 
         &-mobile-menu {
+            display: block;
             position: relative;
             .hamburger {
                 display: inline-block;
@@ -37,6 +46,10 @@
                 top: 50%;
                 left: 10px;
                 transform: translateY(-50%);
+
+                &.on {
+
+                }
             }
             
             .logo img {
@@ -54,6 +67,7 @@
         }
 
         .sns-ico {
+            display: block;
             margin-top: 20px;
             text-align: left;
             .ico {

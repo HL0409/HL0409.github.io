@@ -6,6 +6,12 @@
   .header__main {
     padding: 10px 0;
   }
+  .header__main.on {
+    position: relative;
+  }
+  .header__main.on .header__main-nav {
+    display: block;
+  }
   .header__main-logo {
     display: none;
   }
@@ -26,6 +32,7 @@
     display: none;
   }
   .header__main-mobile-menu {
+    display: block;
     position: relative;
   }
   .header__main-mobile-menu .hamburger {
@@ -51,6 +58,7 @@
     transform: translateY(-50%);
   }
   .header__main .sns-ico {
+    display: block;
     margin-top: 20px;
     text-align: left;
   }

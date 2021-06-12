@@ -249,6 +249,12 @@ a:hover {
 .header__main-nav .nav-link img {
   width: 100%;
 }
+.header__main-mobile-menu {
+  display: none;
+}
+.header__main .sns-ico {
+  display: none;
+}
 .header__main .search {
   position: relative;
   display: inline-block;
@@ -327,9 +333,9 @@ a:hover {
 }
 .vg-main .article-title {
   position: absolute;
-  right: 0;
+  right: 15px;
   bottom: 7%;
-  left: 0;
+  left: 15px;
   color: #fff;
   font-family: "NanumGothic";
   font-weight: 400;
