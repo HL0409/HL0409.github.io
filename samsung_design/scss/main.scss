@@ -1,2 +1,11 @@
+/* common */
+@import 'common/font';
+@import 'common/variables';
+@import 'mixins/mixins';
+@import 'common/reset';
+@import 'common/common';
+@import 'common/layout';
+
+/* pages */
 @import 'pages/home';
 @import 'pages/social';

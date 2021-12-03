@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'Samsung Sharp Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/SamsungSharpSans-regular.TTF') format("truetype"),
+        url('/fonts/SamsungSharpSans-regular.TTF') format("embedded-opentype");
+}
+
+@font-face {
+    font-family: 'Samsung Sharp Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: url('/fonts/SamsungSharpSans-Bold.eot');
+    src: url('/fonts/SamsungSharpSans-Bold.eot?#iefix') format("embedded-opentype"),
+        url('/fonts/SamsungSharpSans-Bold.woff2') format("woff2"),
+        url('/fonts/SamsungSharpSans-Bold.woff') format("woff"),
+        url('/fonts/SamsungSharpSans-Bold.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'SamsungOne';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/samsungoneuilatin-400.ttf') format("truetype"),
+        url('/fonts/samsungoneuilatin-400.eot') format("embedded-opentype");
+}
+
+@font-face {
+    font-family: 'SamsungOne';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/samsungoneuilatin-700.eot');
+    src: url('/fonts/samsungoneuilatin-700.eot?#iefix') format("embedded-opentype"),
+        url('/fonts/samsungoneuilatin-700.woff2') format("woff2"),
+        url('/fonts/samsungoneuilatin-700.woff') format("woff"),
+        url('/fonts/samsungoneuilatin-700.ttf') format("truetype");
+}
+
+@mixin vw-font-size-pc($pc-pixel) {
+    font-size: $pc-pixel*1px;
+    font-size: $pc-pixel*100/1440*1vw;
+
+    @media (min-width:$screen-xlg) {
+        font-size: $pc-pixel*1px;
+    }
+}
+
+@mixin vw-font-size-mo($mo-pixel) {
+    font-size: $mo-pixel/360*768*1px;
+    font-size: $mo-pixel*100/360*1vw;
+
+    @media (max-width:360px) {
+        font-size: $mo-pixel*1px;
+        font-size: $mo-pixel*100/360*1vw;
+    }
+}
+
+@mixin line-height-pc($num, $font-size: 0) {
+    line-height: $num;
+
+    html[lang^="th"] & {
+        line-height: if($font-size > $th-large-font, $num*$th-large-lineheight-ratio, $num*$th-lineheight-ratio);
+    }
+
+    html[lang^="my"] & {
+        line-height: if($num < 1.4, 1.4, 1.6);
+    }
+}
+
+@mixin line-height-mo($num, $font-size: 0) {
+    line-height: $num;
+
+    html[lang^="th"] & {
+        line-height: if($font-size > $th-large-font/2, $num*$th-large-lineheight-ratio, $num*$th-lineheight-ratio);
+    }
+
+    html[lang^="my"] & {
+        line-height: if($num < 1.4, 1.4, 1.6);
+    }
+}
+
+@mixin samsungOne() {
+    font-family: $samsungOne, arial;
+}
+
+@mixin sharpSans() {
+    font-family: $sharpSans, arial;
+}
