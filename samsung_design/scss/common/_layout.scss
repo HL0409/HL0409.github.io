@@ -125,6 +125,25 @@ $header-height: 70;
 
     &-lang {
         @include vw-convert-pc(margin-left, 30);
+        @include vw-convert-pc(padding-right, 15);
+
+        &:after {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            @include vw-convert-pc(width, 6);
+            @include vw-convert-pc(height, 6);
+            transform: translateY(-50%);
+            background: url('../../img/icon_arrow.png') no-repeat;
+            background-size: contain;
+            transform-origin: top;
+            transition: transform .4s ease-in-out;
+            content: '';
+            .is-lang-opened & {
+                transform: rotate(180deg);
+            }
+        }
 
         &__cta {
             display: inline-block;
@@ -135,7 +154,45 @@ $header-height: 70;
         }
 
         &__layer {
+            overflow: hidden;
+            @include absolute-full;
+            height: 100%;
+            z-index: -1;
+            transition: height .5s ease-in;
             background-color: #fff;
+
+            .is-lang-opened & {
+                @include vw-convert-pc(height, ($header-height * 2));
+            }
+
+            &-list {
+                position: absolute;
+                @include vw-convert-pc(top, $header-height);
+                @include vw-convert-pc(right, 116);
+            }
+
+            &-item {
+                @include vw-convert-pc(margin-top, 13);
+                
+                &:first-child {
+                    margin-top: 0;
+                }
+                
+                &.#{$activeClass} {
+                    .header-lang__layer-cta {
+                        border-bottom: 2px solid #000;
+                        color: #000;
+                    }
+                }
+            }
+
+            &-cta {
+                display: inline-block;
+                @include vw-convert-pc(padding-bottom, 2);
+                font-weight: 700;
+                @include vw-font-size-pc(16);
+                color: #666;
+            }
         }
     }
 
@@ -152,11 +209,13 @@ $header-height: 70;
             @include vw-convert-pc(height, 20);
             transform: scale(0);
             opacity: 0;
+            visibility: hidden;
             transition: transform .3s .5s ease-in, opacity .3s;
 
             .is-search-opened & {
                 transform: scale(1.2);
                 opacity: 1;
+                visibility: visible;
             }
 
             &:before,
