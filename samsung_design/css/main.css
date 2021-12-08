@@ -1,4 +1,10 @@
+@charset "UTF-8";
 /* common */
+/* break points */
+/* font */
+/* class */
+/* breakpoints */
+/* vw conversion */
 @font-face {
   font-family: "Samsung Sharp Sans";
   font-style: normal;
@@ -19,17 +25,24 @@
   src: url("/fonts/samsungoneuilatin-400.ttf") format("truetype"), url("/fonts/samsungoneuilatin-400.eot") format("embedded-opentype");
 }
 @font-face {
+  font-family: "SamsungOneKorean";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/SamsungOneKorean-400.woff2") format("woff2");
+}
+@font-face {
   font-family: "SamsungOne";
   font-style: normal;
   font-weight: 700;
   src: url("/fonts/samsungoneuilatin-700.eot");
-  src: url("/fonts/samsungoneuilatin-700.eot?#iefix") format("embedded-opentype"), url("/fonts/samsungoneuilatin-700.woff2") format("woff2"), url("/fonts/samsungoneuilatin-700.woff") format("woff"), url("/fonts/samsungoneuilatin-700.ttf") format("truetype");
+  src: url("/fonts/samsungoneuilatin-700.eot?#iefix") format("embedded-opentype"), url("/fonts/samsungoneuilatin-700.woff") format("woff"), url("/fonts/samsungoneuilatin-700.ttf") format("truetype");
 }
-/* break points */
-/* font */
-/* class */
-/* breakpoints */
-/* vw conversion */
+@font-face {
+  font-family: "SamsungOneKorean";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/SamsungOneKorean-700.woff2") format("woff2");
+}
 body,
 div,
 dl,
@@ -141,10 +154,7 @@ em {
   font-style: normal;
 }
 
-a,
-a:focus,
-a:active,
-a:hover {
+a {
   text-decoration: none;
   color: #000;
 }
@@ -180,11 +190,11 @@ legend {
 
 html,
 body {
-  font-family: "SamsungOne", arial;
+  font-family: "SamsungOne";
 }
-
-#wrap {
-  background-color: #ffeeec;
+html[lang^=ko] html,
+html[lang^=ko] body {
+  font-family: "SamsungOneKorean", "Dotum", "돋움", "Apple SD Gothic Neo", arial;
 }
 
 /* header */
@@ -258,9 +268,12 @@ body {
 .header-nav__link {
   text-transform: uppercase;
   font-weight: 700;
-  font-family: "SamsungOne", arial;
+  font-family: "SamsungOne";
   font-size: 20px;
   font-size: 1.3888888889vw;
+}
+html[lang^=ko] .header-nav__link {
+  font-family: "SamsungOneKorean", "Dotum", "돋움", "Apple SD Gothic Neo", arial;
 }
 @media (min-width: 1440px) {
   .header-nav__link {
@@ -358,9 +371,12 @@ body {
   }
 }
 .header-search__layer-input input {
-  font-family: "SamsungOne", arial;
+  font-family: "SamsungOne";
   border: none;
   background-color: transparent;
+}
+html[lang^=ko] .header-search__layer-input input {
+  font-family: "SamsungOneKorean", "Dotum", "돋움", "Apple SD Gothic Neo", arial;
 }
 .header-search__layer-cta {
   position: absolute;
@@ -571,6 +587,198 @@ body {
 }
 
 /* pages */
+.design-home {
+  padding: 200px 0px;
+  padding: 13.8888888889vw 0vw;
+  text-align: center;
+  background-color: #ffeeec;
+}
+@media (min-width: 1440px) {
+  .design-home {
+    padding: 200px 0px;
+  }
+}
+.design-home__txt {
+  width: 1050px;
+  width: 72.9166666667vw;
+  margin: 0 auto;
+}
+@media (min-width: 1440px) {
+  .design-home__txt {
+    width: 1050px;
+  }
+}
+.design-home__txt-title {
+  font-size: 70px;
+  font-size: 4.8611111111vw;
+  line-height: 1.17142;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+@media (min-width: 1440px) {
+  .design-home__txt-title {
+    font-size: 70px;
+  }
+}
+html[lang^=th] .design-home__txt-title {
+  line-height: 0.819994;
+}
+html[lang^=my] .design-home__txt-title {
+  line-height: 1.4;
+}
+.design-home__txt-desc {
+  margin-top: 60px;
+  margin-top: 4.1666666667vw;
+  font-size: 24px;
+  font-size: 1.6666666667vw;
+  line-height: 1.5;
+  letter-spacing: -0.05em;
+}
+@media (min-width: 1440px) {
+  .design-home__txt-desc {
+    margin-top: 60px;
+  }
+}
+@media (min-width: 1440px) {
+  .design-home__txt-desc {
+    font-size: 24px;
+  }
+}
+html[lang^=th] .design-home__txt-desc {
+  line-height: 1.125;
+}
+html[lang^=my] .design-home__txt-desc {
+  line-height: 1.6;
+}
+.design-home__divider {
+  display: inline-block;
+  width: 4px;
+  width: 0.2777777778vw;
+  height: 140px;
+  height: 9.7222222222vw;
+  margin-top: 60px;
+  margin-top: 4.1666666667vw;
+  background-color: #fe5d4d;
+}
+@media (min-width: 1440px) {
+  .design-home__divider {
+    width: 4px;
+  }
+}
+@media (min-width: 1440px) {
+  .design-home__divider {
+    height: 140px;
+  }
+}
+@media (min-width: 1440px) {
+  .design-home__divider {
+    margin-top: 60px;
+  }
+}
+.design-home__contents {
+  display: inline-block;
+  position: relative;
+  width: 674px;
+  width: 46.8055555556vw;
+  height: 830px;
+  height: 57.6388888889vw;
+  background-color: red;
+}
+@media (min-width: 1440px) {
+  .design-home__contents {
+    width: 674px;
+  }
+}
+@media (min-width: 1440px) {
+  .design-home__contents {
+    height: 830px;
+  }
+}
+.design-home__contents-wrap {
+  margin-top: 80px;
+  margin-top: 5.5555555556vw;
+}
+@media (min-width: 1440px) {
+  .design-home__contents-wrap {
+    margin-top: 80px;
+  }
+}
+.design-home__contents--blue {
+  background: url("../../img/img_gate_1.jpg") no-repeat center center;
+  transition: transform 0.5s ease-in-out;
+}
+.design-home__contents--blue .design-home__contents-link {
+  background-image: url("../../img/img_gate_1_hover.jpg");
+}
+.design-home__contents--blue:hover {
+  z-index: 1;
+  transform: scale(1.05);
+  background-image: url("../../img/img_gate_1_hover.jpg");
+}
+.design-home__contents--blue:hover .design-home__contents-link {
+  opacity: 1;
+}
+.design-home__contents--red {
+  background: url("../../img/img_gate_2.jpg") no-repeat center center;
+  transition: transform 0.5s ease-in-out;
+}
+.design-home__contents--red .design-home__contents-link {
+  background-image: url("../../img/img_gate_2_hover.jpg");
+}
+.design-home__contents--red:hover {
+  z-index: 1;
+  transform: scale(1.05);
+  background-image: url("../../img/img_gate_2_hover.jpg");
+}
+.design-home__contents--red:hover .design-home__contents-link {
+  opacity: 1;
+}
+.design-home__contents-link {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity 0.5s ease-in;
+  opacity: 0;
+}
+.design-home__contents-link h2 {
+  display: inline-block;
+  font-size: 48px;
+  font-size: 3.3333333333vw;
+  font-weight: normal;
+  border-bottom: 2px solid #fff;
+}
+@media (min-width: 1440px) {
+  .design-home__contents-link h2 {
+    font-size: 48px;
+  }
+}
+.design-home__contents-link span {
+  margin-top: 20px;
+  margin-top: 1.3888888889vw;
+  font-size: 24px;
+  font-size: 1.6666666667vw;
+  letter-spacing: -0.05em;
+}
+@media (min-width: 1440px) {
+  .design-home__contents-link span {
+    margin-top: 20px;
+  }
+}
+@media (min-width: 1440px) {
+  .design-home__contents-link span {
+    font-size: 24px;
+  }
+}
+
 .samsung-design-social {
   background-color: blue;
 }
