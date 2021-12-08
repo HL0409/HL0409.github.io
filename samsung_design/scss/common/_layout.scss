@@ -87,13 +87,13 @@ $header-height: 70;
         &__layer {
             overflow: hidden;
             @include absolute-full;
-            @include vw-convert-pc(height, $header-height);
+            height: 100%;
             z-index: -1;
-            transition: transform .5s ease-in;
+            transition: height .5s ease-in;
             background-color: #fff;
 
             .is-search-opened & {
-                transform: translateY(100%);
+                @include vw-convert-pc(height, ($header-height * 2));
             }
 
             &-input {
@@ -140,7 +140,6 @@ $header-height: 70;
             transform-origin: top;
             transition: transform .4s ease-in-out;
             content: '';
-
             .is-lang-opened & {
                 transform: rotate(180deg);
             }
@@ -157,28 +156,28 @@ $header-height: 70;
         &__layer {
             overflow: hidden;
             @include absolute-full;
-            @include vw-convert-pc(height, $header-height);
+            height: 100%;
             z-index: -1;
-            transition: transform .5s ease-in;
+            transition: height .5s ease-in;
             background-color: #fff;
 
             .is-lang-opened & {
-                transform: translateY(100%);
+                @include vw-convert-pc(height, ($header-height * 2));
             }
 
             &-list {
                 position: absolute;
-                top: 0;
+                @include vw-convert-pc(top, $header-height);
                 @include vw-convert-pc(right, 116);
             }
 
             &-item {
-                @include vw-convert-pc(margin-top, 8);
-
+                @include vw-convert-pc(margin-top, 13);
+                
                 &:first-child {
                     margin-top: 0;
                 }
-
+                
                 &.#{$activeClass} {
                     .header-lang__layer-cta {
                         border-bottom: 2px solid #000;
