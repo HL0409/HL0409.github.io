@@ -1,3 +1,21 @@
+@use "sass:math";
+
+@mixin font-samsungOne() {
+    font-family: $samsungOne;
+
+    html[lang^="ko"] & {
+        font-family: $samsungOne-sec;
+    }
+}
+
+@mixin font-sharpSans() {
+    font-family: $sharpSans;
+
+    html[lang^="ko"] & {
+        font-family: $sharpSans-sec;
+    }
+}
+
 @font-face {
     font-family: 'Samsung Sharp Sans';
     font-style: normal;
@@ -26,19 +44,32 @@
 }
 
 @font-face {
+    font-family: 'SamsungOneKorean';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/SamsungOneKorean-400.woff2') format("woff2");
+}
+
+@font-face {
     font-family: 'SamsungOne';
     font-style: normal;
     font-weight: 700;
     src: url('/fonts/samsungoneuilatin-700.eot');
     src: url('/fonts/samsungoneuilatin-700.eot?#iefix') format("embedded-opentype"),
-        url('/fonts/samsungoneuilatin-700.woff2') format("woff2"),
         url('/fonts/samsungoneuilatin-700.woff') format("woff"),
         url('/fonts/samsungoneuilatin-700.ttf') format("truetype");
 }
 
+@font-face {
+    font-family: 'SamsungOneKorean';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/SamsungOneKorean-700.woff2') format("woff2");
+}
+
 @mixin vw-font-size-pc($pc-pixel) {
     font-size: $pc-pixel*1px;
-    font-size: $pc-pixel*100/1440*1vw;
+    font-size: math.div($pc-pixel*100, 1440)*1vw;
 
     @media (min-width:$screen-xlg) {
         font-size: $pc-pixel*1px;
@@ -46,12 +77,12 @@
 }
 
 @mixin vw-font-size-mo($mo-pixel) {
-    font-size: $mo-pixel/360*768*1px;
-    font-size: $mo-pixel*100/360*1vw;
+    font-size: math.div($mo-pixel, 360)*768*1px;
+    font-size: math.div($mo-pixel*100, 360)*1vw;
 
     @media (max-width:360px) {
         font-size: $mo-pixel*1px;
-        font-size: $mo-pixel*100/360*1vw;
+        font-size: math.div($mo-pixel*100, 360)*1vw;
     }
 }
 
@@ -71,18 +102,10 @@
     line-height: $num;
 
     html[lang^="th"] & {
-        line-height: if($font-size > $th-large-font/2, $num*$th-large-lineheight-ratio, $num*$th-lineheight-ratio);
+        line-height: if($font-size > $th-large-font*0.5, $num*$th-large-lineheight-ratio, $num*$th-lineheight-ratio);
     }
 
     html[lang^="my"] & {
         line-height: if($num < 1.4, 1.4, 1.6);
     }
-}
-
-@mixin samsungOne() {
-    font-family: $samsungOne, arial;
-}
-
-@mixin sharpSans() {
-    font-family: $sharpSans, arial;
 }

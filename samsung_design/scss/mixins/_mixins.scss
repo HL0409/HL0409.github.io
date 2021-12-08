@@ -1,4 +1,6 @@
 /* breakpoints */
+@use "sass:math";
+
 @mixin breakpoint($point) {
     @if $point==desktop {
         @media screen and(min-width: $screen-lg) {
@@ -17,7 +19,7 @@
 @mixin vw-convert-pc($property, $pc-pixel) {
     @if type-of($pc-pixel)==number {
         #{$property}: $pc-pixel*1px;
-        #{$property}: $pc-pixel*100/1440*1vw;
+        #{$property}: math.div($pc-pixel*100, 1440)*1vw;
 
         @media (min-width:$screen-xlg) {
             #{$property}: $pc-pixel*1px;
@@ -39,7 +41,7 @@
         @each $value in $pc-pixel {
             @if type-of($value)==number {
                 $px: append($px, $value*1px);
-                $vw: append($vw, $value*100/1440*1vw);
+                $vw: append($vw, math.div($value*100, 1440)*1vw);
             }
 
             @else if type-of($value)==string {
@@ -71,12 +73,12 @@
 
 @mixin vw-convert-mo($property, $mo-pixel) {
     @if type-of($mo-pixel)==number {
-        #{$property}: $mo-pixel/360*767*1px;
-        #{$property}: $mo-pixel*100/360*1vw;
+        #{$property}: math.div($mo-pixel, 360)*767*1px;
+        #{$property}: math.div($mo-pixel*100, 360)*1vw;
 
         @media (max-width:360px) {
             #{$property}: $mo-pixel*1px;
-            #{$property}: $mo-pixel*100/360*1vw;
+            #{$property}: math.div($mo-pixel*100, 360)*1vw;
         }
     }
 
@@ -94,8 +96,8 @@
 
         @each $value in $mo-pixel {
             @if type-of($value)==number {
-                $px: append($px, $value/360*767*1px);
-                $vw: append($vw, $value*100/360*1vw);
+                $px: append($px, math.div($value, 360)*767*1px);
+                $vw: append($vw, math.div($value*100, 360)*1vw);
             }
 
             @else if type-of($value)==string {
@@ -113,7 +115,7 @@
         @each $value in $mo-pixel {
             @if type-of($value)==number {
                 $px: append($px, $value*1px);
-                $vw: append($vw, $value*100/360*1vw);
+                $vw: append($vw, math.div($value*100, 360)*1vw);
             }
 
             @else if type-of($value)==string {
@@ -135,4 +137,14 @@
     right: 0;
     left: 0;
     bottom: 0;
+}
+
+@mixin clearfix {
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
 }
