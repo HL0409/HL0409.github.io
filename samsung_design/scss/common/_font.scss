@@ -1,5 +1,3 @@
-@use "sass:math";
-
 @mixin font-samsungOne() {
     font-family: $samsungOne;
 
@@ -69,7 +67,7 @@
 
 @mixin vw-font-size-pc($pc-pixel) {
     font-size: $pc-pixel*1px;
-    font-size: math.div($pc-pixel*100, 1440)*1vw;
+    font-size: $pc-pixel*100/1440*1vw;
 
     @media (min-width:$screen-xlg) {
         font-size: $pc-pixel*1px;
@@ -77,12 +75,12 @@
 }
 
 @mixin vw-font-size-mo($mo-pixel) {
-    font-size: math.div($mo-pixel, 360)*768*1px;
-    font-size: math.div($mo-pixel*100, 360)*1vw;
+    font-size: $mo-pixel/360*768*1px;
+    font-size: $mo-pixel*100/360*1vw;
 
     @media (max-width:360px) {
         font-size: $mo-pixel*1px;
-        font-size: math.div($mo-pixel*100, 360)*1vw;
+        font-size: $mo-pixel*100/360*1vw;
     }
 }
 

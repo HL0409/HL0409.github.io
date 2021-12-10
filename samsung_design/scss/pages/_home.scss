@@ -2,6 +2,7 @@ $component-name: 'design-home';
 
 .#{$component-name} {
     @include vw-convert-pc(padding, 200 0);
+    font-size: 0;
     text-align: center;
     background-color: #ffeeec;
 
@@ -38,47 +39,47 @@ $component-name: 'design-home';
         @include vw-convert-pc(width, 674);
         @include vw-convert-pc(height, 830);
         background-color: red;
+        vertical-align: top;
+        transition: transform .5s ease-in-out;
+
+        &:hover {
+            z-index: 1;
+            transform: scale(1.05);
+
+            .#{$component-name}__contents-img {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
 
         &-wrap {
-            @include vw-convert-pc(margin-top, 80);
+            @include vw-convert-pc(padding-top, 150);
+            font-size: 0;
         }
 
         &--blue {
+            z-index: 1;
             background: url('../../img/img_gate_1.jpg') no-repeat center center;
-            transition: transform .5s ease-in-out;
 
-            .#{$component-name}__contents-link {
+            .#{$component-name}__contents-img {
                 background-image: url('../../img/img_gate_1_hover.jpg');
-            }
-
-            &:hover {
-                z-index: 1;
-                transform: scale(1.05);
-                background-image: url('../../img/img_gate_1_hover.jpg');
-
-                .#{$component-name}__contents-link {
-                    opacity: 1;
-                }
             }
         }
 
         &--red {
+            @include vw-convert-pc(margin, 200 0 0 -150);
             background: url('../../img/img_gate_2.jpg') no-repeat center center;
-            transition: transform .5s ease-in-out;
 
-            .#{$component-name}__contents-link {
+            .#{$component-name}__contents-img {
                 background-image: url('../../img/img_gate_2_hover.jpg');
             }
+        }
 
-            &:hover {
-                z-index: 1;
-                transform: scale(1.05);
-                background-image: url('../../img/img_gate_2_hover.jpg');
-
-                .#{$component-name}__contents-link {
-                    opacity: 1;
-                }
-            }
+        &-img {
+            @include absolute-full;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .5s ease-in-out;
         }
 
         &-link {
@@ -90,8 +91,6 @@ $component-name: 'design-home';
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            transition: opacity .5s ease-in;
-            opacity: 0;
 
             h2 {
                 display: inline-block;
@@ -104,6 +103,80 @@ $component-name: 'design-home';
                 @include vw-convert-pc(margin-top, 20);
                 @include vw-font-size-pc(24);
                 letter-spacing: -0.05em;
+            }
+        }
+    }
+
+    &__symbol {
+        &-wrap {
+            position: relative;
+        }
+
+        &-parts {
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-size: contain;
+
+            &--small {
+                &--left {
+                    @include vw-convert-pc(width, 150);
+                    @include vw-convert-pc(height, 300);
+                    background-image: url('../../img/svg_symbol_6_1.png');
+                }
+
+                &--right {
+                    @include vw-convert-pc(width, 150);
+                    @include vw-convert-pc(height, 300);
+                    background-image: url('../../img/svg_symbol_6_2.png');
+                }
+            }
+
+            &--large {
+                &--left {
+                    @include vw-convert-pc(width, 200);
+                    @include vw-convert-pc(height, 400);
+                    background-image: url('../../img/svg_symbol_5.png');
+                }
+
+                &--right {
+                    @include vw-convert-pc(width, 200);
+                    @include vw-convert-pc(height, 400);
+                    background-image: url('../../img/svg_symbol_5.png');
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        .symbol {
+            &-small {
+                position: absolute;
+
+                &-left {
+                    @include vw-convert-pc(width, 150);
+                    @include vw-convert-pc(height, 300);
+                    background-image: url('../../img/svg_symbol_6_1.png');
+                }
+
+                &-right {
+                    @include vw-convert-pc(width, 150);
+                    @include vw-convert-pc(height, 300);
+                    background-image: url('../../img/svg_symbol_6_2.png');
+                }
+            }
+
+            &-large {
+                &-left {
+                    @include vw-convert-pc(width, 200);
+                    @include vw-convert-pc(height, 400);
+                    background-image: url('../../img/svg_symbol_5.png');
+                }
+
+                &-right {
+                    @include vw-convert-pc(width, 200);
+                    @include vw-convert-pc(height, 400);
+                    background-image: url('../../img/svg_symbol_5.png');
+                    transform: rotate(180deg);
+                }
             }
         }
     }
