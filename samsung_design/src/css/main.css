@@ -141,7 +141,10 @@ button::-moz-focus-inner {
 input,
 button,
 select {
+  -webkit-border-radius: 0;
   border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 }
 
@@ -189,7 +192,6 @@ html,
 body {
   font-family: "SamsungOne";
 }
-
 html[lang^=ko] html,
 html[lang^=ko] body {
   font-family: "SamsungOneKorean", "Dotum", "돋움", "Apple SD Gothic Neo", arial;
@@ -199,20 +201,16 @@ html[lang^=ko] body {
 .header {
   background-color: #fff;
 }
-
 .header-inner {
-  display: -ms-flexbox;
   display: flex;
   position: relative;
   z-index: 10;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
+  justify-content: space-between;
   height: 70px;
   height: 4.8611111111vw;
   padding: 0px 100px;
   padding: 0vw 6.9444444444vw;
 }
-
 @media (min-width: 1440px) {
   .header-inner {
     height: 70px;
@@ -224,18 +222,15 @@ html[lang^=ko] body {
   }
 }
 .header-logo {
-  display: -ms-flexbox;
   display: flex;
   position: absolute;
-  -ms-flex-align: center;
-      align-items: center;
+  align-items: center;
   left: 100px;
   left: 6.9444444444vw;
   width: 230px;
   width: 15.9722222222vw;
   height: 100%;
 }
-
 @media (min-width: 1440px) {
   .header-logo {
     left: 100px;
@@ -249,31 +244,22 @@ html[lang^=ko] body {
 .header-logo__link {
   display: block;
 }
-
 .header-logo__link img {
   width: 100%;
 }
-
 .header-nav {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
-
 .header-nav__list {
-  display: -ms-flexbox;
   display: flex;
 }
-
 .header-nav__item ~ .header-nav__item {
   margin-left: 50px;
   margin-left: 3.4722222222vw;
 }
-
 @media (min-width: 1440px) {
   .header-nav__item ~ .header-nav__item {
     margin-left: 50px;
@@ -289,7 +275,6 @@ html[lang^=ko] body {
   font-size: 20px;
   font-size: 1.3888888889vw;
 }
-
 @media (min-width: 1440px) {
   .header-nav__link {
     padding-bottom: 5px;
@@ -298,17 +283,14 @@ html[lang^=ko] body {
 html[lang^=ko] .header-nav__link {
   font-family: "SamsungOneKorean", "Dotum", "돋움", "Apple SD Gothic Neo", arial;
 }
-
 @media (min-width: 1440px) {
   .header-nav__link {
     font-size: 20px;
   }
 }
 .header-nav__link:hover:before {
-  -ms-transform: scaleX(1);
-      transform: scaleX(1);
+  transform: scaleX(1);
 }
-
 .header-nav__link:before {
   display: inline-block;
   position: absolute;
@@ -317,36 +299,28 @@ html[lang^=ko] .header-nav__link {
   width: 100%;
   height: 2px;
   background-color: #000;
-  -ms-transform: scaleX(0);
-      transform: scaleX(0);
+  transform: scaleX(0);
   transition: transform 0.4s ease-in-out;
   content: "";
 }
-
 .header-util {
-  display: -ms-flexbox;
   display: flex;
   position: absolute;
-  -ms-flex-align: center;
-      align-items: center;
+  align-items: center;
   right: 100px;
   right: 6.9444444444vw;
   height: 100%;
-  -ms-transform: translateY(0);
-      transform: translateY(0);
+  transform: translateY(0);
   transition: transform 0.5s ease-in;
 }
-
 @media (min-width: 1440px) {
   .header-util {
     right: 100px;
   }
 }
 .is-search-opened .header-util {
-  -ms-transform: translateY(-100%);
-      transform: translateY(-100%);
+  transform: translateY(-100%);
 }
-
 .header-search__cta {
   display: inline-block;
   width: 20px;
@@ -356,7 +330,6 @@ html[lang^=ko] .header-nav__link {
   background: url("../img/icon_search.png") no-repeat;
   background-size: contain;
 }
-
 @media (min-width: 1440px) {
   .header-search__cta {
     width: 20px;
@@ -379,12 +352,10 @@ html[lang^=ko] .header-nav__link {
   transition: height 0.5s ease-in;
   background-color: #fff;
 }
-
 .is-search-opened .header-search__layer {
   height: 140px;
   height: 9.7222222222vw;
 }
-
 @media (min-width: 1440px) {
   .is-search-opened .header-search__layer {
     height: 140px;
@@ -402,7 +373,6 @@ html[lang^=ko] .header-nav__link {
   padding: 0.6944444444vw 4.8611111111vw 0.6944444444vw 0vw;
   border-bottom: 2px solid #000;
 }
-
 @media (min-width: 1440px) {
   .header-search__layer-input {
     top: 70px;
@@ -428,11 +398,9 @@ html[lang^=ko] .header-nav__link {
   border: none;
   background-color: transparent;
 }
-
 html[lang^=ko] .header-search__layer-input input {
   font-family: "SamsungOneKorean", "Dotum", "돋움", "Apple SD Gothic Neo", arial;
 }
-
 .header-search__layer-cta {
   position: absolute;
   top: 50%;
@@ -441,10 +409,8 @@ html[lang^=ko] .header-search__layer-input input {
   font-size: 18px;
   font-size: 1.25vw;
   text-transform: uppercase;
-  -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
+  transform: translateY(-50%);
 }
-
 @media (min-width: 1440px) {
   .header-search__layer-cta {
     font-size: 18px;
@@ -454,7 +420,6 @@ html[lang^=ko] .header-search__layer-input input {
   margin-left: 30px;
   margin-left: 2.0833333333vw;
 }
-
 @media (min-width: 1440px) {
   .header-lang {
     margin-left: 30px;
@@ -469,16 +434,13 @@ html[lang^=ko] .header-search__layer-input input {
   width: 0.4166666667vw;
   height: 6px;
   height: 0.4166666667vw;
-  -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
+  transform: translateY(-50%);
   background: url("../img/icon_arrow.png") no-repeat;
   background-size: contain;
-  -ms-transform-origin: top;
-      transform-origin: top;
+  transform-origin: top;
   transition: transform 0.4s ease-in-out;
   content: "";
 }
-
 @media (min-width: 1440px) {
   .header-lang:after {
     width: 6px;
@@ -490,10 +452,8 @@ html[lang^=ko] .header-search__layer-input input {
   }
 }
 .is-lang-opened .header-lang:after {
-  -ms-transform: rotate(180deg);
-      transform: rotate(180deg);
+  transform: rotate(180deg);
 }
-
 .header-lang__cta {
   display: inline-block;
   width: 35px;
@@ -505,7 +465,6 @@ html[lang^=ko] .header-search__layer-input input {
   background: url("../img/icon_lang.png") no-repeat;
   background-size: contain;
 }
-
 @media (min-width: 1440px) {
   .header-lang__cta {
     width: 35px;
@@ -533,12 +492,10 @@ html[lang^=ko] .header-search__layer-input input {
   transition: height 0.5s ease-in;
   background-color: #fff;
 }
-
 .is-lang-opened .header-lang__layer {
   height: 140px;
   height: 9.7222222222vw;
 }
-
 @media (min-width: 1440px) {
   .is-lang-opened .header-lang__layer {
     height: 140px;
@@ -551,7 +508,6 @@ html[lang^=ko] .header-search__layer-input input {
   right: 116px;
   right: 8.0555555556vw;
 }
-
 @media (min-width: 1440px) {
   .header-lang__layer-list {
     top: 70px;
@@ -566,7 +522,6 @@ html[lang^=ko] .header-search__layer-input input {
   margin-top: 13px;
   margin-top: 0.9027777778vw;
 }
-
 @media (min-width: 1440px) {
   .header-lang__layer-item {
     margin-top: 13px;
@@ -575,12 +530,10 @@ html[lang^=ko] .header-search__layer-input input {
 .header-lang__layer-item:first-child {
   margin-top: 0;
 }
-
 .header-lang__layer-item.is-active .header-lang__layer-cta {
   border-bottom: 2px solid #000;
   color: #000;
 }
-
 .header-lang__layer-cta {
   display: inline-block;
   padding-bottom: 2px;
@@ -590,7 +543,6 @@ html[lang^=ko] .header-search__layer-input input {
   font-size: 1.1111111111vw;
   color: #666;
 }
-
 @media (min-width: 1440px) {
   .header-lang__layer-cta {
     padding-bottom: 2px;
@@ -611,13 +563,11 @@ html[lang^=ko] .header-search__layer-input input {
   top: 35%;
   right: 100px;
   right: 6.9444444444vw;
-  -ms-transform: scale(0);
-      transform: scale(0);
+  transform: scale(0);
   transition: transform 0.3s 0.5s ease-in, opacity 0.3s ease-in, visibility 0.3s ease-in;
   opacity: 0;
   visibility: hidden;
 }
-
 @media (min-width: 1440px) {
   .header-close {
     width: 20px;
@@ -634,12 +584,10 @@ html[lang^=ko] .header-search__layer-input input {
   }
 }
 .is-search-opened .header-close {
-  -ms-transform: scale(1.2);
-      transform: scale(1.2);
+  transform: scale(1.2);
   opacity: 1;
   visibility: visible;
 }
-
 .header-close:before, .header-close:after {
   display: inline-block;
   position: absolute;
@@ -650,15 +598,11 @@ html[lang^=ko] .header-search__layer-input input {
   background-color: #000;
   content: "";
 }
-
 .header-close:before {
-  -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-
 .header-close:after {
-  -ms-transform: rotate(-45deg);
-      transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 /* footer */
@@ -669,7 +613,6 @@ html[lang^=ko] .header-search__layer-input input {
   padding: 1.3888888889vw 0vw;
   border-top: 1px solid #000;
 }
-
 @media (min-width: 1440px) {
   .footer {
     margin: 0px 100px;
@@ -689,7 +632,6 @@ html[lang^=ko] .header-search__layer-input input {
   background: url(../img/logo_samsung_foot.png) no-repeat;
   background-size: contain;
 }
-
 @media (min-width: 1440px) {
   .footer__logo {
     width: 91px;
@@ -708,7 +650,6 @@ html[lang^=ko] .header-search__layer-input input {
   font-size: 0.9722222222vw;
   color: #888;
 }
-
 @media (min-width: 1440px) {
   .footer__copyright {
     margin: 0px 10px;
@@ -726,7 +667,6 @@ html[lang^=ko] .header-search__layer-input input {
   border-left: 1px solid #888;
   text-decoration: underline;
 }
-
 @media (min-width: 1440px) {
   .footer__kr {
     padding: 0px 10px;
@@ -738,12 +678,12 @@ html[lang^=ko] .header-search__layer-input input {
   color: #888;
   letter-spacing: -0.04em;
 }
-
 @media (min-width: 1440px) {
   .footer__kr a {
     font-size: 14px;
   }
 }
+
 /* pages */
 .design-home {
   padding: 200px 0px;
@@ -751,7 +691,6 @@ html[lang^=ko] .header-search__layer-input input {
   text-align: center;
   background-color: #ffeeec;
 }
-
 @media (min-width: 1440px) {
   .design-home {
     padding: 200px 0px;
@@ -762,13 +701,11 @@ html[lang^=ko] .header-search__layer-input input {
   margin: 0 auto;
   font-size: 0;
 }
-
 .design-home__txt {
   width: 1050px;
   width: 72.9166666667vw;
   margin: 0 auto;
 }
-
 @media (min-width: 1440px) {
   .design-home__txt {
     width: 1050px;
@@ -781,7 +718,6 @@ html[lang^=ko] .header-search__layer-input input {
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
-
 @media (min-width: 1440px) {
   .design-home__txt-title {
     font-size: 70px;
@@ -790,11 +726,9 @@ html[lang^=ko] .header-search__layer-input input {
 html[lang^=th] .design-home__txt-title {
   line-height: 0.819994;
 }
-
 html[lang^=my] .design-home__txt-title {
   line-height: 1.4;
 }
-
 .design-home__txt-desc {
   margin-top: 60px;
   margin-top: 4.1666666667vw;
@@ -803,7 +737,6 @@ html[lang^=my] .design-home__txt-title {
   line-height: 1.5;
   letter-spacing: -0.05em;
 }
-
 @media (min-width: 1440px) {
   .design-home__txt-desc {
     margin-top: 60px;
@@ -817,11 +750,9 @@ html[lang^=my] .design-home__txt-title {
 html[lang^=th] .design-home__txt-desc {
   line-height: 1.125;
 }
-
 html[lang^=my] .design-home__txt-desc {
   line-height: 1.6;
 }
-
 .design-home__divider {
   display: inline-block;
   width: 4px;
@@ -832,7 +763,6 @@ html[lang^=my] .design-home__txt-desc {
   margin-top: 4.1666666667vw;
   background-color: #fe5d4d;
 }
-
 @media (min-width: 1440px) {
   .design-home__divider {
     width: 4px;
@@ -859,7 +789,6 @@ html[lang^=my] .design-home__txt-desc {
   vertical-align: top;
   transition: transform 0.5s ease-in-out;
 }
-
 @media (min-width: 1440px) {
   .design-home__contents {
     width: 674px;
@@ -872,15 +801,12 @@ html[lang^=my] .design-home__txt-desc {
 }
 .design-home__contents:hover {
   z-index: 1;
-  -ms-transform: scale(1.05);
-      transform: scale(1.05);
+  transform: scale(1.05);
 }
-
 .design-home__contents:hover .design-home__contents-img {
   opacity: 1;
   visibility: visible;
 }
-
 .design-home__contents-wrap {
   display: inline-block;
   position: relative;
@@ -888,7 +814,6 @@ html[lang^=my] .design-home__txt-desc {
   margin-top: 10.4166666667vw;
   font-size: 0;
 }
-
 @media (min-width: 1440px) {
   .design-home__contents-wrap {
     margin-top: 150px;
@@ -898,17 +823,14 @@ html[lang^=my] .design-home__txt-desc {
   z-index: 1;
   background: url("../img/img_gate_1.jpg") no-repeat center center;
 }
-
 .design-home__contents--blue .design-home__contents-img {
   background-image: url("../img/img_gate_1_hover.jpg");
 }
-
 .design-home__contents--red {
   margin: 200px 0px 0px -150px;
   margin: 13.8888888889vw 0vw 0vw -10.4166666667vw;
   background: url("../img/img_gate_2.jpg") no-repeat center center;
 }
-
 @media (min-width: 1440px) {
   .design-home__contents--red {
     margin: 200px 0px 0px -150px;
@@ -917,7 +839,6 @@ html[lang^=my] .design-home__txt-desc {
 .design-home__contents--red .design-home__contents-img {
   background-image: url("../img/img_gate_2_hover.jpg");
 }
-
 .design-home__contents-img {
   position: absolute;
   top: 0;
@@ -928,9 +849,7 @@ html[lang^=my] .design-home__txt-desc {
   visibility: hidden;
   transition: all 0.5s ease-in-out;
 }
-
 .design-home__contents-link {
-  display: -ms-flexbox;
   display: flex;
   position: absolute;
   top: 0;
@@ -940,14 +859,10 @@ html[lang^=my] .design-home__txt-desc {
   color: #fff;
   letter-spacing: 0.5em;
   text-transform: uppercase;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-direction: column;
-      flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
 .design-home__contents-link h2 {
   display: inline-block;
   font-size: 48px;
@@ -955,7 +870,6 @@ html[lang^=my] .design-home__txt-desc {
   font-weight: normal;
   border-bottom: 2px solid #fff;
 }
-
 @media (min-width: 1440px) {
   .design-home__contents-link h2 {
     font-size: 48px;
@@ -968,7 +882,6 @@ html[lang^=my] .design-home__txt-desc {
   font-size: 1.6666666667vw;
   letter-spacing: -0.05em;
 }
-
 @media (min-width: 1440px) {
   .design-home__contents-link span {
     margin-top: 20px;
@@ -982,7 +895,6 @@ html[lang^=my] .design-home__txt-desc {
 .design-home__symbol {
   display: inline-block;
 }
-
 .design-home__symbol-wrap {
   position: absolute;
   top: 0;
@@ -990,18 +902,15 @@ html[lang^=my] .design-home__txt-desc {
   z-index: 1;
   font-size: 0;
 }
-
 .design-home__symbol-parts {
   display: inline-block;
   background-repeat: no-repeat;
   background-size: contain;
 }
-
 .design-home .symbol-small {
   margin: 50px 0px 0px -150px;
   margin: 3.4722222222vw 0vw 0vw -10.4166666667vw;
 }
-
 @media (min-width: 1440px) {
   .design-home .symbol-small {
     margin: 50px 0px 0px -150px;
@@ -1014,7 +923,6 @@ html[lang^=my] .design-home__txt-desc {
   height: 20.8333333333vw;
   background-image: url("../img/svg_symbol_6_1.png");
 }
-
 @media (min-width: 1440px) {
   .design-home .symbol-small-left {
     width: 150px;
@@ -1032,7 +940,6 @@ html[lang^=my] .design-home__txt-desc {
   height: 20.8333333333vw;
   background-image: url("../img/svg_symbol_6_2.png");
 }
-
 @media (min-width: 1440px) {
   .design-home .symbol-small-right {
     width: 150px;
@@ -1052,7 +959,6 @@ html[lang^=my] .design-home__txt-desc {
   width: 400px;
   width: 27.7777777778vw;
 }
-
 @media (min-width: 1440px) {
   .design-home .symbol-large {
     top: 670px;
@@ -1075,7 +981,6 @@ html[lang^=my] .design-home__txt-desc {
   height: 27.7777777778vw;
   background-image: url("../img/svg_symbol_5.png");
 }
-
 @media (min-width: 1440px) {
   .design-home .symbol-large-left {
     width: 200px;
@@ -1092,10 +997,8 @@ html[lang^=my] .design-home__txt-desc {
   height: 400px;
   height: 27.7777777778vw;
   background-image: url("../img/svg_symbol_5.png");
-  -ms-transform: rotate(180deg);
-      transform: rotate(180deg);
+  transform: rotate(180deg);
 }
-
 @media (min-width: 1440px) {
   .design-home .symbol-large-right {
     width: 200px;
@@ -1106,6 +1009,7 @@ html[lang^=my] .design-home__txt-desc {
     height: 400px;
   }
 }
-.samsung-design-social {
-  background-color: blue;
+
+.design-social {
+  background-color: red;
 }
