@@ -2,19 +2,17 @@
 
 - 클래스 네이밍은 BEM 방식을 따릅니다.
 
-- breakpoints
-  - pc - ~ 1280px
-  - mo - 767px ~
+- gulp watch / build / default 작업을 지정했습니다. (browserSync reload 개선 중)
 
 - 작업 환경 설정
-  
+
   ````bash
   $ npm install
-  $ sass --watch scss:css
+  $ sass --watch scss:css // gulp watch가 실시간으로 적용되지 않아 사용
   ````
-  
+
 - IDE 설정
-  
+
   ````json
   {
     "folders": [
@@ -52,3 +50,4 @@
       }
   }
   ````
+
