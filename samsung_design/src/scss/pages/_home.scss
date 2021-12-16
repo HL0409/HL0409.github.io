@@ -27,6 +27,35 @@ $component-name: 'design-home';
             @include vw-font-size-pc(24);
             @include line-height-pc(1.5, 24);
             letter-spacing: -0.05em;
+            transform: translateY(20%);
+            opacity: 0;
+            transition: transform 1s 1.6s, opacity 1s 1.6s;
+
+            .#{$activeClass} & {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .txt-wrap {
+            overflow: hidden;
+
+            &.is-delay span {
+                transition: transform 1s .3s, opacity 2s .3s;
+            }
+
+            span {
+                display: inline-block;
+                transform: translateY(100%);
+                opacity: 0;
+                transition: transform 1s, opacity 2s;
+
+
+                .#{$activeClass} & {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
         }
     }
 
@@ -36,6 +65,13 @@ $component-name: 'design-home';
         @include vw-convert-pc(height, 140);
         @include vw-convert-pc(margin-top, 60);
         background-color: #fe5d4d;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 1s 1s;
+
+        .#{$activeClass} & {
+            transform: scaleY(1);
+        }
     }
 
     &__contents {
