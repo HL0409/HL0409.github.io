@@ -22,10 +22,12 @@
         ul{padding:.7em .1em 0;font-size:14px;width:200px;}
         li{padding:.8em .1em .8em;}
         .wrap{text-align: center; height: 93vh;display: flex; align-items: center;justify-content: center;}
-        h2{color:blueviolet;position:relative;font-size: 24px;display: inline-block;vertical-align: middle;}
-        h2::after{display:inline-block;position:absolute;width:100%;height:20px;background:rgb(237, 222, 255);content:'';left:50%;top:5px;z-index:-1;transform: translateX(-47%);vertical-align: middle;}
+        .index-title{padding:40px;}
+        .index-title h2{color:blueviolet;position:relative;font-size: 24px;display: inline-block;vertical-align: middle;}
+        .index-title h2::after{display:inline-block;position:absolute;width:100%;height:20px;background:rgb(237, 222, 255);content:'';left:50%;top:5px;z-index:-1;transform: translateX(-47%);vertical-align: middle;}
+        .index-title h2:hover{animation:gradient 1s infinite;}
         ul>li:nth-child(2n-1){border-bottom:1px solid #e6e6e6;}
-        h2:hover{animation:gradient 1s infinite;}
+        .index-link a{font-size: 16px;font-weight: bold;text-decoration:underline; color: slateblue;}
         @keyframes gradient {
             0% {
                 color: rgb(255, 0, 157);
@@ -44,7 +46,14 @@
 </head>
 <body>
     <div class="wrap">
-        <h2>HL0409.github.io</h2>
+        <div class="container">
+            <div class="index-title">
+                <h2>HL0409.github.io</h2>
+            </div>
+            <div class="index-link">
+                <a href="samsung_design/index.html">삼성 디자인 클론 코딩</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
