@@ -1,0 +1,96 @@
+$component-name: 'taro';
+$activeClass: 'is-active';
+
+.#{$component-name} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(215, 233, 220);
+
+    &__contents {
+        display: flex;
+        position: relative;
+        width: 92rem;
+        height: 50rem;
+        // background-color: white;
+        transform: rotate(0);
+
+        .step1 & {
+            animation: rotation 7s linear 1.2s infinite;
+        }
+    }
+
+    &__card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.5rem;
+        font-size: 1.7rem;
+        color: white;
+        backface-visibility: hidden;
+        -webkit-box-shadow: 5px 3px 9px -5px rgba(0, 0, 0, 0.3);
+        box-shadow: 5px 3px 9px -5px rgba(0, 0, 0, 0.3);
+
+
+        &-wrap {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 9rem;
+            height: 12.625rem;
+
+            @for $i from 1 through 8 {
+                &:nth-child(#{$i}) {
+                    transform: rotate(0) translate(-50%, -50%);
+                    transition-delay: #{(0.08 - ($i * 0.01))}s;
+                    transform-origin: 0% 0%;
+                    transition: transform 1.2s;
+                }
+            }
+
+            .step1 & {
+                @for $i from 1 through 8 {
+                    &:nth-child(#{$i}) {
+                        transform: rotate(#{(45 * $i)}deg) scale(.58) translate(-50%, -220%);
+                    }
+                }
+            }
+        }
+
+        &-inner {
+            width: 100%;
+            height: 100%;
+            transform: rotateY(0);
+            transition: transform .5s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+
+            &.#{$activeClass} {
+                transform: perspective(600px) rotateY(180deg);
+                cursor: default;
+            }
+        }
+
+        &--front {
+            transform: rotateY(180deg);
+            background-color: rgb(201, 83, 83);
+        }
+
+        &--back {
+            z-index: 1;
+            background: url('../img/card-back.png') no-repeat center center / contain;
+        }
+    }
+}
+
+@keyframes rotation {
+    to {
+        transform: rotate(360deg);
+    }
+}
