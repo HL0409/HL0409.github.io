@@ -1,5 +1,6 @@
 .taro {
   display: flex;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -8,11 +9,11 @@
 .taro__contents {
   display: flex;
   position: relative;
-  width: 92rem;
-  height: 50rem;
+  width: 35rem;
+  height: 35rem;
   transform: rotate(0);
 }
-.step1 .taro__contents {
+.is-loaded .taro__contents {
   animation: rotation 7s linear 1.2s infinite;
 }
 .taro__card {
@@ -86,28 +87,28 @@
   transform-origin: 0% 0%;
   transition: transform 1.2s;
 }
-.step1 .taro__card-wrap:nth-child(1) {
+.is-loaded .taro__card-wrap:nth-child(1) {
   transform: rotate(45deg) scale(0.58) translate(-50%, -220%);
 }
-.step1 .taro__card-wrap:nth-child(2) {
+.is-loaded .taro__card-wrap:nth-child(2) {
   transform: rotate(90deg) scale(0.58) translate(-50%, -220%);
 }
-.step1 .taro__card-wrap:nth-child(3) {
+.is-loaded .taro__card-wrap:nth-child(3) {
   transform: rotate(135deg) scale(0.58) translate(-50%, -220%);
 }
-.step1 .taro__card-wrap:nth-child(4) {
+.is-loaded .taro__card-wrap:nth-child(4) {
   transform: rotate(180deg) scale(0.58) translate(-50%, -220%);
 }
-.step1 .taro__card-wrap:nth-child(5) {
+.is-loaded .taro__card-wrap:nth-child(5) {
   transform: rotate(225deg) scale(0.58) translate(-50%, -220%);
 }
-.step1 .taro__card-wrap:nth-child(6) {
+.is-loaded .taro__card-wrap:nth-child(6) {
   transform: rotate(270deg) scale(0.58) translate(-50%, -220%);
 }
-.step1 .taro__card-wrap:nth-child(7) {
+.is-loaded .taro__card-wrap:nth-child(7) {
   transform: rotate(315deg) scale(0.58) translate(-50%, -220%);
 }
-.step1 .taro__card-wrap:nth-child(8) {
+.is-loaded .taro__card-wrap:nth-child(8) {
   transform: rotate(360deg) scale(0.58) translate(-50%, -220%);
 }
 .taro__card-inner {

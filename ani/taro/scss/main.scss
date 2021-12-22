@@ -1,8 +1,10 @@
 $component-name: 'taro';
 $activeClass: 'is-active';
+$loadedClass: 'is-loaded';
 
 .#{$component-name} {
     display: flex;
+    overflow: hidden;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -11,12 +13,11 @@ $activeClass: 'is-active';
     &__contents {
         display: flex;
         position: relative;
-        width: 92rem;
-        height: 50rem;
-        // background-color: white;
+        width: 35rem;
+        height: 35rem;
         transform: rotate(0);
 
-        .step1 & {
+        .#{$loadedClass} & {
             animation: rotation 7s linear 1.2s infinite;
         }
     }
@@ -54,7 +55,7 @@ $activeClass: 'is-active';
                 }
             }
 
-            .step1 & {
+            .#{$loadedClass} & {
                 @for $i from 1 through 8 {
                     &:nth-child(#{$i}) {
                         transform: rotate(#{(45 * $i)}deg) scale(.58) translate(-50%, -220%);
